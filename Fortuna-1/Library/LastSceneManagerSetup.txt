@@ -1,9 +1,0 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/TestScenes/Reece/ReeceScene.unity
-=======
-- path: Assets/TestScenes/Matt/MattScene.unity
->>>>>>> fa21ba0 (basic movement done)
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
