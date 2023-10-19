@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6f4b0c83-b7d7-4fb7-a76c-bb89966c6508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/Powerup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/Powerup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +16,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerupSystem/SpeedBoostPowerup.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -100,7 +103,7 @@
       <workItem from="1697641200381" duration="582000" />
       <workItem from="1697717716595" duration="47000" />
       <workItem from="1697717799506" duration="4440000" />
-      <workItem from="1697730469090" duration="1513000" />
+      <workItem from="1697730469090" duration="4665000" />
     </task>
     <servers />
   </component>

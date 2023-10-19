@@ -2,18 +2,11 @@ using UnityEngine;
 
 namespace PowerupSystem
 {
-    public class Powerup
+    public abstract class Powerup
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        public string PowerupName;
+        public Texture2D PowerupIcon;
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+        public abstract void PowerupEffect();
     }
 }
