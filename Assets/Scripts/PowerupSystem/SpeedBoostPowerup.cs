@@ -1,24 +1,17 @@
 using System;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace PowerupSystem
 {
+    [CreateAssetMenu(fileName = "Speed Boost", menuName = "Powerups/Speed Boost", order = 0)]
     public class SpeedBoostPowerup : Powerup
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+        public float speedBoostAmount;
 
         public override void PowerupEffect()
         {
-            Console.WriteLine("Speed Boost test");
+
         }
     }
 }

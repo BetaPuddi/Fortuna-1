@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PowerupSystem
 {
-    public abstract class Powerup
+    public abstract class Powerup : ScriptableObject
     {
-        public string PowerupName;
-        public Texture2D PowerupIcon;
+        public string powerupName;
+        public Texture2D powerupIcon;
 
         public abstract void PowerupEffect();
     }
