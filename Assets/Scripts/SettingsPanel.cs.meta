@@ -3,7 +3,10 @@ guid: 1c9a019b19f463a46a6073198ee9e054
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - settingsPanel: {instanceID: 0}
+  - mainMenuPanel: {instanceID: 0}
+  - audioMixer: {fileID: 24100000, guid: 25cd02597e6f8024fac08e695cffebaa, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
