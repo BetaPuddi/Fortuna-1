@@ -15,7 +15,7 @@ public class CarController : MonoBehaviour
     // Choose whether to break or not
     private bool IsBreaking;
 
-    [SerializeField] private float motorForce;
+    [SerializeField] public float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
     // SerializeField is because we don't want other scripts to access it, but we do in the inspector
