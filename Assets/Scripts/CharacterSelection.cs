@@ -29,15 +29,21 @@ public class CharacterSelection : MonoBehaviour
         UpdateCharacterSelectionUI();
     }
 
-    private void CharacterSelectionLeftButtonOnClick()
+    public void CharacterSelectionLeftButtonOnClick()
     {
-        selectedCharacter--;
-        UpdateCharacterSelectionUI();
+        if (0 > --selectedCharacter)
+        {
+            selectedCharacter = characterList.Count-1;
+        }
+            UpdateCharacterSelectionUI();
     }
 
-    private void CharacterSelectionRightButtonOnClick()
+    public void CharacterSelectionRightButtonOnClick()
     {
-        selectedCharacter++;
+        if (characterList.Count-1 < ++selectedCharacter)
+        {
+            selectedCharacter = 0;
+        }
         UpdateCharacterSelectionUI();
     }
 
