@@ -50,10 +50,10 @@ public class CarController : MonoBehaviour
         FrontLeftWheelCollider.motorTorque = VerticalInput * motorForce;
         FrontRightWheelCollider.motorTorque = VerticalInput * motorForce;
         currentbreakForce = IsBreaking ? breakForce : 0f;
-        if (IsBreaking)
-        {
-            ApplyBreaking();
-        }
+        
+        
+        ApplyBreaking();
+       
 
     }
 
