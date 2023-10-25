@@ -11,8 +11,11 @@ public class Speedpad : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+        }
     }
 }
