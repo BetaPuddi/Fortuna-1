@@ -1,95 +1,140 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
-    // Rename the terms used in the Unity physics engine
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
-
-    private float HorizonalInput;
-    private float VerticalInput;
-    private float currentbreakForce;
     private float steerAngle;
-    // Choose whether to break or not
-    private bool IsBreaking;
+    private float currentBreakForce;
 
     [SerializeField] public float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
-    // SerializeField is because we don't want other scripts to access it, but we do in the inspector
-    [SerializeField] private WheelCollider FrontLeftWheelCollider;
-    [SerializeField] private WheelCollider FrontRightWheelCollider;
-    [SerializeField] private WheelCollider RearLeftWheelCollider;
-    [SerializeField] private WheelCollider RearRightWheelCollider;
 
-    [SerializeField] private Transform RearRightWheelTransform;
-    [SerializeField] private Transform RearLeftWheelTransform;
-    [SerializeField] private Transform FrontRightWheelTransform;
-    [SerializeField] private Transform FrontLeftWheelTransform;
+    [SerializeField] private WheelCollider frontLeftWheelCollider;
+    [SerializeField] private WheelCollider frontRightWheelCollider;
+    [SerializeField] private WheelCollider rearLeftWheelCollider;
+    [SerializeField] private WheelCollider rearRightWheelCollider;
 
-    // We use "FixedUpdate" because we need to use the Unity physics engine
-    private void FixedUpdate()
+    [SerializeField] private Transform rearRightWheelTransform;
+    [SerializeField] private Transform rearLeftWheelTransform;
+    [SerializeField] private Transform frontRightWheelTransform;
+    [SerializeField] private Transform frontLeftWheelTransform;
+
+    private InputActionAsset inputActionAsset;
+
+    private InputAction moveAction;
+    private InputAction brakeAction;
+
+    private void Awake()
     {
-        GetInput();
-        HandleMotor();
-        HandleSteering();
-        UpdateWheel();
+        inputActionAsset = InputActionAsset.FromJson(@"{
+            ""maps"": [
+                {
+                    ""name"": ""Player"",
+                    ""actions"": [
+                        {
+                            ""name"": ""Move"",
+                            ""type"": ""Value"",
+                            ""bindings"": [
+                                {
+                                    ""name"": ""Stick"",
+                                    ""type"": ""Value"",
+                                    ""path"": ""<Gamepad>/leftStick""
+                                }
+                            ]
+                        },
+                        {
+                            ""name"": ""Brake"",
+                            ""type"": ""Button"",
+                            ""bindings"": [
+                                {
+                                    ""name"": ""ButtonPress"",
+                                    ""type"": ""Value"",
+                                    ""path"": ""<Gamepad>/buttonSouth""
+                                }
+                            ]
+                        }
+                    ],
+                    ""bindings"": []
+                }
+            ]
+        }");
     }
 
-    private void GetInput()
+    private void OnEnable()
     {
-        HorizonalInput = Input.GetAxis(HORIZONTAL);
-        VerticalInput = Input.GetAxis(VERTICAL);
-        IsBreaking = Input.GetKey(KeyCode.Space);
+        moveAction = inputActionAsset.FindAction("Move");
+        brakeAction = inputActionAsset.FindAction("Brake");
+
+        moveAction.Enable();
+        brakeAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+        brakeAction.Disable();
+    }
+
+    private void FixedUpdate()
+    {
+        HandleInput();
+        HandleMotor();
+        HandleSteering();
+        UpdateWheels();
+    }
+
+    private void HandleInput()
+    {
+        Vector2 moveInput = moveAction.ReadValue<Vector2>();
+        float horizontalInput = moveInput.x;
+        float verticalInput = moveInput.y;
+        bool isBraking = brakeAction.ReadValue<float>() > 0;
+
+        steerAngle = maxSteerAngle * horizontalInput;
+        currentBreakForce = isBraking ? breakForce : 0;
     }
 
     private void HandleMotor()
     {
-        FrontLeftWheelCollider.motorTorque = VerticalInput * motorForce;
-        FrontRightWheelCollider.motorTorque = VerticalInput * motorForce;
-        currentbreakForce = IsBreaking ? breakForce : 0f;
-        
-        
-        ApplyBreaking();
-       
+        float motorTorque = moveAction.ReadValue<Vector2>().y * motorForce;
 
+        frontLeftWheelCollider.motorTorque = motorTorque;
+        frontRightWheelCollider.motorTorque = motorTorque;
+
+        ApplyBraking();
     }
 
-    private void ApplyBreaking()
+    private void ApplyBraking()
     {
-        FrontRightWheelCollider.brakeTorque = currentbreakForce;
-        FrontLeftWheelCollider.brakeTorque = currentbreakForce;
-        RearRightWheelCollider.brakeTorque = currentbreakForce;
-        RearLeftWheelCollider.brakeTorque = currentbreakForce;
+        frontRightWheelCollider.brakeTorque = currentBreakForce;
+        frontLeftWheelCollider.brakeTorque = currentBreakForce;
+        rearRightWheelCollider.brakeTorque = currentBreakForce;
+        rearLeftWheelCollider.brakeTorque = currentBreakForce;
     }
 
     private void HandleSteering()
     {
-        steerAngle = maxSteerAngle * HorizonalInput;
-        FrontLeftWheelCollider.steerAngle = steerAngle;
-        FrontRightWheelCollider.steerAngle = steerAngle;
+        frontLeftWheelCollider.steerAngle = steerAngle;
+        frontRightWheelCollider.steerAngle = steerAngle;
     }
 
-    private void UpdateWheel()
+    private void UpdateWheels()
     {
-        UpdateSingleWheel(FrontLeftWheelCollider, FrontLeftWheelTransform);
-        UpdateSingleWheel(FrontRightWheelCollider, FrontRightWheelTransform);
-        UpdateSingleWheel(RearRightWheelCollider, RearRightWheelTransform);
-        UpdateSingleWheel(RearLeftWheelCollider, RearLeftWheelTransform);
+        UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
+        UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
+        UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
+        UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
 
-    private void UpdateSingleWheel(WheelCollider WheelCollider, Transform wheelTransform)
+    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;
         Quaternion rot;
-        WheelCollider.GetWorldPose(out pos, out rot);
+        wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
-
     }
-
-
-
 }
