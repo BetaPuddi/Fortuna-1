@@ -29,6 +29,6 @@ public class StartGame : MonoBehaviour
     public void StartTheGame()
     {
         Debug.Log("Game Starting");
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("MattScene"));
+        SceneManager.LoadScene(1);
     }
 }
