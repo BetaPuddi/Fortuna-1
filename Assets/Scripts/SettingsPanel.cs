@@ -34,5 +34,7 @@ public class Settings : MonoBehaviour
         Debug.Log("Saving settings");
         audioMixer.SetFloat("volume", settingsPanel.GetComponentsInChildren<Slider>()[0].value);
         sensitivity = settingsPanel.GetComponentsInChildren<Slider>()[1].value;
+        PersistentData.persistentData.sensitivity = sensitivity;
+        PersistentData.persistentData.volume = settingsPanel.GetComponentsInChildren<Slider>()[0].value;
     }
 }

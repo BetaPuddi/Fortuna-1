@@ -15,14 +15,9 @@ public class CharacterSelection : MonoBehaviour
     
 
     [Header("Characters")]
-    [SerializeField] List<characterSelectObject> characterList = new List<characterSelectObject>();
+    [SerializeField] List<PersistentData.CharacterSelectObject> characterList = new List<PersistentData.CharacterSelectObject>();
 
-    [System.Serializable]
-    public class characterSelectObject
-    {
-        public string name;
-        public Sprite characterThumbnail;
-    }
+    
 
     private void Start()
     {
@@ -51,5 +46,6 @@ public class CharacterSelection : MonoBehaviour
     {
         thumbnail.sprite = characterList[selectedCharacter].characterThumbnail;
         characterName.text = characterList[selectedCharacter].name;
+        PersistentData.persistentData.characterSelectObject = characterList[selectedCharacter];
     }
 }
