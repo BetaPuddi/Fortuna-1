@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -31,6 +29,6 @@ public class StartGame : MonoBehaviour
     public void StartTheGame()
     {
         Debug.Log("Game Starting");
-        SceneManager.SetActiveScene("GameScene");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("MattScene"));
     }
 }
