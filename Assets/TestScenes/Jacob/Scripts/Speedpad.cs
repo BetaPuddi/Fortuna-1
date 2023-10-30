@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class Speedpad : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int speed;
 
-    // Update is called once per frame
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+            other.gameObject.GetComponent<Rigidbody>().AddForce(speed * transform.forward, ForceMode.Impulse);
         }
     }
 }
