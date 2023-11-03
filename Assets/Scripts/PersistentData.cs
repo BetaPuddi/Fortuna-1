@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PersistentData
 {
+    private static PersistentData instance;
+
     public static PersistentData persistentData {
-        get;
-        set;
+        get { 
+            if (instance == null)
+            {
+                instance = new PersistentData ();
+            }
+            return instance;
+        }
+        
     }
 
     float volume;
@@ -18,6 +27,16 @@ public class PersistentData
     {
         public string name;
         public Sprite characterThumbnail;
+    }
+
+    public void saveProgress()
+    {
+
+    }
+
+    public void loadProgress()
+    {
+
     }
 
     public void setVolume(float volumeIn)
