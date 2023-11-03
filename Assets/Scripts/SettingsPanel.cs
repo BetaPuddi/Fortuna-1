@@ -12,14 +12,15 @@ public class Settings : MonoBehaviour
     public GameObject mainMenuPanel;
     public AudioMixer audioMixer;
 
+
     
-    float sensitivity;
 
     public void SettingsButtonOnClick()
     {
         Debug.Log("Opening settings");
         settingsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
+        PersistentData.persistentData.loadPlayerPrefs();
     }
 
     public void SettingsExitButtonOnClick()
@@ -33,8 +34,8 @@ public class Settings : MonoBehaviour
     {
         Debug.Log("Saving settings");
         audioMixer.SetFloat("volume", settingsPanel.GetComponentsInChildren<Slider>()[0].value);
-        sensitivity = settingsPanel.GetComponentsInChildren<Slider>()[1].value;
-        PersistentData.persistentData.sensitivity = sensitivity;
-        PersistentData.persistentData.volume = settingsPanel.GetComponentsInChildren<Slider>()[0].value;
+        PersistentData.persistentData.setSensitivity(settingsPanel.GetComponentsInChildren<Slider>()[1].value);
+        PersistentData.persistentData.setVolume(settingsPanel.GetComponentsInChildren<Slider>()[0].value);
+        PersistentData.persistentData.savePlayerPrefs();
     }
 }

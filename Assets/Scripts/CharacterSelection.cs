@@ -46,6 +46,6 @@ public class CharacterSelection : MonoBehaviour
     {
         thumbnail.sprite = characterList[selectedCharacter].characterThumbnail;
         characterName.text = characterList[selectedCharacter].name;
-        PersistentData.persistentData.characterSelectObject = characterList[selectedCharacter];
+        PersistentData.persistentData.setCharacter(characterList[selectedCharacter]);
     }
 }
