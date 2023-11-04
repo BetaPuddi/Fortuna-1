@@ -6,12 +6,13 @@ namespace PowerupSystem
     public class PowerupContainer : MonoBehaviour
     {
         public string currentPowerup;
+        public GameObject ballProjectile;
 
         [SerializeField]
         private float speedBoostDuration;
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.E) && currentPowerup != null)
             {
@@ -21,6 +22,8 @@ namespace PowerupSystem
                         SpeedBoost();
                         RemovePowerup();
                         StopCoroutine(SpeedBoostCoroutine());
+                        break;
+                    case "Ball Projectile":
                         break;
                 }
             }
