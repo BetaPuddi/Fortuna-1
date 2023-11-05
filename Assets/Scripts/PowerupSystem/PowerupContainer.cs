@@ -50,5 +50,10 @@ namespace PowerupSystem
             yield return new WaitForSeconds(speedBoostDuration);
             GetComponentInParent<CarController>().motorForce -= 100;
         }
+
+        private void FireBallProjectile()
+        {
+            Instantiate(ballProjectile, transform.position, transform.rotation);
+        }
     }
 }
