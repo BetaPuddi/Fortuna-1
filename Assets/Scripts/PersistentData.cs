@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PersistentData
 {
     private static PersistentData instance;
 
-    public static PersistentData persistentData {
-        get { 
+    public static PersistentData persistentData
+    {
+        get
+        {
             if (instance == null)
             {
-                instance = new PersistentData ();
+                instance = new PersistentData();
             }
             return instance;
         }
-        
+
     }
 
-    float volume;
+    int volume;
     float sensitivity;
     CharacterSelectObject characterSelectObject;
 
@@ -45,14 +44,14 @@ public class PersistentData
 
     }
 
-    public void setVolume(float volumeIn)
+    public void setVolume(int volumeIn)
     {
         volume = Mathf.Clamp(volumeIn, 0, 100);
     }
 
     public void setSensitivity(float sensitivityIn)
     {
-        sensitivity = Mathf.Clamp(sensitivityIn, 0, 100);
+        sensitivity = Mathf.Clamp01(sensitivityIn);
     }
 
     public void setCharacter(CharacterSelectObject characterIn)
@@ -75,19 +74,19 @@ public class PersistentData
         return characterSelectObject;
     }
 
-    
+
 
 
     public void savePlayerPrefs()
     {
-        PlayerPrefs.SetFloat("Volume", volume);
+        PlayerPrefs.SetInt("Volume", volume);
         PlayerPrefs.SetFloat("Sensitivity", sensitivity);
         PlayerPrefs.Save();
     }
 
     public void loadPlayerPrefs()
     {
-        PlayerPrefs.GetFloat("Volume", 0);
-        PlayerPrefs.GetFloat("Sensitivity", 0);
+        volume = PlayerPrefs.GetInt("Volume");
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity");
     }
 }
