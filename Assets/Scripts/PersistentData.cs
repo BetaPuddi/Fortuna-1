@@ -23,10 +23,16 @@ public class PersistentData
     CharacterSelectObject characterSelectObject;
 
     [System.Serializable]
-    public class CharacterSelectObject
+    public struct CharacterSelectObject
     {
         public string name;
         public Sprite characterThumbnail;
+    }
+
+    [System.Serializable]
+    public struct SaveData
+    {
+
     }
 
     public void saveProgress()
