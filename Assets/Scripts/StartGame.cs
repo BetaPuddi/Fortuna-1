@@ -13,6 +13,7 @@ public class StartGame : MonoBehaviour
     public void PlayButtonOnClick()
     {
         characterSelectPanel.SetActive(true);
+
         mainMenuPanel.SetActive(false);
     }
 
