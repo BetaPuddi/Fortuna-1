@@ -6,20 +6,31 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Settings : MonoBehaviour
+public class SettingsPanel : MonoBehaviour
 {
     public GameObject settingsPanel;
     public GameObject mainMenuPanel;
     public AudioMixer audioMixer;
+    [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider sensitivitySlider;
+
 
     
-    float sensitivity;
 
     public void SettingsButtonOnClick()
     {
         Debug.Log("Opening settings");
         settingsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
+        UpdateSliders();
+    }
+
+    private void UpdateSliders() 
+    {
+        PersistentData.persistentData.loadPlayerPrefs();
+        Debug.Log("Updating sliders");
+        Debug.Log(volumeSlider.value = PersistentData.persistentData.getVolume());
+        Debug.Log(sensitivitySlider.value = PersistentData.persistentData.getSensitivity());
     }
 
     public void SettingsExitButtonOnClick()
@@ -32,7 +43,9 @@ public class Settings : MonoBehaviour
     public void SettingsSaveButtonOnClick()
     {
         Debug.Log("Saving settings");
-        audioMixer.SetFloat("volume", settingsPanel.GetComponentsInChildren<Slider>()[0].value);
-        sensitivity = settingsPanel.GetComponentsInChildren<Slider>()[1].value;
+        //audioMixer.SetFloat("volume", volumeSlider.value);
+        PersistentData.persistentData.setSensitivity(sensitivitySlider.value);
+        PersistentData.persistentData.setVolume((int)volumeSlider.value);
+        PersistentData.persistentData.savePlayerPrefs();
     }
 }
