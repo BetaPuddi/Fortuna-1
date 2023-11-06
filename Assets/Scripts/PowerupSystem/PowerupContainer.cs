@@ -24,6 +24,7 @@ namespace PowerupSystem
                         StopCoroutine(SpeedBoostCoroutine());
                         break;
                     case "Ball Projectile":
+                        FireBallProjectile();
                         break;
                 }
             }
@@ -53,7 +54,8 @@ namespace PowerupSystem
 
         private void FireBallProjectile()
         {
-            Instantiate(ballProjectile, transform.position, transform.rotation);
+            var transform1 = transform;
+            Instantiate(ballProjectile, transform1.position, transform1.rotation);
         }
     }
 }

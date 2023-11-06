@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPowerup: 
-  ballProjectile: {fileID: 0}
+  ballProjectile: {fileID: 397778415}
   speedBoostDuration: 2
 --- !u!146 &264104738 stripped
 WheelCollider:
@@ -295,6 +295,11 @@ WheelCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3794951908810334882, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
   m_PrefabInstance: {fileID: 2124363015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &397778415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4172207921962549427, guid: 87d6afe6a46ac474eb0bdf2054858840, type: 3}
+  m_PrefabInstance: {fileID: 8806259071919895677}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &615874965
 PrefabInstance:
