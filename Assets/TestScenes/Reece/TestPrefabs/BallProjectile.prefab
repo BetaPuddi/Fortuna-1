@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1310241707698970902}
   - component: {fileID: 1966826559697123678}
   - component: {fileID: 6116308865671050000}
-  - component: {fileID: 3240165107268429669}
   - component: {fileID: 1842128159817592350}
   - component: {fileID: 6186920232098513052}
   - component: {fileID: -9053151110122823027}
@@ -87,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3240165107268429669
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4172207921962549427}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.7
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1842128159817592350
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -169,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 1000
+  projectileForce: 10000
+  vehicleTransform: {fileID: 0}

@@ -26,6 +26,7 @@ namespace PowerupSystem
                         break;
                     case "Ball Projectile":
                         FireBallProjectile();
+                        RemovePowerup();
                         break;
                 }
             }
@@ -56,7 +57,7 @@ namespace PowerupSystem
         private void FireBallProjectile()
         {
             var transform2 = transform;
-            var transform1 = transform2.forward * 2 + transform2.up * 2;
+            var transform1 = transform2.forward * 2 + (transform2.up + new Vector3(0f, 50f, 0f) * 2);
             var projectile = Instantiate(ballProjectile, transform1.normalized, Quaternion.identity);
             projectile.GetComponent<BallProjectile>().vehicleTransform = transform2;
             projectile.GetComponent<BallProjectile>().AddForce();
