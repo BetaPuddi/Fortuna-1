@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3240165107268429669}
   - component: {fileID: 1842128159817592350}
   - component: {fileID: 6186920232098513052}
+  - component: {fileID: -9053151110122823027}
   m_Layer: 0
   m_Name: BallProjectile
   m_TagString: Untagged
@@ -155,3 +156,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-9053151110122823027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172207921962549427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf89a3203392934098cbf5e108dce22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 1000

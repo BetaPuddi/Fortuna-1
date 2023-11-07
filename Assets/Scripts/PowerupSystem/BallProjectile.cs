@@ -5,9 +5,12 @@ namespace PowerupSystem
     public class BallProjectile : MonoBehaviour
     {
         [SerializeField] private float projectileSpeed;
-        void Start()
+        public Transform vehicleTransform;
+
+        public void AddForce()
         {
-            GetComponent<Rigidbody>().AddRelativeForce(transform.forward * projectileSpeed, ForceMode.Impulse);
+            gameObject.transform.position = vehicleTransform.position;
+            GetComponent<Rigidbody>().AddRelativeForce(vehicleTransform.forward * projectileSpeed, ForceMode.Impulse);
         }
     }
 }

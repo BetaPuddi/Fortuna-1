@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace PowerupSystem
 {
@@ -54,8 +55,11 @@ namespace PowerupSystem
 
         private void FireBallProjectile()
         {
-            var transform1 = transform;
-            Instantiate(ballProjectile, transform1.position, transform1.rotation);
+            var transform2 = transform;
+            var transform1 = transform2.forward * 2 + transform2.up * 2;
+            var projectile = Instantiate(ballProjectile, transform1.normalized, Quaternion.identity);
+            projectile.GetComponent<BallProjectile>().vehicleTransform = transform2;
+            projectile.GetComponent<BallProjectile>().AddForce();
         }
     }
 }
