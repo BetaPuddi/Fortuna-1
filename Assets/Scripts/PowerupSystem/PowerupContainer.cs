@@ -1,17 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace PowerupSystem
 {
     public class PowerupContainer : MonoBehaviour
     {
         public string currentPowerup;
+        public GameObject ballProjectile;
 
         [SerializeField]
         private float speedBoostDuration;
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.E) && currentPowerup != null)
             {
@@ -21,6 +23,9 @@ namespace PowerupSystem
                         SpeedBoost();
                         RemovePowerup();
                         StopCoroutine(SpeedBoostCoroutine());
+                        break;
+                    case "Ball Projectile":
+                        FireBallProjectile();
                         break;
                 }
             }
@@ -46,6 +51,15 @@ namespace PowerupSystem
             GetComponentInParent<CarController>().motorForce += 100;
             yield return new WaitForSeconds(speedBoostDuration);
             GetComponentInParent<CarController>().motorForce -= 100;
+        }
+
+        private void FireBallProjectile()
+        {
+            var transform2 = transform;
+            var transform1 = transform2.forward * 2 + transform2.up * 2;
+            var projectile = Instantiate(ballProjectile, transform1.normalized, Quaternion.identity);
+            projectile.GetComponent<BallProjectile>().vehicleTransform = transform2;
+            projectile.GetComponent<BallProjectile>().AddForce();
         }
     }
 }
