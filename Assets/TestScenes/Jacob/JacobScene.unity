@@ -418,7 +418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b3ed6a7b085904489cddec4808dcdd2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28037ef223c2d1b439f1f46dfb04923b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1457,7 +1457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 4, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1002433807}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &455656592
 BoxCollider:
@@ -1530,7 +1530,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455656590}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-
 --- !u!1 &488665091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,7 +1818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &534053021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,14 +2755,14 @@ MonoBehaviour:
   motorForce: 1000
   breakForce: 3000
   maxSteerAngle: 30
-  FrontLeftWheelCollider: {fileID: 1444647075}
-  FrontRightWheelCollider: {fileID: 134493622}
-  RearLeftWheelCollider: {fileID: 1791022562}
-  RearRightWheelCollider: {fileID: 1438932991}
-  RearRightWheelTransform: {fileID: 1597761233}
-  RearLeftWheelTransform: {fileID: 524427626}
-  FrontRightWheelTransform: {fileID: 2000665258}
-  FrontLeftWheelTransform: {fileID: 1849722640}
+  frontLeftWheelCollider: {fileID: 0}
+  frontRightWheelCollider: {fileID: 0}
+  rearLeftWheelCollider: {fileID: 0}
+  rearRightWheelCollider: {fileID: 0}
+  rearRightWheelTransform: {fileID: 0}
+  rearLeftWheelTransform: {fileID: 0}
+  frontRightWheelTransform: {fileID: 0}
+  frontLeftWheelTransform: {fileID: 0}
 --- !u!65 &703526370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3964,7 +3963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b73b6f7ebbe1f4d4aae3bca6cbb49e8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f33bd4d0ecffe5f429a361e2b646c315, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7173,5 +7172,6 @@ SceneRoots:
   - {fileID: 534053024}
   - {fileID: 998884298}
   - {fileID: 703526372}
-  - {fileID: 1002433807}
   - {fileID: 1212892696}
+  - {fileID: 455656591}
+  - {fileID: 1247225593}
