@@ -22,6 +22,9 @@ public class AICarDrive : MonoBehaviour
     [SerializeField] private Transform frontRightWheelTransform;
     [SerializeField] private Transform frontLeftWheelTransform;
 
+    [SerializeField] private Transform[] waypoints;
+    private int currentWaypoint = 0;
+
     private InputActionAsset inputActionAsset;
 
     private InputAction moveAction;
@@ -29,8 +32,22 @@ public class AICarDrive : MonoBehaviour
 
     private void FixedUpdate()
     {
+        HandleNavigation();
         HandleMotor();
+        HandleSteering();
         UpdateWheels();
+    }
+
+    private void HandleNavigation()
+    {
+        Transform currentWaypointTransform = waypoints[currentWaypoint];
+        if (Vector3.Distance(transform.position, currentWaypointTransform.position) < 5)
+        {
+            currentWaypointTransform = waypoints[++currentWaypoint];
+        }
+        Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
+
+        steerAngle = 0;
     }
 
     private void HandleMotor()
@@ -49,6 +66,12 @@ public class AICarDrive : MonoBehaviour
         frontLeftWheelCollider.brakeTorque = currentBreakForce;
         rearRightWheelCollider.brakeTorque = currentBreakForce;
         rearLeftWheelCollider.brakeTorque = currentBreakForce;
+    }
+
+    private void HandleSteering()
+    {
+        frontLeftWheelCollider.steerAngle = steerAngle;
+        frontRightWheelCollider.steerAngle = steerAngle;
     }
 
     private void UpdateWheels()
