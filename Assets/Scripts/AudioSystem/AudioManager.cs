@@ -6,10 +6,8 @@ namespace AudioSystem
     {
         public static AudioManager Instance;
 
-        private AudioClip _audioClip;
-
-        public AudioSource[] sfxAudioSources;
-
+        public AudioSource[] carSfxAudioSources;
+        public AudioSource[] uiSfxAudioSources;
         public AudioSource[] musicAudioSources;
 
         private void Awake()
@@ -22,14 +20,22 @@ namespace AudioSystem
 
         public void PlaySfxAudioClip(string audioSourceName)
         {
-            foreach (var audioSource in sfxAudioSources)
+            foreach (var audioSource in carSfxAudioSources)
             {
                 if (audioSource.name == audioSourceName)
                 {
-                    _audioClip = audioSource.clip;
-                    audioSource.PlayOneShot(_audioClip, 1f);
-                    Debug.Log(audioSourceName);
-                    Debug.Log(audioSource.clip);
+                    audioSource.PlayOneShot(audioSource.clip, 1f);
+                }
+            }
+        }
+
+        public void PlayUiSfxAudioClip(string audioSourceName)
+        {
+            foreach (var audioSource in uiSfxAudioSources)
+            {
+                if (audioSource.name == audioSourceName)
+                {
+                    audioSource.PlayOneShot(audioSource.clip, 1f);
                 }
             }
         }
@@ -40,7 +46,7 @@ namespace AudioSystem
             {
                 if (audioSource.name == audioSourceName)
                 {
-                    //audioSource.clip = audioClip;
+                    audioSource.pitch = Random.Range(0.8f, 1.2f);
                     audioSource.Play();
                 }
             }
