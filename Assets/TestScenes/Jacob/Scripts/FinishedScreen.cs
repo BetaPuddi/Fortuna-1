@@ -10,8 +10,7 @@ public class FinishedScreen : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-   public void ReplayButton()
+    public void ReplayButton()
     {
         SceneManager.LoadScene(1);
     }
