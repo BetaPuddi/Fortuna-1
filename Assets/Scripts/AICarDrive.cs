@@ -46,8 +46,8 @@ public class AICarDrive : MonoBehaviour
             currentWaypointTransform = waypoints[++currentWaypoint];
         }
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
-
-        steerAngle = 0;
+        relativeWaypointTransform.y = 0;
+        steerAngle = Mathf.Clamp(Vector3.SignedAngle(Vector3.forward, relativeWaypointTransform, Vector3.up), -maxSteerAngle, maxSteerAngle);
     }
 
     private void HandleMotor()
