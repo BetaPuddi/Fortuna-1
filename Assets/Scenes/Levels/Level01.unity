@@ -4541,6 +4541,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7495443279060062592, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
+      propertyPath: m_Mass
+      value: 1500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4556,10 +4560,10 @@ PrefabInstance:
       addedObject: {fileID: 1978765836}
     - targetCorrespondingSourceObject: {fileID: 3311311803080157842, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1978765835}
+      addedObject: {fileID: 1978765838}
     - targetCorrespondingSourceObject: {fileID: 3311311803080157842, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1978765838}
+      addedObject: {fileID: 1978765839}
   m_SourcePrefab: {fileID: 100100000, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
 --- !u!1001 &1208229194
 PrefabInstance:
@@ -8080,29 +8084,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2792218741957914664, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
   m_PrefabInstance: {fileID: 1198304568}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1978765835
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978765832}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.2375548
-  m_Height: 5.2931137
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.27755475, z: -0.15695953}
 --- !u!114 &1978765836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8130,9 +8111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b552f6e5ea7d734d9d7cfc660d6868b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorForce: 300
-  breakForce: 250
-  maxSteerAngle: 50
+  motorForce: 500
+  breakForce: 3000
+  maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 225941724}
   frontRightWheelCollider: {fileID: 1953445263}
   rearLeftWheelCollider: {fileID: 34348744}
@@ -8155,6 +8136,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapNumber: 0
   Checkpoint: 0
+--- !u!65 &1978765839
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978765832}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2495425, y: 1.2585411, z: 4.857215}
+  m_Center: {x: 0.049203515, y: 0.7957307, z: -0.03421688}
 --- !u!1 &2001300445
 GameObject:
   m_ObjectHideFlags: 0
