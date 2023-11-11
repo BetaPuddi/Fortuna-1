@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CartLap))]
 public class AICarDrive : MonoBehaviour
 {
     private float steerAngle;
@@ -23,7 +24,6 @@ public class AICarDrive : MonoBehaviour
     [SerializeField] private Transform frontLeftWheelTransform;
 
     [SerializeField] private Transform[] waypoints;
-    private int currentWaypoint = 0;
 
     private InputActionAsset inputActionAsset;
 
@@ -40,14 +40,14 @@ public class AICarDrive : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[currentWaypoint];
-        if (Vector3.Distance(transform.position, currentWaypointTransform.position) < 5)
-        {
-            currentWaypointTransform = waypoints[++currentWaypoint];
-        }
+        Transform currentWaypointTransform = waypoints[GetComponent<CartLap>().Checkpoint];
+        //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
-        steerAngle = Mathf.Clamp(Vector3.SignedAngle(Vector3.forward, relativeWaypointTransform, Vector3.up), -maxSteerAngle, maxSteerAngle);
+        steerAngle = Vector3.SignedAngle(Vector3.forward, relativeWaypointTransform, Vector3.up) + Random.Range(-1f, 1f);
+        
+        steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
+        
     }
 
     private void HandleMotor()
