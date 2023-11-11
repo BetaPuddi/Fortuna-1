@@ -8,6 +8,7 @@ public class AICarDrive : MonoBehaviour
 {
     private float steerAngle;
     private float currentBreakForce;
+    private float currentAcceleratorLevel;
 
     [SerializeField] public float motorForce;
     [SerializeField] private float breakForce;
@@ -44,15 +45,46 @@ public class AICarDrive : MonoBehaviour
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
-        steerAngle = Vector3.SignedAngle(Vector3.forward, relativeWaypointTransform, Vector3.up) + Random.Range(-1f, 1f);
-        
+        steerAngle = Vector3.SignedAngle(Vector3.forward, relativeWaypointTransform, Vector3.up);
+        //Collision avoidance using raycasts
+        int layerMask = 1 << 0;
+        Vector3 offset = transform.position + (transform.forward * 2.35f) + (transform.up * .5f);
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, 10, layerMask))
+        {
+            steerAngle += 20f;
+            Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, Color.red, 10f);
+        }
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, 10, layerMask))
+        {
+            steerAngle -= 20f;
+            Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, Color.red, 10f);
+        }
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, 20, layerMask))
+        {
+            steerAngle += 5f;
+            Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, Color.red, 20f);
+        }
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, 20, layerMask))
+        {
+            steerAngle -= 5f;
+            Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, Color.red, 20f);
+        }
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
-        
+        //Reduce speed if raycast detects an obstruction ahead
+        if (Physics.Raycast(offset, transform.forward, 20f, layerMask))
+        {
+            currentAcceleratorLevel = Mathf.Clamp(currentAcceleratorLevel - .5f, 0f, 1f);
+            Debug.DrawRay(offset, transform.forward, Color.red, 20f);
+        }
+        else
+        {
+            currentAcceleratorLevel = Mathf.Clamp(currentAcceleratorLevel + .5f, .1f, 1f);
+        }
     }
 
     private void HandleMotor()
     {
-        float motorTorque = motorForce;
+        float motorTorque = motorForce * currentAcceleratorLevel;
 
         frontLeftWheelCollider.motorTorque = motorTorque;
         frontRightWheelCollider.motorTorque = motorTorque;
