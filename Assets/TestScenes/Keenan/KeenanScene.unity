@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9408,14 +9408,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 241668019444826459, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 390898917255667052, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 579315326753735570, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -9608,41 +9600,9 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[47]
       value: 
       objectReference: {fileID: 200555200}
-    - target: {fileID: 1146156362718847218, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1302407363104703806, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2028541742106270745, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524071947263483959, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557053297260393275, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
       propertyPath: m_Name
       value: AI Car
-      objectReference: {fileID: 0}
-    - target: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5173231979189449709, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5624179796473096080, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6011277065815694342, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9683,26 +9643,6 @@ PrefabInstance:
     - target: {fileID: 6011277065815694342, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6121580916920340483, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134065997329898798, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6555089870919443969, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8941948780726552712, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8952878242139175574, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
