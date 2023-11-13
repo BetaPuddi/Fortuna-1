@@ -11,6 +11,8 @@ namespace PowerupSystem
 
         [SerializeField]
         private float speedBoostDuration;
+        [SerializeField]
+        private int speedBoostAmount = 100;
 
         // Update is called once per frame
         private void Update()
@@ -49,9 +51,9 @@ namespace PowerupSystem
 
         IEnumerator SpeedBoostCoroutine()
         {
-            GetComponentInParent<CarController>().motorForce += 100;
+            GetComponentInParent<CarController>().motorForce += speedBoostAmount;
             yield return new WaitForSeconds(speedBoostDuration);
-            GetComponentInParent<CarController>().motorForce -= 100;
+            GetComponentInParent<CarController>().motorForce -= speedBoostAmount;
         }
 
         private void FireBallProjectile()

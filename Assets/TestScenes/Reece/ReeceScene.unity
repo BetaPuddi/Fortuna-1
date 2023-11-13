@@ -343,6 +343,7 @@ MonoBehaviour:
   currentPowerup: 
   ballProjectile: {fileID: 397778415}
   speedBoostDuration: 2
+  speedBoostAmount: 100
 --- !u!146 &264104738 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 4795950753765878369, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
