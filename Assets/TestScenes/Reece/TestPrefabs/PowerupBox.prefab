@@ -121,3 +121,4 @@ MonoBehaviour:
   powerupsToChooseFrom:
   - Speed Boost
   - Ball Projectile
+  respawnTime: 3
