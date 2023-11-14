@@ -178,7 +178,7 @@
             "id": "579fa11b-734f-4651-b9ed-876e875a52fc",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "UsePowerup",
                     "type": "Button",
                     "id": "17170a2b-d3b0-4e79-b354-3db6f735c00e",
                     "expectedControlType": "Button",
@@ -195,7 +195,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "UsePowerup",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
