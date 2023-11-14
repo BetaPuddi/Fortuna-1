@@ -8099,6 +8099,7 @@ MonoBehaviour:
   currentPowerup: 
   ballProjectile: {fileID: 4172207921962549427, guid: 87d6afe6a46ac474eb0bdf2054858840, type: 3}
   speedBoostDuration: 2
+  speedBoostAmount: 100
 --- !u!114 &1978765837
 MonoBehaviour:
   m_ObjectHideFlags: 0

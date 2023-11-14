@@ -24,150 +24,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     ""name"": ""InputActions"",
     ""maps"": [
         {
-            ""name"": ""ControllerHorizontal"",
-            ""id"": ""66d88761-eb4a-487e-b196-c30f59fa91b7"",
-            ""actions"": [
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""1f849e9c-078c-4658-a330-77490c66e062"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""StickDeadzone(min=0.5)"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""fa5d59b1-4acc-4dca-8d7f-9b43534f991a"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""dad1d406-2b7c-4b72-b530-af4ee050b980"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""0948dec1-0a0d-4d16-aa6d-c94c5e30bd80"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""705687bd-36b5-472f-aaa8-3244b8dfd621"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""0d46e1fb-945a-4c7e-95bd-a39a7035f74c"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""ControllerVertical"",
-            ""id"": ""2fa3938c-fcc8-4601-8347-ffcfd5dcf2dc"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""bad329bf-2d52-4ee2-9ad9-f6d053cf22de"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""StickDeadzone(min=0.5)"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""642da89e-c6f8-4226-9d97-1283a1fcf39d"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f4641ce9-2de9-4ab8-831b-2fb281fa8167"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""aa8af5e1-9915-43cc-ba28-bf67efa579fe"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""b120b476-81a5-4964-9367-7478f0a62969"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""3edc06c9-724d-4bab-8d13-439041540ce4"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
             ""name"": ""ControllerBrake"",
             ""id"": ""f803072e-06f0-4f7a-8de5-845deee97800"",
             ""actions"": [
@@ -222,22 +78,122 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Gas"",
+            ""id"": ""fb3c8cea-8648-42d9-a297-d9a489394a1b"",
+            ""actions"": [
+                {
+                    ""name"": ""Gas"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a7bfd4a-6598-440a-bcb6-f6e30d8c75fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b8b12a1a-7013-4211-8450-c927448713e8"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gas"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""ControllerHorizontal"",
+            ""id"": ""f7b94831-69c2-4746-9ad8-3be364b658fd"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""51bed6bf-bb9b-4de7-93df-705557b3b1e6"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""9624418a-7598-4a3b-8cb6-ad6d4d41d289"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""326afadf-7c4e-4fd5-9701-e1d905bb9f42"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""188580de-6453-4920-a852-dfd983301eff"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""62120722-7790-42ed-81bf-99d905bf1fd2"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c73a1dbb-7e69-4fd5-9979-6c995d3e722f"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // ControllerHorizontal
-        m_ControllerHorizontal = asset.FindActionMap("ControllerHorizontal", throwIfNotFound: true);
-        m_ControllerHorizontal_Move = m_ControllerHorizontal.FindAction("Move", throwIfNotFound: true);
-        // ControllerVertical
-        m_ControllerVertical = asset.FindActionMap("ControllerVertical", throwIfNotFound: true);
-        m_ControllerVertical_Newaction = m_ControllerVertical.FindAction("New action", throwIfNotFound: true);
         // ControllerBrake
         m_ControllerBrake = asset.FindActionMap("ControllerBrake", throwIfNotFound: true);
         m_ControllerBrake_Newaction = m_ControllerBrake.FindAction("New action", throwIfNotFound: true);
         // ControllerPowerup
         m_ControllerPowerup = asset.FindActionMap("ControllerPowerup", throwIfNotFound: true);
         m_ControllerPowerup_UsePowerup = m_ControllerPowerup.FindAction("UsePowerup", throwIfNotFound: true);
+        // Gas
+        m_Gas = asset.FindActionMap("Gas", throwIfNotFound: true);
+        m_Gas_Gas = m_Gas.FindAction("Gas", throwIfNotFound: true);
+        // ControllerHorizontal
+        m_ControllerHorizontal = asset.FindActionMap("ControllerHorizontal", throwIfNotFound: true);
+        m_ControllerHorizontal_Newaction = m_ControllerHorizontal.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,98 +251,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
-
-    // ControllerHorizontal
-    private readonly InputActionMap m_ControllerHorizontal;
-    private List<IControllerHorizontalActions> m_ControllerHorizontalActionsCallbackInterfaces = new List<IControllerHorizontalActions>();
-    private readonly InputAction m_ControllerHorizontal_Move;
-    public struct ControllerHorizontalActions
-    {
-        private @InputActions m_Wrapper;
-        public ControllerHorizontalActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_ControllerHorizontal_Move;
-        public InputActionMap Get() { return m_Wrapper.m_ControllerHorizontal; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ControllerHorizontalActions set) { return set.Get(); }
-        public void AddCallbacks(IControllerHorizontalActions instance)
-        {
-            if (instance == null || m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-        }
-
-        private void UnregisterCallbacks(IControllerHorizontalActions instance)
-        {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-        }
-
-        public void RemoveCallbacks(IControllerHorizontalActions instance)
-        {
-            if (m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IControllerHorizontalActions instance)
-        {
-            foreach (var item in m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public ControllerHorizontalActions @ControllerHorizontal => new ControllerHorizontalActions(this);
-
-    // ControllerVertical
-    private readonly InputActionMap m_ControllerVertical;
-    private List<IControllerVerticalActions> m_ControllerVerticalActionsCallbackInterfaces = new List<IControllerVerticalActions>();
-    private readonly InputAction m_ControllerVertical_Newaction;
-    public struct ControllerVerticalActions
-    {
-        private @InputActions m_Wrapper;
-        public ControllerVerticalActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_ControllerVertical_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_ControllerVertical; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ControllerVerticalActions set) { return set.Get(); }
-        public void AddCallbacks(IControllerVerticalActions instance)
-        {
-            if (instance == null || m_Wrapper.m_ControllerVerticalActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_ControllerVerticalActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        private void UnregisterCallbacks(IControllerVerticalActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        public void RemoveCallbacks(IControllerVerticalActions instance)
-        {
-            if (m_Wrapper.m_ControllerVerticalActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IControllerVerticalActions instance)
-        {
-            foreach (var item in m_Wrapper.m_ControllerVerticalActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_ControllerVerticalActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public ControllerVerticalActions @ControllerVertical => new ControllerVerticalActions(this);
 
     // ControllerBrake
     private readonly InputActionMap m_ControllerBrake;
@@ -479,14 +343,98 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public ControllerPowerupActions @ControllerPowerup => new ControllerPowerupActions(this);
-    public interface IControllerHorizontalActions
+
+    // Gas
+    private readonly InputActionMap m_Gas;
+    private List<IGasActions> m_GasActionsCallbackInterfaces = new List<IGasActions>();
+    private readonly InputAction m_Gas_Gas;
+    public struct GasActions
     {
-        void OnMove(InputAction.CallbackContext context);
+        private @InputActions m_Wrapper;
+        public GasActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Gas => m_Wrapper.m_Gas_Gas;
+        public InputActionMap Get() { return m_Wrapper.m_Gas; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GasActions set) { return set.Get(); }
+        public void AddCallbacks(IGasActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GasActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GasActionsCallbackInterfaces.Add(instance);
+            @Gas.started += instance.OnGas;
+            @Gas.performed += instance.OnGas;
+            @Gas.canceled += instance.OnGas;
+        }
+
+        private void UnregisterCallbacks(IGasActions instance)
+        {
+            @Gas.started -= instance.OnGas;
+            @Gas.performed -= instance.OnGas;
+            @Gas.canceled -= instance.OnGas;
+        }
+
+        public void RemoveCallbacks(IGasActions instance)
+        {
+            if (m_Wrapper.m_GasActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IGasActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GasActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GasActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
     }
-    public interface IControllerVerticalActions
+    public GasActions @Gas => new GasActions(this);
+
+    // ControllerHorizontal
+    private readonly InputActionMap m_ControllerHorizontal;
+    private List<IControllerHorizontalActions> m_ControllerHorizontalActionsCallbackInterfaces = new List<IControllerHorizontalActions>();
+    private readonly InputAction m_ControllerHorizontal_Newaction;
+    public struct ControllerHorizontalActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        private @InputActions m_Wrapper;
+        public ControllerHorizontalActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_ControllerHorizontal_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_ControllerHorizontal; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ControllerHorizontalActions set) { return set.Get(); }
+        public void AddCallbacks(IControllerHorizontalActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        private void UnregisterCallbacks(IControllerHorizontalActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        public void RemoveCallbacks(IControllerHorizontalActions instance)
+        {
+            if (m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IControllerHorizontalActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ControllerHorizontalActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
     }
+    public ControllerHorizontalActions @ControllerHorizontal => new ControllerHorizontalActions(this);
     public interface IControllerBrakeActions
     {
         void OnNewaction(InputAction.CallbackContext context);
@@ -494,5 +442,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IControllerPowerupActions
     {
         void OnUsePowerup(InputAction.CallbackContext context);
+    }
+    public interface IGasActions
+    {
+        void OnGas(InputAction.CallbackContext context);
+    }
+    public interface IControllerHorizontalActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
