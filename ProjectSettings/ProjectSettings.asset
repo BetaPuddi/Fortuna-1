@@ -765,11 +765,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Fortuna-1
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 806fe12d0a33db01
   metroApplicationDescription: Fortuna-1
   wsaImages: {}
   metroTileShortName: Fortuna-1
