@@ -46,6 +46,7 @@ public class AICarDrive : MonoBehaviour
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
         steerAngle = Vector3.SignedAngle(Vector3.forward, relativeWaypointTransform, Vector3.up);
+        
         //Collision avoidance using raycasts
         int layerMask = 1 << 0;
         Vector3 offset = transform.position + (transform.forward * 2.3f) + (transform.up * .5f);
@@ -69,7 +70,9 @@ public class AICarDrive : MonoBehaviour
             steerAngle -= 5f;
             Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, Color.red, 20f);
         }
+        
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
+        
         //Reduce speed if raycast detects an obstruction ahead
         if (Physics.Raycast(offset, transform.forward, 20f, layerMask))
         {
@@ -80,6 +83,7 @@ public class AICarDrive : MonoBehaviour
         {
             currentAcceleratorLevel = 1;
         }
+        
     }
 
     private void HandleMotor()
