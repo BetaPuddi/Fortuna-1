@@ -500,6 +500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupBox (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -648,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupBox (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -795,6 +803,10 @@ PrefabInstance:
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1700,6 +1712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupBox (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1969,6 +1985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupBox (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2225,6 +2245,10 @@ PrefabInstance:
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4672,6 +4696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupBox (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5118,7 +5146,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2792218741957914664, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2618624
+      value: -2.261862
       objectReference: {fileID: 0}
     - target: {fileID: 2792218741957914664, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6636,6 +6664,10 @@ PrefabInstance:
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8203,6 +8235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupBox (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8443,6 +8479,10 @@ PrefabInstance:
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9857,6 +9897,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupBox (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10166,6 +10210,10 @@ PrefabInstance:
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10691,7 +10739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6011277065815694342, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.738138
+      value: 2.738138
       objectReference: {fileID: 0}
     - target: {fileID: 6011277065815694342, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
       propertyPath: m_LocalPosition.y

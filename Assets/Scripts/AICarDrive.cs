@@ -50,46 +50,65 @@ public class AICarDrive : MonoBehaviour
         //Collision avoidance using raycasts
         int layerMask = 1 << 0;
         RaycastHit hit;
+        int raycastLength = 5;
         Vector3 offset = transform.position + (transform.forward * 2.3f) + (transform.up * .5f);
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, 10, layerMask))
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 20f;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, Color.red, 10f);
+            Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, 10, layerMask))
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 20f;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, Color.red, 10f);
+            Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, 20, layerMask))
+        raycastLength = 1;
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 5f;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, Color.red, 20f);
+            Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, 20, layerMask))
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 5f;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, Color.red, 20f);
+            Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
-        
+
+        raycastLength = 20;
         //Reduce speed if raycast detects an obstruction ahead
-        if (Physics.Raycast(offset, transform.forward, out hit, 20f, layerMask))
+        if (Physics.Raycast(offset, transform.forward, out hit, raycastLength / 4f, layerMask))
         {
-            currentAcceleratorLevel = Mathf.Clamp(currentAcceleratorLevel - .2f, .2f, 1f);
+            currentAcceleratorLevel = 0;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward, Color.red, 20f);
+            Debug.DrawRay(offset, transform.forward * raycastLength /4f, Color.black, 10);
+        }
+        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength / 2f, layerMask))
+        {
+            currentAcceleratorLevel = .5f;
+            Debug.Log(hit.collider.gameObject);
+            Debug.DrawRay(offset, transform.forward * raycastLength / 2f, Color.red, 10);
+        }
+        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength, layerMask))
+        {
+            currentAcceleratorLevel = .65f;
+            Debug.Log(hit.collider.gameObject);
+            Debug.DrawRay(offset, transform.forward * raycastLength, Color.yellow, 10);
         }
         else
         {
             currentAcceleratorLevel = 1;
         }
+
+        //Calculate whether to break.
+        currentBreakForce = (GetComponent<Rigidbody>().velocity.z > currentAcceleratorLevel * 10) ? breakForce : 0;
         
+
     }
 
     private void HandleMotor()
