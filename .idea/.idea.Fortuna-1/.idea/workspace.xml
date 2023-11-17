@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f4b0c83-b7d7-4fb7-a76c-bb89966c6508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputActions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputActions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputActions.inputactions.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" afterDir="false" />
     </list>
@@ -21,6 +19,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerupSystem/BallProjectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -35,7 +34,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Reece-Alpha-Powerup-Button&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Trap-Powerups&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -116,6 +115,8 @@
       <workItem from="1699897234188" duration="3044000" />
       <workItem from="1699971232273" duration="886000" />
       <workItem from="1699981082330" duration="1315000" />
+      <workItem from="1700167191375" duration="1325000" />
+      <workItem from="1700225068232" duration="4001000" />
     </task>
     <servers />
   </component>

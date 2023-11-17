@@ -30,12 +30,16 @@ namespace PowerupSystem
                 switch (currentPowerup)
                 {
                     case "Speed Boost":
-                        SpeedBoost();
+                        SpeedBoost(speedBoostAmount);
                         RemovePowerup();
-                        StopCoroutine(SpeedBoostCoroutine());
+                        StopCoroutine(SpeedBoostCoroutine(0));
                         break;
                     case "Ball Projectile":
                         FireBallProjectile();
+                        RemovePowerup();
+                        break;
+                    case "Crystal Trap":
+                        DropCrystals();
                         RemovePowerup();
                         break;
                 }
@@ -61,16 +65,16 @@ namespace PowerupSystem
             currentPowerup = null;
         }
 
-        public void SpeedBoost()
+        public void SpeedBoost(int boostAmount)
         {
-            StartCoroutine(SpeedBoostCoroutine());
+            StartCoroutine(SpeedBoostCoroutine(boostAmount));
         }
 
-        IEnumerator SpeedBoostCoroutine()
+        public IEnumerator SpeedBoostCoroutine(int boostAmount)
         {
-            GetComponentInParent<CarController>().motorForce += speedBoostAmount;
+            GetComponentInParent<CarController>().motorForce += boostAmount;
             yield return new WaitForSeconds(speedBoostDuration);
-            GetComponentInParent<CarController>().motorForce -= speedBoostAmount;
+            GetComponentInParent<CarController>().motorForce -= boostAmount;
         }
 
         private void FireBallProjectile()
@@ -80,6 +84,11 @@ namespace PowerupSystem
             var projectile = Instantiate(ballProjectile, transform1.normalized, Quaternion.identity);
             projectile.GetComponent<BallProjectile>().vehicleTransform = transform2;
             projectile.GetComponent<BallProjectile>().AddForce();
+        }
+
+        private void DropCrystals()
+        {
+            
         }
     }
 }
