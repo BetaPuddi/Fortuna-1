@@ -8,6 +8,8 @@ public class CarController : MonoBehaviour
     private float steerAngle;
     private float currentBreakForce;
 
+    private float sensitivity;
+
     [SerializeField] public float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
@@ -84,6 +86,8 @@ public class CarController : MonoBehaviour
         moveAction.Enable();
         brakeAction.Enable();
         gasAction.Enable();
+
+        sensitivity = PersistentData.persistentData.getSensitivity();
     }
 
     private void OnDisable()
@@ -104,9 +108,9 @@ public class CarController : MonoBehaviour
 
     private void HandleInput()
     {
-        float horizontalInput = moveAction.ReadValue<Vector2>().x;
-        bool isBraking = brakeAction.ReadValue<float>() > 0;
-        bool isGas = gasAction.ReadValue<float>() > 0;
+        float horizontalInput = sensitivity * moveAction.ReadValue<Vector2>().x;
+        bool isBraking = sensitivity * brakeAction.ReadValue<float>() > 0;
+        bool isGas = sensitivity * gasAction.ReadValue<float>() > 0;
 
         steerAngle = maxSteerAngle * horizontalInput;
         currentBreakForce = isBraking ? breakForce : 0;
