@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PersistentData
 {
@@ -20,6 +21,7 @@ public class PersistentData
     int volume;
     float sensitivity;
     CharacterSelectObject characterSelectObject;
+    
 
     [System.Serializable]
     public struct CharacterSelectObject
@@ -47,6 +49,7 @@ public class PersistentData
     public void setVolume(int volumeIn)
     {
         volume = Mathf.Clamp(volumeIn, 0, 100);
+        //GameObject.FindObjectOfType<AudioMixer>().SetFloat("Master", volume);
     }
 
     public void setSensitivity(float sensitivityIn)
