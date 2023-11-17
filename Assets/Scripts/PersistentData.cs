@@ -18,7 +18,7 @@ public class PersistentData
 
     }
 
-    int volume;
+    float volume;
     float sensitivity;
     CharacterSelectObject characterSelectObject;
     
@@ -46,10 +46,10 @@ public class PersistentData
 
     }
 
-    public void setVolume(int volumeIn)
+    public void setVolume(float volumeIn)
     {
-        volume = Mathf.Clamp(volumeIn, 0, 100);
-        //GameObject.FindObjectOfType<AudioMixer>().SetFloat("Master", volume);
+        volume = Mathf.Clamp(volumeIn, 0, 1f);
+        GameObject.FindObjectOfType<AudioControl>().UpdateAudioMixer();
     }
 
     public void setSensitivity(float sensitivityIn)
@@ -82,7 +82,7 @@ public class PersistentData
 
     public void savePlayerPrefs()
     {
-        PlayerPrefs.SetInt("Volume", volume);
+        PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.SetFloat("Sensitivity", sensitivity);
         PlayerPrefs.Save();
     }
