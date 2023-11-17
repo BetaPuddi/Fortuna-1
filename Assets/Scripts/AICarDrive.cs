@@ -49,34 +49,40 @@ public class AICarDrive : MonoBehaviour
         
         //Collision avoidance using raycasts
         int layerMask = 1 << 0;
+        RaycastHit hit;
         Vector3 offset = transform.position + (transform.forward * 2.3f) + (transform.up * .5f);
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, 10, layerMask))
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, 10, layerMask))
         {
             steerAngle += 20f;
+            Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, Color.red, 10f);
         }
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, 10, layerMask))
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, 10, layerMask))
         {
             steerAngle -= 20f;
+            Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, Color.red, 10f);
         }
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, 20, layerMask))
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, 20, layerMask))
         {
             steerAngle += 5f;
+            Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, Color.red, 20f);
         }
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, 20, layerMask))
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, 20, layerMask))
         {
             steerAngle -= 5f;
+            Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, Color.red, 20f);
         }
         
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
         
         //Reduce speed if raycast detects an obstruction ahead
-        if (Physics.Raycast(offset, transform.forward, 20f, layerMask))
+        if (Physics.Raycast(offset, transform.forward, out hit, 20f, layerMask))
         {
             currentAcceleratorLevel = Mathf.Clamp(currentAcceleratorLevel - .2f, .2f, 1f);
+            Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(offset, transform.forward, Color.red, 20f);
         }
         else
