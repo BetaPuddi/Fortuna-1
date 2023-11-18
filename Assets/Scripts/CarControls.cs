@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,8 +5,6 @@ public class CarController : MonoBehaviour
 {
     private float steerAngle;
     private float currentBreakForce;
-
-    private float sensitivity;
 
     [SerializeField] public float motorForce;
     [SerializeField] private float breakForce;
@@ -38,7 +34,7 @@ public class CarController : MonoBehaviour
                     ""name"": ""Player"",
                     ""actions"": [
                         {
-                            ""name"": ""Move"",
+                            ""name"": ""ControllerHorizontal"",
                             ""type"": ""Value"",
                             ""bindings"": [
                                 {
@@ -49,7 +45,7 @@ public class CarController : MonoBehaviour
                             ]
                         },
                         {
-                            ""name"": ""Brake"",
+                            ""name"": ""ControllerBrake"",
                             ""type"": ""Button"",
                             ""bindings"": [
                                 {
@@ -79,15 +75,14 @@ public class CarController : MonoBehaviour
 
     private void OnEnable()
     {
-        moveAction = inputActionAsset.FindAction("Move");
-        brakeAction = inputActionAsset.FindAction("Brake");
+        moveAction = inputActionAsset.FindAction("ControllerHorizontal");
+        brakeAction = inputActionAsset.FindAction("ControllerBrake");
         gasAction = inputActionAsset.FindAction("Gas");
 
         moveAction.Enable();
         brakeAction.Enable();
         gasAction.Enable();
-
-        sensitivity = PersistentData.persistentData.getSensitivity();
+        //sensitivity = PersistentData.persistentData.getSensitivity();
     }
 
     private void OnDisable()
@@ -103,29 +98,31 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-       
     }
 
     private void HandleInput()
     {
-        float horizontalInput = sensitivity * moveAction.ReadValue<Vector2>().x;
-        bool isBraking = sensitivity * brakeAction.ReadValue<float>() > 0;
-        bool isGas = sensitivity * gasAction.ReadValue<float>() > 0;
+        //float horizontalInput = sensitivity * moveAction.ReadValue<Vector2>().x;
+       // bool isBraking = sensitivity * brakeAction.ReadValue<float>() > 0;
+        //bool isGas = sensitivity * gasAction.ReadValue<float>() > 0;
+
+        float horizontalInput = moveAction.ReadValue<Vector2>().x;
+        bool isBraking = brakeAction.ReadValue<float>() > 0;
+        bool isGas = gasAction.ReadValue<float>() > 0;
 
         steerAngle = maxSteerAngle * horizontalInput;
         currentBreakForce = isBraking ? breakForce : 0;
 
-        float gasInput = isGas ? 1.0f : 0.0f; 
+        float gasInput = isGas ? 1.0f : 0.0f;
 
         float verticalInput = 0.0f;
 
         if (isGas || moveAction.ReadValue<Vector2>().y < 0)
         {
-            verticalInput = Mathf.Abs(moveAction.ReadValue<Vector2>().y); 
-            gasInput = 0.0f; 
+            verticalInput = Mathf.Abs(moveAction.ReadValue<Vector2>().y);
+            gasInput = 0.0f;
         }
 
-      
         float motorInput = Mathf.Max(gasInput, -verticalInput);
     }
 
@@ -136,15 +133,15 @@ public class CarController : MonoBehaviour
 
         if (gasInput > 0)
         {
-            verticalInput = 1.0f; 
+            verticalInput = 1.0f;
         }
         else if (verticalInput < 0 && gasInput == 0)
         {
-            verticalInput = -Mathf.Abs(verticalInput); 
+            verticalInput = -Mathf.Abs(verticalInput);
         }
         else
         {
-            verticalInput = 0.0f; 
+            verticalInput = 0.0f;
         }
 
         float motorTorque = verticalInput * motorForce;
@@ -185,7 +182,4 @@ public class CarController : MonoBehaviour
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
-
- 
 }
-
