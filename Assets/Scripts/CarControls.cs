@@ -8,6 +8,8 @@ public class CarController : MonoBehaviour
     private float steerAngle;
     private float currentBreakForce;
 
+    private float sensitivity;
+
     [SerializeField] public float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
@@ -26,6 +28,7 @@ public class CarController : MonoBehaviour
 
     private InputAction moveAction;
     private InputAction brakeAction;
+    private InputAction gasAction; // New action for gas (left trigger)
 
     private void Awake()
     {
@@ -55,6 +58,17 @@ public class CarController : MonoBehaviour
                                     ""path"": ""<Gamepad>/buttonSouth""
                                 }
                             ]
+                        },
+                        {
+                            ""name"": ""Gas"",
+                            ""type"": ""Button"",
+                            ""bindings"": [
+                                {
+                                    ""name"": ""ButtonPress"",
+                                    ""type"": ""Value"",
+                                    ""path"": ""<Gamepad>/leftTrigger""
+                                }
+                            ]
                         }
                     ],
                     ""bindings"": []
@@ -67,15 +81,20 @@ public class CarController : MonoBehaviour
     {
         moveAction = inputActionAsset.FindAction("Move");
         brakeAction = inputActionAsset.FindAction("Brake");
+        gasAction = inputActionAsset.FindAction("Gas");
 
         moveAction.Enable();
         brakeAction.Enable();
+        gasAction.Enable();
+
+        sensitivity = PersistentData.persistentData.getSensitivity();
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
         brakeAction.Disable();
+        gasAction.Disable();
     }
 
     private void FixedUpdate()
@@ -84,22 +103,51 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+       
     }
 
     private void HandleInput()
     {
-        Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        float horizontalInput = moveInput.x;
-        float verticalInput = moveInput.y;
-        bool isBraking = brakeAction.ReadValue<float>() > 0;
+        float horizontalInput = sensitivity * moveAction.ReadValue<Vector2>().x;
+        bool isBraking = sensitivity * brakeAction.ReadValue<float>() > 0;
+        bool isGas = sensitivity * gasAction.ReadValue<float>() > 0;
 
         steerAngle = maxSteerAngle * horizontalInput;
         currentBreakForce = isBraking ? breakForce : 0;
+
+        float gasInput = isGas ? 1.0f : 0.0f; 
+
+        float verticalInput = 0.0f;
+
+        if (isGas || moveAction.ReadValue<Vector2>().y < 0)
+        {
+            verticalInput = Mathf.Abs(moveAction.ReadValue<Vector2>().y); 
+            gasInput = 0.0f; 
+        }
+
+      
+        float motorInput = Mathf.Max(gasInput, -verticalInput);
     }
 
     private void HandleMotor()
     {
-        float motorTorque = moveAction.ReadValue<Vector2>().y * motorForce;
+        float gasInput = gasAction.ReadValue<float>();
+        float verticalInput = moveAction.ReadValue<Vector2>().y;
+
+        if (gasInput > 0)
+        {
+            verticalInput = 1.0f; 
+        }
+        else if (verticalInput < 0 && gasInput == 0)
+        {
+            verticalInput = -Mathf.Abs(verticalInput); 
+        }
+        else
+        {
+            verticalInput = 0.0f; 
+        }
+
+        float motorTorque = verticalInput * motorForce;
 
         frontLeftWheelCollider.motorTorque = motorTorque;
         frontRightWheelCollider.motorTorque = motorTorque;
@@ -137,4 +185,7 @@ public class CarController : MonoBehaviour
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
+
+ 
 }
+

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,13 +10,22 @@ namespace PowerupSystem
         public string currentPowerup;
         public GameObject ballProjectile;
 
+        public InputActions Controls;
+
         [SerializeField]
         private float speedBoostDuration;
+        [SerializeField]
+        private int speedBoostAmount = 100;
+
+        private void Awake()
+        {
+            Controls = new InputActions();
+        }
 
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E) && currentPowerup != null)
+            if (Controls.ControllerPowerup.UsePowerup.triggered && currentPowerup != null)
             {
                 switch (currentPowerup)
                 {
@@ -30,6 +40,15 @@ namespace PowerupSystem
                         break;
                 }
             }
+        }
+
+        private void OnEnable()
+        {
+            Controls.Enable();
+        }
+        private void OnDisable()
+        {
+            Controls.Disable();
         }
 
         public void AddPowerup(string powerup)
@@ -49,9 +68,9 @@ namespace PowerupSystem
 
         IEnumerator SpeedBoostCoroutine()
         {
-            GetComponentInParent<CarController>().motorForce += 100;
+            GetComponentInParent<CarController>().motorForce += speedBoostAmount;
             yield return new WaitForSeconds(speedBoostDuration);
-            GetComponentInParent<CarController>().motorForce -= 100;
+            GetComponentInParent<CarController>().motorForce -= speedBoostAmount;
         }
 
         private void FireBallProjectile()

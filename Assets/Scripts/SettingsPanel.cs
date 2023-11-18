@@ -43,9 +43,8 @@ public class SettingsPanel : MonoBehaviour
     public void SettingsSaveButtonOnClick()
     {
         Debug.Log("Saving settings");
-        //audioMixer.SetFloat("volume", volumeSlider.value);
         PersistentData.persistentData.setSensitivity(sensitivitySlider.value);
-        PersistentData.persistentData.setVolume((int)volumeSlider.value);
+        PersistentData.persistentData.setVolume(volumeSlider.value);
         PersistentData.persistentData.savePlayerPrefs();
     }
 }

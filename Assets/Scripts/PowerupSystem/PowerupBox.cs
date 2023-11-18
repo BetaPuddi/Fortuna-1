@@ -8,35 +8,43 @@ namespace PowerupSystem
     {
         private Collider _collider;
         public string[] powerupsToChooseFrom;
+        public int respawnTime = 10;
+        private MeshRenderer _meshRenderer;
+        private Collider _collider1;
+
+        private void Start()
+        {
+            _collider1 = GetComponent<Collider>();
+            _meshRenderer = GetComponent<MeshRenderer>();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                this.GetComponent<MeshRenderer>().enabled = false;
-                this.GetComponent<Collider>().enabled = false;
+                _meshRenderer.enabled = false;
+                _collider1.enabled = false;
                 AddPowerupToCharacter(ChooseRandomPowerup(), other);
+                StartCoroutine(RespawnPowerupBox());
             }
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                this.GetComponent<MeshRenderer>().enabled = true;
-                this.GetComponent<Collider>().enabled = true;
-            }
-        }
-
-        private void AddPowerupToCharacter(string powerup, Collider other)
+        private static void AddPowerupToCharacter(string powerup, Component other)
         {
             other.GetComponentInParent<PowerupContainer>().AddPowerup(powerup);
         }
 
         private string ChooseRandomPowerup()
         {
-            int powerupNumber = Random.Range(0, powerupsToChooseFrom.Length);
+            var powerupNumber = Random.Range(0, powerupsToChooseFrom.Length);
             return powerupsToChooseFrom[powerupNumber];
+        }
+
+        IEnumerator RespawnPowerupBox()
+        {
+            yield return new WaitForSeconds(respawnTime);
+            _meshRenderer.enabled = true;
+            _collider1.enabled = true;
         }
     }
 }
