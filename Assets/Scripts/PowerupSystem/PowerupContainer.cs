@@ -8,9 +8,13 @@ namespace PowerupSystem
     public class PowerupContainer : MonoBehaviour
     {
         public string currentPowerup;
-        public GameObject ballProjectile;
 
-        public InputActions Controls;
+        [SerializeField]
+        private GameObject ballProjectile;
+        [SerializeField]
+        private GameObject crystalTrap;
+
+        private InputActions _controls;
 
         [SerializeField]
         private float speedBoostDuration;
@@ -19,20 +23,20 @@ namespace PowerupSystem
 
         private void Awake()
         {
-            Controls = new InputActions();
+            _controls = new InputActions();
         }
 
         // Update is called once per frame
         private void Update()
         {
-            if (Controls.ControllerPowerup.UsePowerup.triggered && currentPowerup != null)
+            if (_controls.ControllerPowerup.UsePowerup.triggered && currentPowerup != null)
             {
                 switch (currentPowerup)
                 {
                     case "Speed Boost":
-                        SpeedBoost(speedBoostAmount);
+                        SpeedBoost(speedBoostAmount, speedBoostDuration);
                         RemovePowerup();
-                        StopCoroutine(SpeedBoostCoroutine(0));
+                        StopCoroutine(SpeedBoostCoroutine(0,0));
                         break;
                     case "Ball Projectile":
                         FireBallProjectile();
@@ -48,11 +52,11 @@ namespace PowerupSystem
 
         private void OnEnable()
         {
-            Controls.Enable();
+            _controls.Enable();
         }
         private void OnDisable()
         {
-            Controls.Disable();
+            _controls.Disable();
         }
 
         public void AddPowerup(string powerup)
@@ -65,15 +69,15 @@ namespace PowerupSystem
             currentPowerup = null;
         }
 
-        public void SpeedBoost(int boostAmount)
+        public void SpeedBoost(int boostAmount, float boostDuration)
         {
-            StartCoroutine(SpeedBoostCoroutine(boostAmount));
+            StartCoroutine(SpeedBoostCoroutine(boostAmount, boostDuration));
         }
 
-        public IEnumerator SpeedBoostCoroutine(int boostAmount)
+        private IEnumerator SpeedBoostCoroutine(int boostAmount, float boostDuration)
         {
             GetComponentInParent<CarController>().motorForce += boostAmount;
-            yield return new WaitForSeconds(speedBoostDuration);
+            yield return new WaitForSeconds(boostDuration);
             GetComponentInParent<CarController>().motorForce -= boostAmount;
         }
 
@@ -88,7 +92,10 @@ namespace PowerupSystem
 
         private void DropCrystals()
         {
-            
+            var transform2 = transform;
+            var transform1 = transform2.forward * -2;
+            var crystals = Instantiate(crystalTrap, transform1.normalized, Quaternion.identity);
+            crystals.GetComponent<CrystalTrap>().vehicleTransform = transform2;
         }
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3508658410183466472
+--- !u!1 &7617601412344536568
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 366903584731630031}
-  - component: {fileID: 8468343025465959056}
-  - component: {fileID: 8413507328376610525}
-  - component: {fileID: 2043974296679595939}
-  - component: {fileID: 2870191699337644823}
+  - component: {fileID: 3847607759178196839}
+  - component: {fileID: 8802263573040425068}
+  - component: {fileID: 9021478634537245173}
+  - component: {fileID: 881109596213847979}
+  - component: {fileID: 8791091255921916860}
   m_Layer: 0
-  m_Name: PowerupBox
+  m_Name: Crystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &366903584731630031
+--- !u!4 &3847607759178196839
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3508658410183466472}
+  m_GameObject: {fileID: 7617601412344536568}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.97, y: 0.76, z: 7.65}
+  m_LocalPosition: {x: -13.43, y: 2.06, z: 7.218919}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8468343025465959056
+--- !u!33 &8802263573040425068
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3508658410183466472}
+  m_GameObject: {fileID: 7617601412344536568}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8413507328376610525
+--- !u!23 &9021478634537245173
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3508658410183466472}
+  m_GameObject: {fileID: 7617601412344536568}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e3d45b0a07f11f48b32b18c353d69ab, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2043974296679595939
+--- !u!65 &881109596213847979
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3508658410183466472}
+  m_GameObject: {fileID: 7617601412344536568}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -106,20 +106,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2870191699337644823
+--- !u!114 &8791091255921916860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3508658410183466472}
+  m_GameObject: {fileID: 7617601412344536568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3a2b5135bc7f140a82e993a68dbe61, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d1b93af0b84d374199178933b3c2e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupsToChooseFrom:
-  - Speed Boost
-  - Ball Projectile
-  - Crystal Trap
-  respawnTime: 3
+  slowDownAmount: 5
+  slowDownDuration: 2
