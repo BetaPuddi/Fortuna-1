@@ -10,9 +10,7 @@ namespace PowerupSystem
         public string currentPowerup;
 
         [SerializeField]
-        private GameObject ballProjectile;
-        [SerializeField]
-        private GameObject crystalTrap;
+        private GameObject ballProjectile, crystalTrap, frontSpawner, rearSpawner;
 
         private InputActions _controls;
 
@@ -83,7 +81,7 @@ namespace PowerupSystem
 
         private void FireBallProjectile()
         {
-            var transform2 = transform;
+            var transform2 = frontSpawner.transform;
             var transform1 = transform2.forward * 2 + (transform2.up + new Vector3(0f, 50f, 0f) * 2);
             var projectile = Instantiate(ballProjectile, transform1.normalized, Quaternion.identity);
             projectile.GetComponent<BallProjectile>().vehicleTransform = transform2;
@@ -92,7 +90,7 @@ namespace PowerupSystem
 
         private void DropCrystals()
         {
-            var transform2 = transform;
+            var transform2 = rearSpawner.transform;
             var transform1 = transform2.forward * -2;
             var crystals = Instantiate(crystalTrap, transform1.normalized, Quaternion.identity);
             crystals.GetComponent<CrystalTrap>().vehicleTransform = transform2;
