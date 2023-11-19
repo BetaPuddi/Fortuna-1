@@ -80,6 +80,8 @@ public class AICarDrive : MonoBehaviour
         
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
 
+        float forwardSpeed = GetComponent<Rigidbody>().velocity.magnitude;
+
         raycastLength = 20;
         //Reduce speed if raycast detects an obstruction ahead
         if (Physics.Raycast(offset, transform.forward, out hit, raycastLength / 4f, layerMask))
@@ -94,11 +96,11 @@ public class AICarDrive : MonoBehaviour
             Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(offset, transform.forward * raycastLength / 2f, Color.red, 10);
         }
-        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength, layerMask))
+        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
         {
             currentAcceleratorLevel = .65f;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * raycastLength, Color.yellow, 10);
+            Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.yellow, 10);
         }
         else
         {
@@ -106,7 +108,7 @@ public class AICarDrive : MonoBehaviour
         }
 
         //Calculate whether to break.
-        currentBreakForce = (GetComponent<Rigidbody>().velocity.z > currentAcceleratorLevel * 10) ? breakForce : 0;
+        currentBreakForce = (forwardSpeed > currentAcceleratorLevel * 10) ? breakForce : 0;
         
 
     }
