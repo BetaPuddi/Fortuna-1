@@ -97,7 +97,7 @@ public class PersistentData
     //Loads the values of volume and sensitivity from player preferences
     public void loadPlayerPrefs()
     {
-        volume = PlayerPrefs.GetInt("Volume");
-        sensitivity = PlayerPrefs.GetFloat("Sensitivity");
+        volume = PlayerPrefs.GetFloat("Volume", 1);
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", 1);
     }
 }
