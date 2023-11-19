@@ -532,9 +532,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f1652470979c246b336b8d05265a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPowerup: Crystal Trap
+  currentPowerup: Bone Trap
   ballProjectile: {fileID: 397778415}
   crystalTrap: {fileID: 7617601412344536568, guid: edb566973eac7d24d8f04fa1bde7d53d, type: 3}
+  boneTrap: {fileID: 6757117738363382994, guid: 6514af6964de59a40a438d1af11bae71, type: 3}
   frontSpawner: {fileID: 456857}
   rearSpawner: {fileID: 552882356}
   speedBoostDuration: 2

@@ -10,7 +10,7 @@ namespace PowerupSystem
         public string currentPowerup;
 
         [SerializeField]
-        private GameObject ballProjectile, crystalTrap, frontSpawner, rearSpawner;
+        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner;
 
         private InputActions _controls;
 
@@ -42,6 +42,10 @@ namespace PowerupSystem
                         break;
                     case "Crystal Trap":
                         DropCrystals();
+                        RemovePowerup();
+                        break;
+                    case "Bone Trap":
+                        DropBones();
                         RemovePowerup();
                         break;
                 }
@@ -94,6 +98,14 @@ namespace PowerupSystem
             var transform1 = transform2.forward * -2;
             var crystals = Instantiate(crystalTrap, transform1.normalized, Quaternion.identity);
             crystals.GetComponent<CrystalTrap>().vehicleTransform = transform2;
+        }
+
+        private void DropBones()
+        {
+            var transform2 = rearSpawner.transform;
+            var transform1 = transform2.forward * -2;
+            var bones = Instantiate(boneTrap, transform1.normalized, Quaternion.identity);
+            bones.GetComponent<BoneTrap>().vehicleTransform = transform2;
         }
     }
 }

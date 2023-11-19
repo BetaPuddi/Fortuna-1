@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/PowerupBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/PowerupBox.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +20,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerupSystem/BallProjectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerupSystem/BoneTrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -118,7 +120,7 @@
       <workItem from="1700167191375" duration="1325000" />
       <workItem from="1700225068232" duration="4827000" />
       <workItem from="1700315896950" duration="5089000" />
-      <workItem from="1700399041304" duration="9191000" />
+      <workItem from="1700399041304" duration="13093000" />
     </task>
     <servers />
   </component>
