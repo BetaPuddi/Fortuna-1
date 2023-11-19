@@ -8,9 +8,11 @@ namespace PowerupSystem
     public class PowerupContainer : MonoBehaviour
     {
         public string currentPowerup;
-        public GameObject ballProjectile;
 
-        public InputActions Controls;
+        [SerializeField]
+        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner;
+
+        private InputActions _controls;
 
         [SerializeField]
         private float speedBoostDuration;
@@ -19,23 +21,31 @@ namespace PowerupSystem
 
         private void Awake()
         {
-            Controls = new InputActions();
+            _controls = new InputActions();
         }
 
         // Update is called once per frame
         private void Update()
         {
-            if (Controls.ControllerPowerup.UsePowerup.triggered && currentPowerup != null)
+            if (_controls.ControllerPowerup.UsePowerup.triggered && currentPowerup != null)
             {
                 switch (currentPowerup)
                 {
                     case "Speed Boost":
-                        SpeedBoost();
+                        SpeedBoost(speedBoostAmount, speedBoostDuration);
                         RemovePowerup();
-                        StopCoroutine(SpeedBoostCoroutine());
+                        StopCoroutine(SpeedBoostCoroutine(0,0));
                         break;
                     case "Ball Projectile":
                         FireBallProjectile();
+                        RemovePowerup();
+                        break;
+                    case "Crystal Trap":
+                        DropCrystals();
+                        RemovePowerup();
+                        break;
+                    case "Bone Trap":
+                        DropBones();
                         RemovePowerup();
                         break;
                 }
@@ -44,11 +54,11 @@ namespace PowerupSystem
 
         private void OnEnable()
         {
-            Controls.Enable();
+            _controls.Enable();
         }
         private void OnDisable()
         {
-            Controls.Disable();
+            _controls.Disable();
         }
 
         public void AddPowerup(string powerup)
@@ -61,25 +71,41 @@ namespace PowerupSystem
             currentPowerup = null;
         }
 
-        public void SpeedBoost()
+        public void SpeedBoost(int boostAmount, float boostDuration)
         {
-            StartCoroutine(SpeedBoostCoroutine());
+            StartCoroutine(SpeedBoostCoroutine(boostAmount, boostDuration));
         }
 
-        IEnumerator SpeedBoostCoroutine()
+        private IEnumerator SpeedBoostCoroutine(int boostAmount, float boostDuration)
         {
-            GetComponentInParent<CarController>().motorForce += speedBoostAmount;
-            yield return new WaitForSeconds(speedBoostDuration);
-            GetComponentInParent<CarController>().motorForce -= speedBoostAmount;
+            GetComponentInParent<CarController>().motorForce += boostAmount;
+            yield return new WaitForSeconds(boostDuration);
+            GetComponentInParent<CarController>().motorForce -= boostAmount;
         }
 
         private void FireBallProjectile()
         {
-            var transform2 = transform;
+            var transform2 = frontSpawner.transform;
             var transform1 = transform2.forward * 2 + (transform2.up + new Vector3(0f, 50f, 0f) * 2);
             var projectile = Instantiate(ballProjectile, transform1.normalized, Quaternion.identity);
             projectile.GetComponent<BallProjectile>().vehicleTransform = transform2;
             projectile.GetComponent<BallProjectile>().AddForce();
+        }
+
+        private void DropCrystals()
+        {
+            var transform2 = rearSpawner.transform;
+            var transform1 = transform2.forward * -2;
+            var crystals = Instantiate(crystalTrap, transform1.normalized, Quaternion.identity);
+            crystals.GetComponent<CrystalTrap>().vehicleTransform = transform2;
+        }
+
+        private void DropBones()
+        {
+            var transform2 = rearSpawner.transform;
+            var transform1 = transform2.forward * -2;
+            var bones = Instantiate(boneTrap, transform1.normalized, Quaternion.identity);
+            bones.GetComponent<BoneTrap>().vehicleTransform = transform2;
         }
     }
 }
