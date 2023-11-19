@@ -3086,7 +3086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113107641739405808, guid: cea967c955f11754eb4aa96c955c8cdf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 9113107641739405808, guid: cea967c955f11754eb4aa96c955c8cdf, type: 3}
       propertyPath: m_LocalScale.y
@@ -3098,7 +3098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113107641739405808, guid: cea967c955f11754eb4aa96c955c8cdf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -45.58
+      value: -45.37
       objectReference: {fileID: 0}
     - target: {fileID: 9113107641739405808, guid: cea967c955f11754eb4aa96c955c8cdf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3106,7 +3106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9113107641739405808, guid: cea967c955f11754eb4aa96c955c8cdf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 67.9
+      value: 67.53
       objectReference: {fileID: 0}
     - target: {fileID: 9113107641739405808, guid: cea967c955f11754eb4aa96c955c8cdf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9376,6 +9376,7 @@ MonoBehaviour:
   currentPowerup: 
   ballProjectile: {fileID: 4172207921962549427, guid: 87d6afe6a46ac474eb0bdf2054858840, type: 3}
   speedBoostDuration: 2
+  speedBoostAmount: 100
 --- !u!114 &1978765837
 MonoBehaviour:
   m_ObjectHideFlags: 0

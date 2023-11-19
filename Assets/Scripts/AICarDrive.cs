@@ -54,27 +54,27 @@ public class AICarDrive : MonoBehaviour
         Vector3 offset = transform.position + (transform.forward * 2.3f) + (transform.up * .5f);
         if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle += 20f;
-            Debug.Log(hit.collider.gameObject);
+            steerAngle -= 20f;
+            Debug.Log("45" + hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle -= 20f;
-            Debug.Log(hit.collider.gameObject);
+            steerAngle += 20f;
+            Debug.Log("-45" + hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         raycastLength = 1;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle += 5f;
-            Debug.Log(hit.collider.gameObject);
+            steerAngle -= 5f;
+            Debug.Log("90" + hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle -= 5f;
-            Debug.Log(hit.collider.gameObject);
+            steerAngle += 5f;
+            Debug.Log("-90" + hit.collider.gameObject);
             Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         
