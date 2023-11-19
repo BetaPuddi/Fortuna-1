@@ -26,6 +26,8 @@ public class CarController : MonoBehaviour
     private InputAction brakeAction;
     private InputAction gasAction; // New action for gas (left trigger)
 
+    float sensitivity;
+
     private void Awake()
     {
         inputActionAsset = InputActionAsset.FromJson(@"{
@@ -82,7 +84,7 @@ public class CarController : MonoBehaviour
         moveAction.Enable();
         brakeAction.Enable();
         gasAction.Enable();
-        //sensitivity = PersistentData.persistentData.getSensitivity();
+        sensitivity = PersistentData.persistentData.getSensitivity();
     }
 
     private void OnDisable()
@@ -102,14 +104,11 @@ public class CarController : MonoBehaviour
 
     private void HandleInput()
     {
-        //float horizontalInput = sensitivity * moveAction.ReadValue<Vector2>().x;
-       // bool isBraking = sensitivity * brakeAction.ReadValue<float>() > 0;
-        //bool isGas = sensitivity * gasAction.ReadValue<float>() > 0;
+        float horizontalInput = sensitivity * moveAction.ReadValue<Vector2>().x;
+        bool isBraking = sensitivity * brakeAction.ReadValue<float>() > 0;
+        bool isGas = sensitivity * gasAction.ReadValue<float>() > 0;
 
-        float horizontalInput = moveAction.ReadValue<Vector2>().x;
-        bool isBraking = brakeAction.ReadValue<float>() > 0;
-        bool isGas = gasAction.ReadValue<float>() > 0;
-
+        
         steerAngle = maxSteerAngle * horizontalInput;
         currentBreakForce = isBraking ? breakForce : 0;
 
