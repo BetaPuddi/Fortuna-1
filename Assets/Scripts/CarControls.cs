@@ -84,6 +84,7 @@ public class CarController : MonoBehaviour
         moveAction.Enable();
         brakeAction.Enable();
         gasAction.Enable();
+        PersistentData.persistentData.loadPlayerPrefs();
         sensitivity = PersistentData.persistentData.getSensitivity();
     }
 
