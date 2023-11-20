@@ -64,7 +64,7 @@ public class AICarDrive : MonoBehaviour
             Debug.Log("-45" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
-        raycastLength = 1;
+        raycastLength = 3;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 5f;
