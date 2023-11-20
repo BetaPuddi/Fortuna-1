@@ -56,26 +56,26 @@ public class AICarDrive : MonoBehaviour
         {
             steerAngle -= 20f;
             Debug.Log("45" + hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
+            //Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 20f;
             Debug.Log("-45" + hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
+            //Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         raycastLength = 1;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 5f;
             Debug.Log("90" + hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward * raycastLength, Color.red, 10);
+            //Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 5f;
             Debug.Log("-90" + hit.collider.gameObject);
-            Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
+            //Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
@@ -88,19 +88,19 @@ public class AICarDrive : MonoBehaviour
         {
             currentAcceleratorLevel = 0;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * raycastLength /4f, Color.black, 10);
+            //Debug.DrawRay(offset, transform.forward * raycastLength /4f, Color.black, 10);
         }
         else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength / 2f, layerMask))
         {
             currentAcceleratorLevel = .5f;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * raycastLength / 2f, Color.red, 10);
+            //Debug.DrawRay(offset, transform.forward * raycastLength / 2f, Color.red, 10);
         }
         else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
         {
             currentAcceleratorLevel = .65f;
             Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.yellow, 10);
+            //Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.yellow, 10);
         }
         else
         {
