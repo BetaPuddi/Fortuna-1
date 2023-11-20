@@ -10126,6 +10126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPowerup: 
   ballProjectile: {fileID: 4172207921962549427, guid: 87d6afe6a46ac474eb0bdf2054858840, type: 3}
+  crystalTrap: {fileID: 0}
+  boneTrap: {fileID: 0}
+  frontSpawner: {fileID: 0}
+  rearSpawner: {fileID: 0}
   speedBoostDuration: 2
   speedBoostAmount: 100
 --- !u!114 &1978765837
@@ -11790,9 +11794,15 @@ SceneRoots:
   - {fileID: 1437458990}
   - {fileID: 1449397796}
   - {fileID: 1198304568}
+  - {fileID: 1820873565104043658}
+  - {fileID: 414371257}
+  - {fileID: 393608077}
+  - {fileID: 990116918}
+  - {fileID: 2041273860}
   - {fileID: 2011075651}
   - {fileID: 969349522}
   - {fileID: 866849841}
+  - {fileID: 829178149}
   - {fileID: 978361908}
   - {fileID: 253785742}
   - {fileID: 1644613386}
@@ -11800,9 +11810,3 @@ SceneRoots:
   - {fileID: 505861348}
   - {fileID: 1170381117}
   - {fileID: 202782319}
-  - {fileID: 1820873565104043658}
-  - {fileID: 414371257}
-  - {fileID: 393608077}
-  - {fileID: 990116918}
-  - {fileID: 2041273860}
-  - {fileID: 829178149}

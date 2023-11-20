@@ -460,9 +460,10 @@ GameObject:
   - component: {fileID: 8899480299558148654}
   - component: {fileID: 579315326753735570}
   - component: {fileID: 7168924914042080446}
+  - component: {fileID: 5382211365207725930}
   m_Layer: 0
   m_Name: AI Car
-  m_TagString: Untagged
+  m_TagString: AICar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -620,6 +621,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapNumber: 0
   Checkpoint: 0
+--- !u!114 &5382211365207725930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893236237908154248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61eb3e2a9c5321647b56ea4cd63a4f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPowerup: 
+  ballProjectile: {fileID: 0}
+  crystalTrap: {fileID: 0}
+  boneTrap: {fileID: 0}
+  frontSpawner: {fileID: 0}
+  rearSpawner: {fileID: 0}
+  speedBoostDuration: 0
+  speedBoostAmount: 100
 --- !u!1 &5173231979189449709
 GameObject:
   m_ObjectHideFlags: 0
