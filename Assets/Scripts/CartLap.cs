@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//lap number and checkpoint on start
 public class CartLap : MonoBehaviour
 {
     public int lapNumber;
