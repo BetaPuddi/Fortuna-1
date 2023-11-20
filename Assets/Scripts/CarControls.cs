@@ -3,31 +3,32 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
+    //steering angle and how strong the car is braking currently
     private float steerAngle;
     private float currentBreakForce;
-
+    //how fast the car is, how strong the car is braking, max steer angle to prevent overturn
     [SerializeField] public float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteerAngle;
-
+    //colliders referencing car
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;
     [SerializeField] private WheelCollider rearLeftWheelCollider;
     [SerializeField] private WheelCollider rearRightWheelCollider;
-
+    //transforms referencing car
     [SerializeField] private Transform rearRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform frontRightWheelTransform;
     [SerializeField] private Transform frontLeftWheelTransform;
-
+    //all input action stuff
     private InputActionAsset inputActionAsset;
 
     private InputAction moveAction;
     private InputAction brakeAction;
-    private InputAction gasAction; // New action for gas (left trigger)
+    private InputAction gasAction; 
 
     float sensitivity;
-
+    //json bcs of issues with input system
     private void Awake()
     {
         inputActionAsset = InputActionAsset.FromJson(@"{
@@ -74,7 +75,7 @@ public class CarController : MonoBehaviour
             ]
         }");
     }
-
+    //when button pressed......
     private void OnEnable()
     {
         moveAction = inputActionAsset.FindAction("ControllerHorizontal");
@@ -87,14 +88,14 @@ public class CarController : MonoBehaviour
         PersistentData.persistentData.loadPlayerPrefs();
         sensitivity = PersistentData.persistentData.getSensitivity();
     }
-
+    //when button disabled...
     private void OnDisable()
     {
         moveAction.Disable();
         brakeAction.Disable();
         gasAction.Disable();
     }
-
+    //calling all mechanics
     private void FixedUpdate()
     {
         HandleInput();
@@ -102,7 +103,7 @@ public class CarController : MonoBehaviour
         HandleSteering();
         UpdateWheels();
     }
-
+    //handling the player input
     private void HandleInput()
     {
         float horizontalInput = sensitivity * moveAction.ReadValue<Vector2>().x;
@@ -125,7 +126,7 @@ public class CarController : MonoBehaviour
 
         float motorInput = Mathf.Max(gasInput, -verticalInput);
     }
-
+    //car forward movement
     private void HandleMotor()
     {
         float gasInput = gasAction.ReadValue<float>();
@@ -151,7 +152,7 @@ public class CarController : MonoBehaviour
 
         ApplyBraking();
     }
-
+    //braking
     private void ApplyBraking()
     {
         frontRightWheelCollider.brakeTorque = currentBreakForce;
@@ -159,13 +160,13 @@ public class CarController : MonoBehaviour
         rearRightWheelCollider.brakeTorque = currentBreakForce;
         rearLeftWheelCollider.brakeTorque = currentBreakForce;
     }
-
+    //left right steering
     private void HandleSteering()
     {
         frontLeftWheelCollider.steerAngle = steerAngle;
         frontRightWheelCollider.steerAngle = steerAngle;
     }
-
+    //collision etc
     private void UpdateWheels()
     {
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
@@ -173,7 +174,7 @@ public class CarController : MonoBehaviour
         UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
-
+    //getting rotations and positions
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;
