@@ -113,6 +113,7 @@ public class AICarDrive : MonoBehaviour
 
     }
 
+    //Car move forward
     private void HandleMotor()
     {
         float motorTorque = motorForce * currentAcceleratorLevel;
@@ -123,6 +124,7 @@ public class AICarDrive : MonoBehaviour
         ApplyBraking();
     }
 
+    //Breaking
     private void ApplyBraking()
     {
         frontRightWheelCollider.brakeTorque = currentBreakForce;
@@ -131,12 +133,14 @@ public class AICarDrive : MonoBehaviour
         rearLeftWheelCollider.brakeTorque = currentBreakForce;
     }
 
+    //Car turn
     private void HandleSteering()
     {
         frontLeftWheelCollider.steerAngle = steerAngle;
         frontRightWheelCollider.steerAngle = steerAngle;
     }
 
+    
     private void UpdateWheels()
     {
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
@@ -145,6 +149,7 @@ public class AICarDrive : MonoBehaviour
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
 
+    //Make wheel meshes match wheel colliders
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;
