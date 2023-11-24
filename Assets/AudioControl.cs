@@ -17,6 +17,8 @@ public class AudioControl : MonoBehaviour
     
     public void UpdateAudioMixer()
     {
-        mixer.SetFloat("MasterVolume", Mathf.Log10(PersistentData.persistentData.getVolume()) * 20);
+        mixer.SetFloat("MasterVolume", Mathf.Log10(PersistentData.persistentData.getMasterVolume()) * 20);
+        mixer.SetFloat("SFXVolume", Mathf.Log10(PersistentData.persistentData.getSFXVolume()) * 20);
+        mixer.SetFloat("MusicVolume", Mathf.Log10(PersistentData.persistentData.getMusicVolume()) * 20);
     }
 }

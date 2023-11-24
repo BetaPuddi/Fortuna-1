@@ -12,6 +12,8 @@ public class SettingsPanel : MonoBehaviour
     public GameObject mainMenuPanel;
     public AudioMixer audioMixer;
     [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider SFXVolumeSlider;
+    [SerializeField] Slider musicVolumeSlider;
     [SerializeField] Slider sensitivitySlider;
 
 
@@ -29,7 +31,9 @@ public class SettingsPanel : MonoBehaviour
     {
         PersistentData.persistentData.loadPlayerPrefs();
         Debug.Log("Updating sliders");
-        Debug.Log(volumeSlider.value = PersistentData.persistentData.getVolume());
+        Debug.Log(volumeSlider.value = PersistentData.persistentData.getMasterVolume());
+        Debug.Log(SFXVolumeSlider.value = PersistentData.persistentData.getSFXVolume());
+        Debug.Log(musicVolumeSlider.value = PersistentData.persistentData.getMusicVolume());
         Debug.Log(sensitivitySlider.value = PersistentData.persistentData.getSensitivity());
     }
 
@@ -44,7 +48,9 @@ public class SettingsPanel : MonoBehaviour
     {
         Debug.Log("Saving settings");
         PersistentData.persistentData.setSensitivity(sensitivitySlider.value);
-        PersistentData.persistentData.setVolume(volumeSlider.value);
+        PersistentData.persistentData.setMasterVolume(volumeSlider.value);
+        PersistentData.persistentData.setSFXVolume(SFXVolumeSlider.value);
+        PersistentData.persistentData.setMusicVolume(musicVolumeSlider.value);
         PersistentData.persistentData.savePlayerPrefs();
     }
 }
