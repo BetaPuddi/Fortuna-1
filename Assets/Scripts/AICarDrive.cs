@@ -107,14 +107,15 @@ public class AICarDrive : MonoBehaviour
             currentAcceleratorLevel = 1;
         }
 
-        //Calculate whether to break and cut off the motor if going too fast.
-        bool shouldSlowDown = (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 10);
-        currentBreakForce = shouldSlowDown ? breakForce : 0;
-        currentAcceleratorLevel = shouldSlowDown ? 0 : currentAcceleratorLevel;
+        //Calculate whether to break and cut off the motor if going too fast (too fast is either moving at > 30 speed, or moving faster than expected for the currentAcceleratorLevel).
+        bool shouldSlowDown = forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 20);
         if (shouldSlowDown)
         {
-            Debug.Log(this.name + " is breaking");
+            Debug.Log(this.name + " is breaking and is moving at " + forwardSpeed);
         }
+        currentBreakForce = shouldSlowDown ? breakForce : 0;
+        currentAcceleratorLevel = shouldSlowDown ? 0 : currentAcceleratorLevel;
+        
 
     }
 
