@@ -55,26 +55,26 @@ public class AICarDrive : MonoBehaviour
         if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 20f;
-            Debug.Log("45" + hit.collider.gameObject);
+            //Debug.Log("45" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 20f;
-            Debug.Log("-45" + hit.collider.gameObject);
+            //Debug.Log("-45" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         raycastLength = 3;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 5f;
-            Debug.Log("90" + hit.collider.gameObject);
+            //Debug.Log("90" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 5f;
-            Debug.Log("-90" + hit.collider.gameObject);
+            //Debug.Log("-90" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         
@@ -87,31 +87,34 @@ public class AICarDrive : MonoBehaviour
         if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f), layerMask))
         {
             currentAcceleratorLevel = 0;
-            Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 10);
+            //Debug.Log(hit.collider.gameObject);
+            //Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 10);
         }
         else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 2f), layerMask))
         {
             currentAcceleratorLevel = .5f;
-            Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * ((raycastLength / 2f)), Color.red, 10);
+            //Debug.Log(hit.collider.gameObject);
+            //Debug.DrawRay(offset, transform.forward * ((raycastLength / 2f)), Color.red, 10);
         }
-        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + (forwardSpeed*5), layerMask))
+        else if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(30, raycastLength + (forwardSpeed)), layerMask))
         {
             currentAcceleratorLevel = .65f;
-            Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * (raycastLength + (forwardSpeed * 5)), Color.yellow, 10);
+            //Debug.Log(hit.collider.gameObject);
+            //Debug.DrawRay(offset, transform.forward * Mathf.Min(30, raycastLength + (forwardSpeed)), Color.yellow, 10);
         }
         else
         {
             currentAcceleratorLevel = 1;
         }
 
-        //Calculate whether to break and cutt off the motor if going too fast.
+        //Calculate whether to break and cut off the motor if going too fast.
         bool shouldSlowDown = (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 10);
         currentBreakForce = shouldSlowDown ? breakForce : 0;
         currentAcceleratorLevel = shouldSlowDown ? 0 : currentAcceleratorLevel;
-        
+        if (shouldSlowDown)
+        {
+            Debug.Log(this.name + " is breaking");
+        }
 
     }
 
