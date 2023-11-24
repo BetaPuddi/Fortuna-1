@@ -4588,6 +4588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedPad
       objectReference: {fileID: 0}
+    - target: {fileID: 3404668805251283691, guid: d59976b9c3183c241a6100cb4d77f196, type: 3}
+      propertyPath: speed
+      value: 25000
+      objectReference: {fileID: 0}
     - target: {fileID: 4111695725958573674, guid: d59976b9c3183c241a6100cb4d77f196, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.35
