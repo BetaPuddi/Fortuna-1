@@ -192,8 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 16847412}
   mainMenuPanel: {fileID: 1289715920}
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 25cd02597e6f8024fac08e695cffebaa, type: 2}
   volumeSlider: {fileID: 885905834}
+  SFXVolumeSlider: {fileID: 468247351}
+  musicVolumeSlider: {fileID: 1468949959}
   sensitivitySlider: {fileID: 53175098}
 --- !u!114 &3754740
 MonoBehaviour:
@@ -4391,8 +4393,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 16847412}
   mainMenuPanel: {fileID: 1289715920}
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 25cd02597e6f8024fac08e695cffebaa, type: 2}
   volumeSlider: {fileID: 885905834}
+  SFXVolumeSlider: {fileID: 468247351}
+  musicVolumeSlider: {fileID: 1468949959}
   sensitivitySlider: {fileID: 53175098}
 --- !u!114 &1404317853
 MonoBehaviour:
@@ -6416,8 +6420,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 16847412}
   mainMenuPanel: {fileID: 1289715920}
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 25cd02597e6f8024fac08e695cffebaa, type: 2}
   volumeSlider: {fileID: 885905834}
+  SFXVolumeSlider: {fileID: 468247351}
+  musicVolumeSlider: {fileID: 1468949959}
   sensitivitySlider: {fileID: 53175098}
 --- !u!114 &1875645386
 MonoBehaviour:
