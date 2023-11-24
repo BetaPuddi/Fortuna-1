@@ -84,31 +84,33 @@ public class AICarDrive : MonoBehaviour
 
         raycastLength = 20;
         //Reduce speed if raycast detects an obstruction ahead
-        if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f) + forwardSpeed, layerMask))
+        if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f), layerMask))
         {
             currentAcceleratorLevel = 0;
             Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * ((raycastLength /4f) + forwardSpeed), Color.black, 10);
+            Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 10);
         }
-        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 2f) + forwardSpeed, layerMask))
+        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 2f), layerMask))
         {
             currentAcceleratorLevel = .5f;
             Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * ((raycastLength / 2f) + forwardSpeed), Color.red, 10);
+            Debug.DrawRay(offset, transform.forward * ((raycastLength / 2f)), Color.red, 10);
         }
-        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
+        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + (forwardSpeed*5), layerMask))
         {
             currentAcceleratorLevel = .65f;
             Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.yellow, 10);
+            Debug.DrawRay(offset, transform.forward * (raycastLength + (forwardSpeed * 5)), Color.yellow, 10);
         }
         else
         {
             currentAcceleratorLevel = 1;
         }
 
-        //Calculate whether to break.
-        currentBreakForce = (forwardSpeed > currentAcceleratorLevel * 10) ? breakForce : 0;
+        //Calculate whether to break and cutt off the motor if going too fast.
+        bool shouldSlowDown = (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 10);
+        currentBreakForce = shouldSlowDown ? breakForce : 0;
+        currentAcceleratorLevel = shouldSlowDown ? 0 : currentAcceleratorLevel;
         
 
     }
