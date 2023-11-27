@@ -8,7 +8,7 @@ public class Speedpad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") || other.CompareTag("AICar"))
         {
             other.gameObject.GetComponent<Rigidbody>().AddForce(speed * transform.forward, ForceMode.Impulse);
         }

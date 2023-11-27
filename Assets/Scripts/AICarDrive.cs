@@ -41,7 +41,7 @@ public class AICarDrive : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[GetComponent<CartLap>().Checkpoint];
+        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint,48)];
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
@@ -55,26 +55,26 @@ public class AICarDrive : MonoBehaviour
         if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 20f;
-            Debug.Log("45" + hit.collider.gameObject);
+            //Debug.Log("45" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 20f;
-            Debug.Log("-45" + hit.collider.gameObject);
+            //Debug.Log("-45" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         raycastLength = 3;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 5f;
-            Debug.Log("90" + hit.collider.gameObject);
+            //Debug.Log("90" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle += 5f;
-            Debug.Log("-90" + hit.collider.gameObject);
+            //Debug.Log("-90" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         
@@ -84,35 +84,42 @@ public class AICarDrive : MonoBehaviour
 
         raycastLength = 20;
         //Reduce speed if raycast detects an obstruction ahead
-        if (Physics.Raycast(offset, transform.forward, out hit, raycastLength / 4f, layerMask))
+        if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f), layerMask))
         {
             currentAcceleratorLevel = 0;
-            Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * raycastLength /4f, Color.black, 10);
+            //Debug.Log(hit.collider.gameObject);
+            //Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 10);
         }
-        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength / 2f, layerMask))
+        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 2f), layerMask))
         {
             currentAcceleratorLevel = .5f;
-            Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * raycastLength / 2f, Color.red, 10);
+            //Debug.Log(hit.collider.gameObject);
+            //Debug.DrawRay(offset, transform.forward * ((raycastLength / 2f)), Color.red, 10);
         }
-        else if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
+        else if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(30, raycastLength + (forwardSpeed)), layerMask))
         {
             currentAcceleratorLevel = .65f;
-            Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.yellow, 10);
+            //Debug.Log(hit.collider.gameObject);
+            //Debug.DrawRay(offset, transform.forward * Mathf.Min(30, raycastLength + (forwardSpeed)), Color.yellow, 10);
         }
         else
         {
             currentAcceleratorLevel = 1;
         }
 
-        //Calculate whether to break.
-        currentBreakForce = (forwardSpeed > currentAcceleratorLevel * 10) ? breakForce : 0;
+        //Calculate whether to break and cut off the motor if going too fast (too fast is either moving at > 30 speed, or moving faster than expected for the currentAcceleratorLevel).
+        bool shouldSlowDown = forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 17.5f);
+        //if (shouldSlowDown)
+        //{
+        //    Debug.Log(this.name + " is breaking and is moving at " + forwardSpeed);
+        //}
+        currentBreakForce = shouldSlowDown ? breakForce : 0;
+        currentAcceleratorLevel = shouldSlowDown ? 0 : currentAcceleratorLevel;
         
 
     }
 
+    //Car move forward
     private void HandleMotor()
     {
         float motorTorque = motorForce * currentAcceleratorLevel;
@@ -123,6 +130,7 @@ public class AICarDrive : MonoBehaviour
         ApplyBraking();
     }
 
+    //Breaking
     private void ApplyBraking()
     {
         frontRightWheelCollider.brakeTorque = currentBreakForce;
@@ -131,12 +139,14 @@ public class AICarDrive : MonoBehaviour
         rearLeftWheelCollider.brakeTorque = currentBreakForce;
     }
 
+    //Car turn
     private void HandleSteering()
     {
         frontLeftWheelCollider.steerAngle = steerAngle;
         frontRightWheelCollider.steerAngle = steerAngle;
     }
 
+    
     private void UpdateWheels()
     {
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
@@ -145,6 +155,7 @@ public class AICarDrive : MonoBehaviour
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
 
+    //Make wheel meshes match wheel colliders
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;

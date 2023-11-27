@@ -20,7 +20,7 @@ namespace PowerupSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("AICar"))
             {
                 _meshRenderer.enabled = false;
                 _collider1.enabled = false;
