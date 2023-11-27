@@ -8154,6 +8154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trackvisual
       objectReference: {fileID: 0}
+    - target: {fileID: 5167819635043687316, guid: d83f78cb57734774f8e447c1bfe56ec6, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
