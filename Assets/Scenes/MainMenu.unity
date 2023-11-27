@@ -2569,12 +2569,7 @@ MonoBehaviour:
   thumbnail: {fileID: 1562050445}
   characterName: {fileID: 430053383}
   characterList:
-  - name: Char1
-    characterThumbnail: {fileID: 21300000, guid: 041923d5e3b46c2479e302f8e510003b, type: 3}
-  - name: Char2
-    characterThumbnail: {fileID: 21300000, guid: 041923d5e3b46c2479e302f8e510003b, type: 3}
-  - name: Char3
-    characterThumbnail: {fileID: 21300000, guid: 041923d5e3b46c2479e302f8e510003b, type: 3}
+  - {fileID: 11400000, guid: 71f6d023064ce414693040874ce2c0f5, type: 2}
 --- !u!114 &711761427
 MonoBehaviour:
   m_ObjectHideFlags: 0
