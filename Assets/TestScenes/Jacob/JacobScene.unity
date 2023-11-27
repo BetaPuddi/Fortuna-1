@@ -7805,6 +7805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thwomp
       objectReference: {fileID: 0}
+    - target: {fileID: 8527756963396872149, guid: 107b4be42fe985441a2990832df48f59, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e3d45b0a07f11f48b32b18c353d69ab, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
