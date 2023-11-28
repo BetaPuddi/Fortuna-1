@@ -9,4 +9,5 @@ public class CharacterInfo : ScriptableObject
     public Sprite characterThumbnail;
     public int mass;
     public GameObject characterModel;
+    public int prefferedAITrackRoute;
 }

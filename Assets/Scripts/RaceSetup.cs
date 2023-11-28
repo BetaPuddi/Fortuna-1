@@ -1,4 +1,5 @@
 using PowerupSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,6 +7,18 @@ using UnityEngine;
 
 public class RaceSetup : MonoBehaviour
 {
+    [Serializable]
+    public class Route
+    {
+        public GameObject[] route;
+
+        public Route(GameObject[] array)
+        {
+            route = array;
+        }
+    }
+
+    [SerializeField] Route[] routes;
     [SerializeField] CharacterInfo[] possibleCharacters;
     Vector3[] characterStartPositions = { new Vector3(-2.3f, 0, -2), new Vector3(2.3f, 0, -2), new Vector3(-2.3f, 0, -12), new Vector3(2.3f, 0, -12), new Vector3(-2.3f, 0, -22), new Vector3(2.3f, 0, -22) };
 
@@ -26,6 +39,7 @@ public class RaceSetup : MonoBehaviour
             }
             car = Instantiate(possibleCharacters[characterNumber].characterModel, characterStartPositions[x], new Quaternion());
             car.AddComponent<AICarDrive>();
+            car.GetComponent<AICarDrive>().SetWaypoints(routes[possibleCharacters[characterNumber].prefferedAITrackRoute].route);
             car.AddComponent<AIPowerupContainer>();
             car.tag = "AICar";
         }

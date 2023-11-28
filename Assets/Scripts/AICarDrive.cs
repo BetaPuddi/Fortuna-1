@@ -24,7 +24,7 @@ public class AICarDrive : MonoBehaviour
     [SerializeField] private Transform frontRightWheelTransform;
     [SerializeField] private Transform frontLeftWheelTransform;
 
-    [SerializeField] private Transform[] waypoints;
+    private GameObject[] waypoints;
 
     private InputActionAsset inputActionAsset;
 
@@ -41,7 +41,7 @@ public class AICarDrive : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint,48)];
+        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint,48)].transform;
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
@@ -163,5 +163,10 @@ public class AICarDrive : MonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+    }
+
+    public void SetWaypoints(GameObject[] waypointsIn)
+    {
+        waypoints = waypointsIn;
     }
 }
