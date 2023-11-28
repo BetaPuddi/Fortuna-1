@@ -40,11 +40,11 @@ public class CarController : MonoBehaviour
             yield return null;
         }
         //Get the colliders
-        Transform wheelColliders = transform.Find("Wheels").Find("Wheels Colliders");
+        Transform wheelColliders = transform.Find("Wheels").Find("Wheel Colliders");
         frontLeftWheelCollider = wheelColliders.Find("FrontLeftCollider").GetComponent<WheelCollider>();
         frontRightWheelCollider = wheelColliders.Find("FrontRightCollider").GetComponent<WheelCollider>();
-        rearLeftWheelCollider = wheelColliders.Find("RearLeftCollider").GetComponent<WheelCollider>();
-        rearRightWheelCollider = wheelColliders.Find("RearRightCollider").GetComponent<WheelCollider>();
+        rearLeftWheelCollider = wheelColliders.Find("BackLeftCollider").GetComponent<WheelCollider>();
+        rearRightWheelCollider = wheelColliders.Find("BackRightCollider").GetComponent<WheelCollider>();
         //Get the transforms
         Transform wheelTransforms = transform.Find("Wheels").Find("Wheels Transforms");
         frontLeftWheelTransform = wheelTransforms.Find("FrontLeftWheel");
