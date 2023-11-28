@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace PowerupSystem
 {
@@ -10,9 +10,10 @@ namespace PowerupSystem
         public string currentPowerup;
 
         [SerializeField]
-        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner;
+        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner, firstPersonCamera, mainCamera, catnipPostProcessing;
 
         private InputActions _controls;
+
 
         [SerializeField]
         private float speedBoostDuration;
@@ -48,6 +49,14 @@ namespace PowerupSystem
                         DropBones();
                         RemovePowerup();
                         break;
+                    case "Mind's Eye":
+                        StartCoroutine(MindsEyeCoroutine());
+                        RemovePowerup();
+                        break;
+                    case "Catnip":
+                        StartCoroutine(CatnipCoroutine());
+                        RemovePowerup();
+                        break;
                 }
             }
         }
@@ -81,6 +90,22 @@ namespace PowerupSystem
             GetComponentInParent<CarController>().motorForce += boostAmount;
             yield return new WaitForSeconds(boostDuration);
             GetComponentInParent<CarController>().motorForce -= boostAmount;
+        }
+
+        private IEnumerator MindsEyeCoroutine()
+        {
+            mainCamera.SetActive(false);
+            firstPersonCamera.SetActive(true);
+            yield return new WaitForSeconds(5);
+            mainCamera.SetActive(true);
+            firstPersonCamera.SetActive(false);
+        }
+
+        private IEnumerator CatnipCoroutine()
+        {
+            catnipPostProcessing.SetActive(true);
+            yield return new WaitForSeconds(5);
+            catnipPostProcessing.SetActive(false);
         }
 
         private void FireBallProjectile()
