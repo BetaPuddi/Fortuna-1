@@ -8191,6 +8191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0a269bb9b1a7d4d858320934a5ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carsSetUp: 0
+  mainCamera: {fileID: 9098677116583696253, guid: 6b86bf104d2f4174f96e9e4517175ced, type: 3}
   routes:
   - route:
     - {fileID: 1789412755}

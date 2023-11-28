@@ -8,6 +8,7 @@ using UnityEngine;
 public class RaceSetup : MonoBehaviour
 {
     public bool carsSetUp = false;
+    [SerializeField] GameObject mainCamera;
 
     [Serializable]
     public class Route
@@ -49,6 +50,8 @@ public class RaceSetup : MonoBehaviour
         car.AddComponent<CarController>();
         car.AddComponent<PowerupContainer>();
         car.tag = "Player";
+        GameObject camera = Instantiate(mainCamera, car.transform, false);
+        camera.transform.localPosition = new Vector3(0, 3, -7);
         carsSetUp = true;
     }
 }
