@@ -33,7 +33,7 @@ public class CarController : MonoBehaviour
     bool startFinished = false;
 
     //Get the wheels
-    private IEnumerable Start()
+    private IEnumerator Start()
     {
         while (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
         { 
