@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 2687163008595194816}
   - component: {fileID: 8595900225612590937}
   m_Layer: 0
-  m_Name: FrontRightCollider (1)
+  m_Name: FrontRightCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

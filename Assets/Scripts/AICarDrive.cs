@@ -31,6 +31,24 @@ public class AICarDrive : MonoBehaviour
     private InputAction moveAction;
     private InputAction brakeAction;
 
+    //Get the wheels
+    private void Start()
+    {
+        //Get the colliders
+        Transform wheelColliders = transform.Find("Wheels").Find("Wheels Colliders");
+        frontLeftWheelCollider = wheelColliders.Find("FrontLeftCollider").GetComponent<WheelCollider>();
+        frontRightWheelCollider = wheelColliders.Find("FrontRightCollider").GetComponent<WheelCollider>();
+        rearLeftWheelCollider = wheelColliders.Find("RearLeftCollider").GetComponent<WheelCollider>();
+        rearRightWheelCollider = wheelColliders.Find("RearRightCollider").GetComponent<WheelCollider>();
+        //Get the transforms
+        Transform wheelTransforms = transform.Find("Wheels").Find("Wheels Transforms");
+        frontLeftWheelTransform = wheelTransforms.Find("FrontLeftWheel");
+        frontRightWheelTransform = wheelTransforms.Find("FrontRightWheel");
+        rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
+        rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
+
+    }
+
     private void FixedUpdate()
     {
         HandleNavigation();
