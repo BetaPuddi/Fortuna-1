@@ -10,7 +10,7 @@ namespace PowerupSystem
         public string currentPowerup;
 
         [SerializeField]
-        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner;
+        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner, firstPersonCamera, mainCamera;
 
         private InputActions _controls;
 
@@ -48,6 +48,10 @@ namespace PowerupSystem
                         DropBones();
                         RemovePowerup();
                         break;
+                    case "Mind's Eye":
+                        StartCoroutine(MindsEyeCoroutine());
+                        RemovePowerup();
+                        break;
                 }
             }
         }
@@ -81,6 +85,15 @@ namespace PowerupSystem
             GetComponentInParent<CarController>().motorForce += boostAmount;
             yield return new WaitForSeconds(boostDuration);
             GetComponentInParent<CarController>().motorForce -= boostAmount;
+        }
+
+        private IEnumerator MindsEyeCoroutine()
+        {
+            mainCamera.SetActive(false);
+            firstPersonCamera.SetActive(true);
+            yield return new WaitForSeconds(5);
+            mainCamera.SetActive(true);
+            firstPersonCamera.SetActive(false);
         }
 
         private void FireBallProjectile()
