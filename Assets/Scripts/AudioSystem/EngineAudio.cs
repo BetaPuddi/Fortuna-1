@@ -20,7 +20,7 @@ namespace AudioSystem
 
         private void FixedUpdate()
         {
-            engineAudioSource.pitch = 0.5f + vehicleRigidbody.velocity.magnitude / 100;
+            engineAudioSource.pitch = 0.6f + vehicleRigidbody.velocity.magnitude / 100;
         }
     }
 }
