@@ -31,6 +31,8 @@ public class AICarDrive : MonoBehaviour
     private InputAction moveAction;
     private InputAction brakeAction;
 
+    bool startFinished = false;
+
     //Get the wheels
     private IEnumerable Start()
     {
@@ -50,12 +52,12 @@ public class AICarDrive : MonoBehaviour
         frontRightWheelTransform = wheelTransforms.Find("FrontRightWheel");
         rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
         rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
-
+        startFinished = true;
     }
 
     private void FixedUpdate()
     {
-        if (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp) return;
+        if (!startFinished) return;
         HandleNavigation();
         HandleMotor();
         HandleSteering();

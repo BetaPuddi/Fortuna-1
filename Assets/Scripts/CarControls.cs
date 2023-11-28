@@ -30,6 +30,7 @@ public class CarController : MonoBehaviour
 
     float sensitivity;
 
+    bool startFinished = false;
 
     //Get the wheels
     private IEnumerable Start()
@@ -51,6 +52,7 @@ public class CarController : MonoBehaviour
         rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
         rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
 
+        startFinished = true;
     }
 
     //json bcs of issues with input system
@@ -123,7 +125,7 @@ public class CarController : MonoBehaviour
     //calling all mechanics
     private void FixedUpdate()
     {
-        if (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp) return;
+        if (!startFinished) return;
         HandleInput();
         HandleMotor();
         HandleSteering();
