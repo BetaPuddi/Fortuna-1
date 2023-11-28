@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class RaceSetup : MonoBehaviour
 {
+    public bool carsSetUp = false;
+
     [Serializable]
     public class Route
     {
@@ -47,5 +49,6 @@ public class RaceSetup : MonoBehaviour
         car.AddComponent<CarController>();
         car.AddComponent<PowerupContainer>();
         car.tag = "Player";
+        carsSetUp = true;
     }
 }

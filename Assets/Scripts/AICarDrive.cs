@@ -32,8 +32,12 @@ public class AICarDrive : MonoBehaviour
     private InputAction brakeAction;
 
     //Get the wheels
-    private void Start()
+    private IEnumerable Start()
     {
+        while (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
+        {
+            yield return null;
+        }
         //Get the colliders
         Transform wheelColliders = transform.Find("Wheels").Find("Wheels Colliders");
         frontLeftWheelCollider = wheelColliders.Find("FrontLeftCollider").GetComponent<WheelCollider>();
@@ -51,6 +55,7 @@ public class AICarDrive : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp) return;
         HandleNavigation();
         HandleMotor();
         HandleSteering();

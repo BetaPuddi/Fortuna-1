@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,9 +30,14 @@ public class CarController : MonoBehaviour
 
     float sensitivity;
 
+
     //Get the wheels
-    private void Start()
+    private IEnumerable Start()
     {
+        while (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
+        { 
+            yield return null;
+        }
         //Get the colliders
         Transform wheelColliders = transform.Find("Wheels").Find("Wheels Colliders");
         frontLeftWheelCollider = wheelColliders.Find("FrontLeftCollider").GetComponent<WheelCollider>();
@@ -117,6 +123,7 @@ public class CarController : MonoBehaviour
     //calling all mechanics
     private void FixedUpdate()
     {
+        if (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp) return;
         HandleInput();
         HandleMotor();
         HandleSteering();

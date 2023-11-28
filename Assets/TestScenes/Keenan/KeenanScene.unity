@@ -8174,7 +8174,7 @@ GameObject:
   - component: {fileID: 1551832247}
   m_Layer: 0
   m_Name: RaceStart
-  m_TagString: Untagged
+  m_TagString: RaceStart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
