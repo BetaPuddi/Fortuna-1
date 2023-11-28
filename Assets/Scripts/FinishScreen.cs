@@ -10,6 +10,7 @@ public class FinishScreen : MonoBehaviour
     public GameObject endScreen;
     private void Start()
     {
+        player = GameObject.FindWithTag("Player");
         _lapTracker = player.GetComponent<CartLap>();
     }
     private void Update()

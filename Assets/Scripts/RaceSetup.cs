@@ -27,9 +27,11 @@ public class RaceSetup : MonoBehaviour
             car = Instantiate(possibleCharacters[characterNumber].characterModel, characterStartPositions[x], new Quaternion());
             car.AddComponent<AICarDrive>();
             car.AddComponent<AIPowerupContainer>();
+            car.tag = "AICar";
         }
-        car = Instantiate(PersistentData.persistentData.getCharacter().GameObject(), characterStartPositions[5], new Quaternion());
+        car = Instantiate(PersistentData.persistentData.getCharacter().characterModel, characterStartPositions[5], new Quaternion());
         car.AddComponent<CarController>();
         car.AddComponent<PowerupContainer>();
+        car.tag = "Player";
     }
 }

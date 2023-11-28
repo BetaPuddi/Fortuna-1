@@ -15,4 +15,4 @@ MonoBehaviour:
   characterName: Placeholder2
   characterThumbnail: {fileID: 21300000, guid: 041923d5e3b46c2479e302f8e510003b, type: 3}
   mass: 1500
-  characterModel: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
+  characterModel: {fileID: 2893236237908154248, guid: 7f14998b7d0eef647a4cc30f73f51243, type: 3}
