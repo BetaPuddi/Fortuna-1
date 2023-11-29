@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Serialization;
 
 namespace PowerupSystem
 {
@@ -11,6 +12,8 @@ namespace PowerupSystem
         public int respawnTime = 10;
         private MeshRenderer _meshRenderer;
         private Collider _collider1;
+        [FormerlySerializedAs("_pickupSound")] [SerializeField]
+        private AudioSource pickupSound;
 
         private void Start()
         {
@@ -26,6 +29,7 @@ namespace PowerupSystem
                 _collider1.enabled = false;
                 AddPowerupToCharacter(ChooseRandomPowerup(), other);
                 StartCoroutine(RespawnPowerupBox());
+                pickupSound.Play();
             }
         }
 
