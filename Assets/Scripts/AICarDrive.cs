@@ -28,8 +28,10 @@ public class AICarDrive : MonoBehaviour
 
     private InputActionAsset inputActionAsset;
 
+    public CharacterInfo character;
     private InputAction moveAction;
     private InputAction brakeAction;
+    private InputAction gasAction;
 
     bool startFinished = false;
 
@@ -52,6 +54,11 @@ public class AICarDrive : MonoBehaviour
         frontRightWheelTransform = wheelTransforms.Find("FrontRightWheel");
         rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
         rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
+
+        motorForce = character.motorForce;
+        breakForce = character.breakForce;
+        maxSteerAngle = character.maxSteerAngle;
+
         startFinished = true;
     }
 

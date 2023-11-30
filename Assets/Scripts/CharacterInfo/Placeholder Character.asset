@@ -15,5 +15,8 @@ MonoBehaviour:
   characterName: Placeholder
   characterThumbnail: {fileID: 21300000, guid: 041923d5e3b46c2479e302f8e510003b, type: 3}
   mass: 1500
+  motorForce: 1000
+  breakForce: 3000
+  maxSteerAngle: 30
   characterModel: {fileID: 2893236237908154248, guid: 7f14998b7d0eef647a4cc30f73f51243, type: 3}
   prefferedAITrackRoute: 0

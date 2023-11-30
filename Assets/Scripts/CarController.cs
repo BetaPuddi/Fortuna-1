@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
     //all input action stuff
     private InputActionAsset inputActionAsset;
 
+    public CharacterInfo character;
     private InputAction moveAction;
     private InputAction brakeAction;
     private InputAction gasAction; 
@@ -52,6 +53,9 @@ public class CarController : MonoBehaviour
         rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
         rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
 
+        motorForce = character.motorForce;
+        breakForce = character.breakForce;
+        maxSteerAngle = character.maxSteerAngle;
         startFinished = true;
     }
 
