@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6f4b0c83-b7d7-4fb7-a76c-bb89966c6508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioSystem/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioSystem/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioSystem/EngineAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioSystem/EngineAudio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Finishing-powerups",
+    "git-widget-placeholder": "Audio-Implementation",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -119,6 +124,9 @@
       <workItem from="1700315896950" duration="5089000" />
       <workItem from="1700399041304" duration="13093000" />
       <workItem from="1700829563420" duration="644000" />
+      <workItem from="1700830797561" duration="3081000" />
+      <workItem from="1701181273860" duration="2263000" />
+      <workItem from="1701196379855" duration="4998000" />
     </task>
     <servers />
   </component>

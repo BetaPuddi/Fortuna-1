@@ -4,7 +4,7 @@ namespace AudioSystem
 {
     public class AudioManager : MonoBehaviour
     {
-        public static AudioManager Instance;
+        public static AudioManager instance;
 
         public AudioSource[] carSfxAudioSources;
         public AudioSource[] uiSfxAudioSources;
@@ -12,9 +12,9 @@ namespace AudioSystem
 
         private void Awake()
         {
-            if (Instance == null)
+            if (instance == null)
             {
-                Instance = this;
+                instance = this;
             }
         }
 

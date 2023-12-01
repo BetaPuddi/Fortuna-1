@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace PowerupSystem
 {
@@ -10,9 +10,12 @@ namespace PowerupSystem
         public string currentPowerup;
 
         [SerializeField]
-        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner;
+        private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner, firstPersonCamera, mainCamera, catnipPostProcessing;
+        [SerializeField]
+        private AudioSource ballAudioUse, crystalAudioUse, boneAudioUse, speedBoostAudioUse, catnipAudioUse, mindsEyeUse;
 
         private InputActions _controls;
+
 
         [SerializeField]
         private float speedBoostDuration;
@@ -33,19 +36,33 @@ namespace PowerupSystem
                 {
                     case "Speed Boost":
                         SpeedBoost(speedBoostAmount, speedBoostDuration);
+                        speedBoostAudioUse.Play();
                         RemovePowerup();
                         StopCoroutine(SpeedBoostCoroutine(0,0));
                         break;
                     case "Ball Projectile":
                         FireBallProjectile();
+                        ballAudioUse.Play();
                         RemovePowerup();
                         break;
                     case "Crystal Trap":
                         DropCrystals();
+                        crystalAudioUse.Play();
                         RemovePowerup();
                         break;
                     case "Bone Trap":
                         DropBones();
+                        boneAudioUse.Play();
+                        RemovePowerup();
+                        break;
+                    case "Mind's Eye":
+                        StartCoroutine(MindsEyeCoroutine());
+                        mindsEyeUse.Play();
+                        RemovePowerup();
+                        break;
+                    case "Catnip":
+                        StartCoroutine(CatnipCoroutine());
+                        catnipAudioUse.Play();
                         RemovePowerup();
                         break;
                 }
@@ -81,6 +98,22 @@ namespace PowerupSystem
             GetComponentInParent<CarController>().motorForce += boostAmount;
             yield return new WaitForSeconds(boostDuration);
             GetComponentInParent<CarController>().motorForce -= boostAmount;
+        }
+
+        private IEnumerator MindsEyeCoroutine()
+        {
+            mainCamera.SetActive(false);
+            firstPersonCamera.SetActive(true);
+            yield return new WaitForSeconds(5);
+            mainCamera.SetActive(true);
+            firstPersonCamera.SetActive(false);
+        }
+
+        private IEnumerator CatnipCoroutine()
+        {
+            catnipPostProcessing.SetActive(true);
+            yield return new WaitForSeconds(5);
+            catnipPostProcessing.SetActive(false);
         }
 
         private void FireBallProjectile()
