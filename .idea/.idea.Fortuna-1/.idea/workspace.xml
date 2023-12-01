@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f4b0c83-b7d7-4fb7-a76c-bb89966c6508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/BoneTrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/BoneTrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/ReeceScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/Crystals.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/Crystals.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +124,7 @@
       <workItem from="1701196379855" duration="4998000" />
       <workItem from="1701293464332" duration="1008000" />
       <workItem from="1701442178507" duration="912000" />
+      <workItem from="1701443433535" duration="596000" />
     </task>
     <servers />
   </component>
