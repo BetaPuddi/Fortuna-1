@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f1652470979c246b336b8d05265a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPowerup: Mind's Eye
+  currentPowerup: Speed Boost
   ballProjectile: {fileID: 397778415}
   crystalTrap: {fileID: 7617601412344536568, guid: edb566973eac7d24d8f04fa1bde7d53d, type: 3}
   boneTrap: {fileID: 6757117738363382994, guid: 6514af6964de59a40a438d1af11bae71, type: 3}
@@ -869,8 +869,8 @@ MonoBehaviour:
   catnipAudioUse: {fileID: 161512445}
   mindsEyeUse: {fileID: 1249120350}
   speedBoostTrail: {fileID: 1961217422}
-  speedBoostDuration: 2
-  speedBoostAmount: 100
+  speedBoostDuration: 3
+  speedBoostAmount: 500
 --- !u!114 &262141321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -543156302538455204, guid: 25cd02597e6f8024fac08e695cffebaa, type: 2}
   m_audioClip: {fileID: 8300000, guid: 17d7a28c76f8a664483369c467b07b6f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8294,7 +8294,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961217420}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

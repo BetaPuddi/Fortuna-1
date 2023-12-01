@@ -14,9 +14,7 @@ namespace PowerupSystem
 
         private void OnTriggerExit(Collider other)
         {
-
-
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("AICar"))
             {
                 Destroy(gameObject);
             }
