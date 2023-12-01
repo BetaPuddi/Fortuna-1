@@ -35,6 +35,7 @@ namespace AudioSystem
             {
                 if (audioSource.name == audioSourceName)
                 {
+                    audioSource.pitch = Random.Range(0.8f, 1.2f);
                     audioSource.PlayOneShot(audioSource.clip, 1f);
                 }
             }
@@ -46,7 +47,6 @@ namespace AudioSystem
             {
                 if (audioSource.name == audioSourceName)
                 {
-                    audioSource.pitch = Random.Range(0.8f, 1.2f);
                     audioSource.Play();
                 }
             }
