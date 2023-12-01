@@ -24,15 +24,47 @@ public class AICarDrive : MonoBehaviour
     [SerializeField] private Transform frontRightWheelTransform;
     [SerializeField] private Transform frontLeftWheelTransform;
 
-    [SerializeField] private Transform[] waypoints;
+    private GameObject[] waypoints;
 
     private InputActionAsset inputActionAsset;
 
+    public CharacterInfo character;
     private InputAction moveAction;
     private InputAction brakeAction;
+    private InputAction gasAction;
+
+    bool startFinished = false;
+
+    //Get the wheels
+    private IEnumerator Start()
+    {
+        while (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
+        {
+            yield return null;
+        }
+        //Get the colliders
+        Transform wheelColliders = transform.Find("Wheels").Find("Wheel Colliders");
+        frontLeftWheelCollider = wheelColliders.Find("FrontLeftCollider").GetComponent<WheelCollider>();
+        frontRightWheelCollider = wheelColliders.Find("FrontRightCollider").GetComponent<WheelCollider>();
+        rearLeftWheelCollider = wheelColliders.Find("BackLeftCollider").GetComponent<WheelCollider>();
+        rearRightWheelCollider = wheelColliders.Find("BackRightCollider").GetComponent<WheelCollider>();
+        //Get the transforms
+        Transform wheelTransforms = transform.Find("Wheels").Find("Wheels Transforms");
+        frontLeftWheelTransform = wheelTransforms.Find("FrontLeftWheel");
+        frontRightWheelTransform = wheelTransforms.Find("FrontRightWheel");
+        rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
+        rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
+
+        motorForce = character.motorForce;
+        breakForce = character.breakForce;
+        maxSteerAngle = character.maxSteerAngle;
+
+        startFinished = true;
+    }
 
     private void FixedUpdate()
     {
+        if (!startFinished) return;
         HandleNavigation();
         HandleMotor();
         HandleSteering();
@@ -41,7 +73,7 @@ public class AICarDrive : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint,48)];
+        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint,48)].transform;
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
@@ -163,5 +195,10 @@ public class AICarDrive : MonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+    }
+
+    public void SetWaypoints(GameObject[] waypointsIn)
+    {
+        waypoints = waypointsIn;
     }
 }

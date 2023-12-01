@@ -15,7 +15,7 @@ public class CharacterSelection : MonoBehaviour
     
 
     [Header("Characters")]
-    [SerializeField] List<PersistentData.CharacterSelectObject> characterList = new List<PersistentData.CharacterSelectObject>();
+    [SerializeField] List<CharacterInfo> characterList = new List<CharacterInfo>();
 
     
 

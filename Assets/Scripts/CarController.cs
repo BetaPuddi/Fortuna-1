@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,11 +24,41 @@ public class CarController : MonoBehaviour
     //all input action stuff
     private InputActionAsset inputActionAsset;
 
+    public CharacterInfo character;
     private InputAction moveAction;
     private InputAction brakeAction;
     private InputAction gasAction; 
 
     float sensitivity;
+
+    bool startFinished = false;
+
+    //Get the wheels
+    private IEnumerator Start()
+    {
+        while (!GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
+        { 
+            yield return null;
+        }
+        //Get the colliders
+        Transform wheelColliders = transform.Find("Wheels").Find("Wheel Colliders");
+        frontLeftWheelCollider = wheelColliders.Find("FrontLeftCollider").GetComponent<WheelCollider>();
+        frontRightWheelCollider = wheelColliders.Find("FrontRightCollider").GetComponent<WheelCollider>();
+        rearLeftWheelCollider = wheelColliders.Find("BackLeftCollider").GetComponent<WheelCollider>();
+        rearRightWheelCollider = wheelColliders.Find("BackRightCollider").GetComponent<WheelCollider>();
+        //Get the transforms
+        Transform wheelTransforms = transform.Find("Wheels").Find("Wheels Transforms");
+        frontLeftWheelTransform = wheelTransforms.Find("FrontLeftWheel");
+        frontRightWheelTransform = wheelTransforms.Find("FrontRightWheel");
+        rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
+        rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
+
+        motorForce = character.motorForce;
+        breakForce = character.breakForce;
+        maxSteerAngle = character.maxSteerAngle;
+        startFinished = true;
+    }
+
     //json bcs of issues with input system
     private void Awake()
     {
@@ -98,6 +129,7 @@ public class CarController : MonoBehaviour
     //calling all mechanics
     private void FixedUpdate()
     {
+        if (!startFinished) return;
         HandleInput();
         HandleMotor();
         HandleSteering();

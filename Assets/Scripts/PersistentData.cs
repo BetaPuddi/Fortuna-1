@@ -23,15 +23,8 @@ public class PersistentData
     float SFXVolume;
     float musicVolume;
     float sensitivity;
-    CharacterSelectObject characterSelectObject;
+    CharacterInfo characterSelectObject;
     
-
-    [System.Serializable]
-    public struct CharacterSelectObject
-    {
-        public string name;
-        public Sprite characterThumbnail;
-    }
 
     [System.Serializable]
     public struct SaveData
@@ -75,7 +68,7 @@ public class PersistentData
     }
 
     //Sets the character
-    public void setCharacter(CharacterSelectObject characterIn)
+    public void setCharacter(CharacterInfo characterIn)
     {
         characterSelectObject = characterIn;
     }
@@ -103,7 +96,7 @@ public class PersistentData
     }
 
     //Returns the character chosen in the character select menu
-    public CharacterSelectObject getCharacter()
+    public CharacterInfo getCharacter()
     {
         return characterSelectObject;
     }
