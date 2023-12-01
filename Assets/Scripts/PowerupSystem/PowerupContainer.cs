@@ -13,6 +13,8 @@ namespace PowerupSystem
         private GameObject ballProjectile, crystalTrap, boneTrap, frontSpawner, rearSpawner, firstPersonCamera, mainCamera, catnipPostProcessing;
         [SerializeField]
         private AudioSource ballAudioUse, crystalAudioUse, boneAudioUse, speedBoostAudioUse, catnipAudioUse, mindsEyeUse;
+        [SerializeField]
+        private TrailRenderer speedBoostTrail;
 
         private InputActions _controls;
 
@@ -95,9 +97,11 @@ namespace PowerupSystem
 
         private IEnumerator SpeedBoostCoroutine(int boostAmount, float boostDuration)
         {
+            speedBoostTrail.enabled = true;
             GetComponentInParent<CarController>().motorForce += boostAmount;
             yield return new WaitForSeconds(boostDuration);
             GetComponentInParent<CarController>().motorForce -= boostAmount;
+            speedBoostTrail.enabled = false;
         }
 
         private IEnumerator MindsEyeCoroutine()
