@@ -114,12 +114,19 @@ public class AICarDrive : MonoBehaviour
         float forwardSpeed = GetComponent<Rigidbody>().velocity.magnitude;
 
         raycastLength = 20;
-        //Reduce speed if raycast detects an obstruction ahead
-        if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f), layerMask))
+        //Reverse if raycast detects an obstruction ahead
+        if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 8f), layerMask))
         {
-            currentAcceleratorLevel = 0;
+            currentAcceleratorLevel = -1;
+            steerAngle = 0;
             //Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 10);
+            Debug.DrawRay(offset, transform.forward * ((raycastLength / 8f)), Color.white, 1);
+        }
+        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f), layerMask)) //Reduce speed if raycast detects an obstruction ahead
+        {
+            currentAcceleratorLevel = .1f;
+            //Debug.Log(hit.collider.gameObject);
+            Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 1);
         }
         else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 2f), layerMask))
         {

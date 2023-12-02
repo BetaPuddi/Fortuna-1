@@ -7,17 +7,20 @@ namespace PowerupSystem
     public class AIPowerupContainer : PowerupContainer
     {
         
-        void Start()
-        {
-
-        }
-
         private void Update()
         {
             //Use powerup if the powerup is available
-            if (currentPowerup != null)
+            if (!string.IsNullOrEmpty(currentPowerup))
             {
-                Powerup();
+                try 
+                { 
+                    Powerup();
+                }
+                catch 
+                { 
+                    RemovePowerup();
+                }
+                
             }
         }
 
