@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &22122173
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,6 +1018,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (8)
@@ -1175,6 +1179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (2)
@@ -1332,6 +1340,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (1)
@@ -2469,6 +2481,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (9)
@@ -2986,6 +3002,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (11)
@@ -3393,6 +3413,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (5)
@@ -6280,6 +6304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (4)
@@ -8942,6 +8970,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (3)
@@ -10748,6 +10780,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (10)
@@ -10998,6 +11034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (6)
@@ -12689,6 +12729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox (7)
@@ -13219,6 +13263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2870191699337644823, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1315463375}
     - target: {fileID: 3508658410183466472, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
       propertyPath: m_Name
       value: PowerupBox
