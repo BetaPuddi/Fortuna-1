@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2145769994240757933}
   - component: {fileID: 9151510451476817369}
   - component: {fileID: 8439610695256608704}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 9021478634537245173}
   - component: {fileID: 881109596213847979}
   - component: {fileID: 8791091255921916860}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Crystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4949,4 +4949,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowDownAmount: 5
   slowDownDuration: 2
+  crystalParticles: {fileID: 0}
   vehicleTransform: {fileID: 0}
