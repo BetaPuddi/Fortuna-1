@@ -6,20 +6,14 @@ namespace PowerupSystem
 {
     public class AIPowerupContainer : PowerupContainer
     {
-        float timer;
-        float delay = 1;
-        void Start()
-        {
-            timer = Time.time;
-        }
-
+        
         private void Update()
         {
             //Use powerup if the powerup is available
-            if (currentPowerup != null && timer + delay > Time.time)
+            if (currentPowerup != null)
             {
                 Powerup();
-                timer = Time.time;
+                currentPowerup = null;
             }
         }
 
