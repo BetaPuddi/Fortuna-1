@@ -12,8 +12,15 @@ namespace PowerupSystem
             //Use powerup if the powerup is available
             if (!string.IsNullOrEmpty(currentPowerup))
             {
-                Powerup();
-                currentPowerup = "";
+                try 
+                { 
+                    Powerup();
+                }
+                catch 
+                { 
+                    RemovePowerup();
+                }
+                
             }
         }
 
