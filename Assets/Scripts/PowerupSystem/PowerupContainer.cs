@@ -98,9 +98,18 @@ namespace PowerupSystem
         private IEnumerator SpeedBoostCoroutine(int boostAmount, float boostDuration)
         {
             speedBoostTrail.enabled = true;
-            GetComponentInParent<CarController>().motorForce += boostAmount;
-            yield return new WaitForSeconds(boostDuration);
-            GetComponentInParent<CarController>().motorForce -= boostAmount;
+            if (GetComponentInParent<CarCharacter>() != null)
+            { 
+                GetComponentInParent<CarController>().motorForce += boostAmount;
+                yield return new WaitForSeconds(boostDuration);
+                GetComponentInParent<CarController>().motorForce -= boostAmount;
+            }
+            else if (GetComponentInParent<AICarDrive>() != null)
+            {
+                GetComponentInParent<AICarDrive>().motorForce += boostAmount;
+                yield return new WaitForSeconds(boostDuration);
+                GetComponentInParent<AICarDrive>().motorForce -= boostAmount;
+            }
             speedBoostTrail.enabled = false;
         }
 
