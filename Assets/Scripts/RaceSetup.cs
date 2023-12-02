@@ -47,6 +47,7 @@ public class RaceSetup : MonoBehaviour
             }
             car = Instantiate(possibleCharacters[characterNumber].characterModelAI, characterStartPositions[x], new Quaternion());
             car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
+            car.GetComponent<AICarDrive>().SetWaypoints(routes[possibleCharacters[characterNumber].prefferedAITrackRoute].route);
             car.tag = "AICar";
         }
         carsSetUp = true;
