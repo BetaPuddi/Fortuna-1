@@ -11,12 +11,15 @@ namespace HUD
         public Sprite[] powerupIcons;
         public Image currentPowerupIcon = null;
         public CartLap player;
+        public GameObject playerObject;
         public PowerupContainer playerPowerupContainer;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            playerObject = GameObject.FindWithTag("Player");
+            player = playerObject.GetComponent<CartLap>();
+            playerPowerupContainer = playerObject.GetComponent<PowerupContainer>();
         }
 
         // Update is called once per frame
