@@ -36,7 +36,7 @@ public class CarController : MonoBehaviour
     //Get the wheels
     private IEnumerator Start()
     {
-        while (character == null && !GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
+        while (GameObject.FindWithTag("RaceStart") != null && !GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
         { 
             yield return null;
         }
