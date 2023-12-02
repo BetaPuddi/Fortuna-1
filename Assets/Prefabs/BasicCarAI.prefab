@@ -558,55 +558,7 @@ MonoBehaviour:
   rearLeftWheelTransform: {fileID: 3412301350192526756}
   frontRightWheelTransform: {fileID: 2012029884540043443}
   frontLeftWheelTransform: {fileID: 4931000768468256903}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  character: {fileID: 0}
 --- !u!114 &7168924914042080446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapNumber: 0
   Checkpoint: 0
+  position: 0
 --- !u!114 &5382211365207725930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,17 +581,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893236237908154248}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61eb3e2a9c5321647b56ea4cd63a4f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentPowerup: 
-  ballProjectile: {fileID: 0}
-  crystalTrap: {fileID: 0}
-  boneTrap: {fileID: 0}
+  ballProjectile: {fileID: 4172207921962549427, guid: 87d6afe6a46ac474eb0bdf2054858840, type: 3}
+  crystalTrap: {fileID: 7617601412344536568, guid: edb566973eac7d24d8f04fa1bde7d53d, type: 3}
+  boneTrap: {fileID: 6757117738363382994, guid: 6514af6964de59a40a438d1af11bae71, type: 3}
   frontSpawner: {fileID: 0}
   rearSpawner: {fileID: 0}
+  firstPersonCamera: {fileID: 0}
+  mainCamera: {fileID: 0}
+  catnipPostProcessing: {fileID: 0}
+  ballAudioUse: {fileID: 0}
+  crystalAudioUse: {fileID: 0}
+  boneAudioUse: {fileID: 0}
+  speedBoostAudioUse: {fileID: 0}
+  catnipAudioUse: {fileID: 0}
+  mindsEyeUse: {fileID: 0}
+  speedBoostTrail: {fileID: 0}
   speedBoostDuration: 0
   speedBoostAmount: 100
 --- !u!1 &5173231979189449709
