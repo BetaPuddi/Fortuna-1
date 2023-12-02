@@ -115,18 +115,22 @@ namespace PowerupSystem
 
         private IEnumerator MindsEyeCoroutine()
         {
-            mainCamera.SetActive(false);
-            firstPersonCamera.SetActive(true);
-            yield return new WaitForSeconds(5);
-            mainCamera.SetActive(true);
-            firstPersonCamera.SetActive(false);
+            if (mainCamera != null && firstPersonCamera != null) { 
+                mainCamera.SetActive(false);
+                firstPersonCamera.SetActive(true);
+                yield return new WaitForSeconds(5);
+                mainCamera.SetActive(true);
+                firstPersonCamera.SetActive(false);
+            }
         }
 
         private IEnumerator CatnipCoroutine()
         {
-            catnipPostProcessing.SetActive(true);
-            yield return new WaitForSeconds(5);
-            catnipPostProcessing.SetActive(false);
+            if (catnipPostProcessing != null) { 
+                catnipPostProcessing.SetActive(true);
+                yield return new WaitForSeconds(5);
+                catnipPostProcessing.SetActive(false);
+            }
         }
 
         private void FireBallProjectile()
