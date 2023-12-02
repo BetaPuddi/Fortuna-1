@@ -4949,5 +4949,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowDownAmount: 5
   slowDownDuration: 2
-  crystalParticles: {fileID: 0}
+  crystalParticles: {fileID: 9151510451476817369}
   vehicleTransform: {fileID: 0}
