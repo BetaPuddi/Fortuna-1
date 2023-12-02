@@ -34,28 +34,21 @@ public class RaceSetup : MonoBehaviour
     void SpawnRacers()
     {
         GameObject car;
-        for (int x = 0, characterNumber = 0; x < characterStartPositions.Length-1; x++, characterNumber++)
-        {
-            if (possibleCharacters[characterNumber].characterModel == PersistentData.persistentData.getCharacter().GameObject()) 
-            { 
-                characterNumber++;
-            }
-            car = Instantiate(possibleCharacters[characterNumber].characterModel, characterStartPositions[x], new Quaternion());
-            car.AddComponent<AICarDrive>();
-            car.GetComponent<AICarDrive>().SetWaypoints(routes[possibleCharacters[characterNumber].prefferedAITrackRoute].route);
-            car.AddComponent<AIPowerupContainer>();
-            car.GetComponent<AIPowerupContainer>();
-            car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
-            car.tag = "AICar";
-        }
-        car = Instantiate(PersistentData.persistentData.getCharacter().characterModel, characterStartPositions[5], new Quaternion());
-        car.AddComponent<CarController>();
-        car.AddComponent<PowerupContainer>();
-        car.GetComponent<PowerupContainer>();
+        car = Instantiate(PersistentData.persistentData.getCharacter().characterModelPlayer, characterStartPositions[5], new Quaternion());
         car.GetComponent<CarController>().character = PersistentData.persistentData.getCharacter();
         car.tag = "Player";
         GameObject camera = Instantiate(mainCamera, car.transform, false);
         camera.transform.localPosition = new Vector3(0, 3, -7);
+        for (int x = 0, characterNumber = 0; x < characterStartPositions.Length-1; x++, characterNumber++)
+        {
+            if (possibleCharacters[characterNumber].characterName == PersistentData.persistentData.getCharacter().characterName) 
+            { 
+                characterNumber++;
+            }
+            car = Instantiate(possibleCharacters[characterNumber].characterModelAI, characterStartPositions[x], new Quaternion());
+            car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
+            car.tag = "AICar";
+        }
         carsSetUp = true;
     }
 }

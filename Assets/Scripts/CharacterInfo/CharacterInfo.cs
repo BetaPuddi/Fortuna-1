@@ -11,6 +11,7 @@ public class CharacterInfo : ScriptableObject
     public float motorForce;
     public float breakForce;
     public float maxSteerAngle;
-    public GameObject characterModel;
+    public GameObject characterModelAI;
+    public GameObject characterModelPlayer;
     public int prefferedAITrackRoute;
 }
