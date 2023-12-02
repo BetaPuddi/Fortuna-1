@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 2687163008595194816}
   - component: {fileID: 8595900225612590937}
   m_Layer: 0
-  m_Name: FrontRightCollider
+  m_Name: FrontRightCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,9 +458,11 @@ GameObject:
   - component: {fileID: 6011277065815694342}
   - component: {fileID: 3622265176425393740}
   - component: {fileID: 8899480299558148654}
+  - component: {fileID: 579315326753735570}
   - component: {fileID: 7168924914042080446}
+  - component: {fileID: 5382211365207725930}
   m_Layer: 0
-  m_Name: BasicCar
+  m_Name: BasicCarAI
   m_TagString: AICar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,6 +535,78 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2495425, y: 1.2585411, z: 4.857215}
   m_Center: {x: 0.049203515, y: 0.7957307, z: -0.03421688}
+--- !u!114 &579315326753735570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893236237908154248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fedb7c548d8ee44db545efe62e4bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorForce: 1000
+  breakForce: 3000
+  maxSteerAngle: 30
+  frontLeftWheelCollider: {fileID: 2212922436492254426}
+  frontRightWheelCollider: {fileID: 8595900225612590937}
+  rearLeftWheelCollider: {fileID: 1829781881676551447}
+  rearRightWheelCollider: {fileID: 2240500960420171825}
+  rearRightWheelTransform: {fileID: 1895236046926368863}
+  rearLeftWheelTransform: {fileID: 3412301350192526756}
+  frontRightWheelTransform: {fileID: 2012029884540043443}
+  frontLeftWheelTransform: {fileID: 4931000768468256903}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &7168924914042080446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +621,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapNumber: 0
   Checkpoint: 0
+--- !u!114 &5382211365207725930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893236237908154248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61eb3e2a9c5321647b56ea4cd63a4f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPowerup: 
+  ballProjectile: {fileID: 0}
+  crystalTrap: {fileID: 0}
+  boneTrap: {fileID: 0}
+  frontSpawner: {fileID: 0}
+  rearSpawner: {fileID: 0}
+  speedBoostDuration: 0
+  speedBoostAmount: 100
 --- !u!1 &5173231979189449709
 GameObject:
   m_ObjectHideFlags: 0
