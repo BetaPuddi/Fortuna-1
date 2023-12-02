@@ -44,12 +44,14 @@ public class RaceSetup : MonoBehaviour
             car.AddComponent<AICarDrive>();
             car.GetComponent<AICarDrive>().SetWaypoints(routes[possibleCharacters[characterNumber].prefferedAITrackRoute].route);
             car.AddComponent<AIPowerupContainer>();
+            car.GetComponent<AIPowerupContainer>();
             car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
             car.tag = "AICar";
         }
         car = Instantiate(PersistentData.persistentData.getCharacter().characterModel, characterStartPositions[5], new Quaternion());
         car.AddComponent<CarController>();
         car.AddComponent<PowerupContainer>();
+        car.GetComponent<PowerupContainer>();
         car.GetComponent<CarController>().character = PersistentData.persistentData.getCharacter();
         car.tag = "Player";
         GameObject camera = Instantiate(mainCamera, car.transform, false);

@@ -12,6 +12,14 @@ namespace PowerupSystem
 
         }
 
-        
+        private void Update()
+        {
+            //Use powerup if the powerup is available
+            if (currentPowerup != null)
+            {
+                Powerup();
+            }
+        }
+
     }
 }

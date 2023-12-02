@@ -144,5 +144,43 @@ namespace PowerupSystem
             var bones = Instantiate(boneTrap, transform1.normalized, Quaternion.identity);
             bones.GetComponent<BoneTrap>().vehicleTransform = transform2;
         }
+
+        public void Powerup()
+        {
+            switch (currentPowerup)
+            {
+                case "Speed Boost":
+                    SpeedBoost(speedBoostAmount, speedBoostDuration);
+                    speedBoostAudioUse.Play();
+                    RemovePowerup();
+                    StopCoroutine(SpeedBoostCoroutine(0, 0));
+                    break;
+                case "Ball Projectile":
+                    FireBallProjectile();
+                    ballAudioUse.Play();
+                    RemovePowerup();
+                    break;
+                case "Crystal Trap":
+                    DropCrystals();
+                    crystalAudioUse.Play();
+                    RemovePowerup();
+                    break;
+                case "Bone Trap":
+                    DropBones();
+                    boneAudioUse.Play();
+                    RemovePowerup();
+                    break;
+                case "Mind's Eye":
+                    StartCoroutine(MindsEyeCoroutine());
+                    mindsEyeUse.Play();
+                    RemovePowerup();
+                    break;
+                case "Catnip":
+                    StartCoroutine(CatnipCoroutine());
+                    catnipAudioUse.Play();
+                    RemovePowerup();
+                    break;
+            }
+        }
     }
 }
