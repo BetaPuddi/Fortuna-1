@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - AICar
   - RaceStart
+  - CatnipPP
   layers:
   - Default
   - TransparentFX
