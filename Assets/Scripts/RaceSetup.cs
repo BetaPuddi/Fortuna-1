@@ -9,6 +9,7 @@ public class RaceSetup : MonoBehaviour
 {
     public bool carsSetUp = false;
     [SerializeField] GameObject mainCamera;
+    GameObject positionTracker;
 
     [Serializable]
     public class Route
@@ -27,6 +28,7 @@ public class RaceSetup : MonoBehaviour
 
     void Start()
     {
+        positionTracker = GameObject.Find("PositionTracker");
         SpawnRacers();
     }
 
@@ -37,6 +39,7 @@ public class RaceSetup : MonoBehaviour
         car = Instantiate(PersistentData.persistentData.getCharacter().characterModelPlayer, characterStartPositions[5], new Quaternion());
         car.GetComponent<CarController>().character = PersistentData.persistentData.getCharacter();
         car.tag = "Player";
+        positionTracker.GetComponent<PositionTracker>().cars.Add(car);
         GameObject camera = Instantiate(mainCamera, car.transform, false);
         camera.transform.localPosition = new Vector3(0, 3, -7);
         for (int x = 0, characterNumber = 0; x < characterStartPositions.Length-1; x++, characterNumber++)
@@ -49,6 +52,7 @@ public class RaceSetup : MonoBehaviour
             car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
             car.GetComponent<AICarDrive>().SetWaypoints(routes[possibleCharacters[characterNumber].prefferedAITrackRoute].route);
             car.tag = "AICar";
+            positionTracker.GetComponent<PositionTracker>().cars.Add(car);
         }
         carsSetUp = true;
     }
