@@ -75,7 +75,7 @@
                 {
                     "name": "",
                     "id": "b8b12a1a-7013-4211-8450-c927448713e8",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -112,28 +112,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "326afadf-7c4e-4fd5-9701-e1d905bb9f42",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "188580de-6453-4920-a852-dfd983301eff",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "62120722-7790-42ed-81bf-99d905bf1fd2",
                     "path": "<Gamepad>/leftStick/left",
@@ -154,6 +132,34 @@
                     "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Reverse",
+            "id": "3bb24b43-6477-46c4-917e-8fb55449b89a",
+            "actions": [
+                {
+                    "name": "Reverse",
+                    "type": "Button",
+                    "id": "a4833bbb-aea8-4902-8238-65b1270908d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cd4a17a7-883d-46d6-9d3a-e0d3a49fc24c",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reverse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -13,7 +13,7 @@ public class LapCheckpoint : MonoBehaviour
             if(cart.Checkpoint==Index + 1 || cart.Checkpoint==Index - 1) 
             {
                 cart.Checkpoint = Index;
-                Debug.Log(Index);
+                
             }
         }
     }
