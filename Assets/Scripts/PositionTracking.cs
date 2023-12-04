@@ -75,7 +75,7 @@ public class PositionTracker : MonoBehaviour
         foreach (GameObject car in cars)
         {
             int position = GetPositionForCar(car);
-            Debug.Log(car.name + " is in position: " + position); //add to ai using "position" variable
+            //Debug.Log(car.name + " is in position: " + position); //add to ai using "position" variable
 
             CartLap cartLap = car.GetComponent<CartLap>();
             if (cartLap != null)

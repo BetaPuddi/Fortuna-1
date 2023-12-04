@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,7 +28,8 @@ public class CarController : MonoBehaviour
     public CharacterInfo character;
     private InputAction moveAction;
     private InputAction brakeAction;
-    private InputAction gasAction; 
+    private InputAction gasAction;
+    private InputAction reverseAction;
 
     float sensitivity;
 
@@ -63,48 +65,59 @@ public class CarController : MonoBehaviour
     private void Awake()
     {
         inputActionAsset = InputActionAsset.FromJson(@"{
-            ""maps"": [
-                {
-                    ""name"": ""Player"",
-                    ""actions"": [
-                        {
-                            ""name"": ""ControllerHorizontal"",
-                            ""type"": ""Value"",
-                            ""bindings"": [
-                                {
-                                    ""name"": ""Stick"",
-                                    ""type"": ""Value"",
-                                    ""path"": ""<Gamepad>/leftStick""
-                                }
-                            ]
-                        },
-                        {
-                            ""name"": ""ControllerBrake"",
-                            ""type"": ""Button"",
-                            ""bindings"": [
-                                {
-                                    ""name"": ""ButtonPress"",
-                                    ""type"": ""Value"",
-                                    ""path"": ""<Gamepad>/buttonSouth""
-                                }
-                            ]
-                        },
-                        {
-                            ""name"": ""Gas"",
-                            ""type"": ""Button"",
-                            ""bindings"": [
-                                {
-                                    ""name"": ""ButtonPress"",
-                                    ""type"": ""Value"",
-                                    ""path"": ""<Gamepad>/leftTrigger""
-                                }
-                            ]
-                        }
-                    ],
-                    ""bindings"": []
-                }
-            ]
-        }");
+        ""maps"": [
+            {
+                ""name"": ""Player"",
+                ""actions"": [
+                    {
+                        ""name"": ""ControllerHorizontal"",
+                        ""type"": ""Value"",
+                        ""bindings"": [
+                            {
+                                ""name"": ""Stick"",
+                                ""type"": ""Value"",
+                                ""path"": ""<Gamepad>/leftStick""
+                            }
+                        ]
+                    },
+                    {
+                        ""name"": ""ControllerBrake"",
+                        ""type"": ""Button"",
+                        ""bindings"": [
+                            {
+                                ""name"": ""ButtonPress"",
+                                ""type"": ""Value"",
+                                ""path"": ""<Gamepad>/buttonSouth""
+                            }
+                        ]
+                    },
+                    {
+                        ""name"": ""Gas"",
+                        ""type"": ""Button"",
+                        ""bindings"": [
+                            {
+                                ""name"": ""ButtonPress"",
+                                ""type"": ""Value"",
+                                ""path"": ""<Gamepad>/rightTrigger""
+                            }
+                        ]
+                    },
+                    {
+                        ""name"": ""Reverse"",
+                        ""type"": ""Button"", 
+                        ""bindings"": [
+                            {
+                                ""name"": ""ButtonPress"",
+                                ""type"": ""Value"",
+                                ""path"": ""<Gamepad>/leftTrigger"" 
+                            }
+                        ]
+                    }
+                ],
+                ""bindings"": []
+            }
+        ]
+    }");
     }
     //when button pressed......
     private void OnEnable()
@@ -112,10 +125,12 @@ public class CarController : MonoBehaviour
         moveAction = inputActionAsset.FindAction("ControllerHorizontal");
         brakeAction = inputActionAsset.FindAction("ControllerBrake");
         gasAction = inputActionAsset.FindAction("Gas");
+        reverseAction = inputActionAsset.FindAction("Reverse");
 
         moveAction.Enable();
         brakeAction.Enable();
         gasAction.Enable();
+        reverseAction.Enable();   
         PersistentData.persistentData.loadPlayerPrefs();
         sensitivity = PersistentData.persistentData.getSensitivity();
     }
@@ -125,6 +140,8 @@ public class CarController : MonoBehaviour
         moveAction.Disable();
         brakeAction.Disable();
         gasAction.Disable();
+        reverseAction.Disable(); 
+        
     }
     //calling all mechanics
     private void FixedUpdate()
@@ -142,11 +159,23 @@ public class CarController : MonoBehaviour
         bool isBraking = sensitivity * brakeAction.ReadValue<float>() > 0;
         bool isGas = sensitivity * gasAction.ReadValue<float>() > 0;
 
-        
         steerAngle = maxSteerAngle * horizontalInput;
         currentBreakForce = isBraking ? breakForce : 0;
 
         float gasInput = isGas ? 1.0f : 0.0f;
+
+        float reverseInput = sensitivity * reverseAction.ReadValue<float>(); 
+        float reverseTorque = 0.0f;
+
+        
+
+        if (reverseInput > 0)
+        {
+            reverseTorque = -1.0f * reverseInput * motorForce;
+           
+        }
+        
+
 
         float verticalInput = 0.0f;
 
@@ -157,12 +186,24 @@ public class CarController : MonoBehaviour
         }
 
         float motorInput = Mathf.Max(gasInput, -verticalInput);
+
+      
+
+        HandleReverse(reverseTorque); 
     }
+
+    private void HandleReverse(float reverseTorque)
+    {
+        rearLeftWheelCollider.motorTorque = reverseTorque;
+        rearRightWheelCollider.motorTorque = reverseTorque;
+        ApplyBraking();
+    }
+
     //car forward movement
     private void HandleMotor()
     {
         float gasInput = gasAction.ReadValue<float>();
-        float verticalInput = moveAction.ReadValue<Vector2>().y;
+        float verticalInput = 0;
 
         if (gasInput > 0)
         {
