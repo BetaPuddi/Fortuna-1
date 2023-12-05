@@ -19,17 +19,12 @@ public class PersistentData
     }
 
     //The data to be stored
-    float volume;
+    float masterVolume;
+    float SFXVolume;
+    float musicVolume;
     float sensitivity;
-    CharacterSelectObject characterSelectObject;
+    CharacterInfo characterSelectObject;
     
-
-    [System.Serializable]
-    public struct CharacterSelectObject
-    {
-        public string name;
-        public Sprite characterThumbnail;
-    }
 
     [System.Serializable]
     public struct SaveData
@@ -48,9 +43,21 @@ public class PersistentData
     }
 
     //Sets volume (Does not save it)
-    public void setVolume(float volumeIn)
+    public void setMasterVolume(float volumeIn)
     {
-        volume = Mathf.Clamp(volumeIn, 0, 1f);
+        masterVolume = Mathf.Clamp(volumeIn, 0, 1f);
+        GameObject.FindObjectOfType<AudioControl>().UpdateAudioMixer();
+    }
+
+    public void setSFXVolume(float volumeIn)
+    {
+        SFXVolume = Mathf.Clamp(volumeIn, 0, 1f);
+        GameObject.FindObjectOfType<AudioControl>().UpdateAudioMixer();
+    }
+
+    public void setMusicVolume(float volumeIn)
+    {
+        musicVolume = Mathf.Clamp(volumeIn, 0, 1f);
         GameObject.FindObjectOfType<AudioControl>().UpdateAudioMixer();
     }
 
@@ -61,15 +68,25 @@ public class PersistentData
     }
 
     //Sets the character
-    public void setCharacter(CharacterSelectObject characterIn)
+    public void setCharacter(CharacterInfo characterIn)
     {
         characterSelectObject = characterIn;
     }
 
     //Returns the volume
-    public float getVolume()
+    public float getMasterVolume()
     {
-        return volume;
+        return masterVolume;
+    }
+
+    public float getSFXVolume()
+    {
+        return SFXVolume;
+    }
+
+    public float getMusicVolume()
+    {
+        return musicVolume;
     }
 
     //Returns the sensitivity value
@@ -79,7 +96,7 @@ public class PersistentData
     }
 
     //Returns the character chosen in the character select menu
-    public CharacterSelectObject getCharacter()
+    public CharacterInfo getCharacter()
     {
         return characterSelectObject;
     }
@@ -89,7 +106,7 @@ public class PersistentData
     //Saves the current values of volume and sensitivity to player preferences
     public void savePlayerPrefs()
     {
-        PlayerPrefs.SetFloat("Volume", volume);
+        PlayerPrefs.SetFloat("Volume", masterVolume);
         PlayerPrefs.SetFloat("Sensitivity", sensitivity);
         PlayerPrefs.Save();
     }
@@ -97,7 +114,7 @@ public class PersistentData
     //Loads the values of volume and sensitivity from player preferences
     public void loadPlayerPrefs()
     {
-        volume = PlayerPrefs.GetFloat("Volume", 1);
+        masterVolume = PlayerPrefs.GetFloat("Volume", 1);
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", 1);
     }
 }

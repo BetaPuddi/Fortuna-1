@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4172207921962549427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.6505, y: 0.82563, z: 7.026105}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.26638, y: 0.26638, z: 0.26638}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf89a3203392934098cbf5e108dce22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 1000
-  projectileForce: 10000
+  projectileSpeed: 90
+  projectileForceOnTarget: 10000
   vehicleTransform: {fileID: 0}

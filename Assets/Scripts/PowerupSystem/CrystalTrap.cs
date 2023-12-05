@@ -7,6 +7,7 @@ namespace PowerupSystem
     {
         public int slowDownAmount = 400;
         public float slowDownDuration = 2;
+        [SerializeField] private ParticleSystem crystalParticles;
 
         public Transform vehicleTransform;
 
@@ -17,9 +18,10 @@ namespace PowerupSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("AICar"))
             {
                 other.GetComponent<PowerupContainer>().SpeedBoost(slowDownAmount, slowDownDuration);
+                crystalParticles.Play();
                 Destroy(gameObject);
             }
         }

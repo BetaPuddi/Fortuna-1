@@ -97,7 +97,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b8b12a1a-7013-4211-8450-c927448713e8"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -134,28 +134,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""326afadf-7c4e-4fd5-9701-e1d905bb9f42"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""188580de-6453-4920-a852-dfd983301eff"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""left"",
                     ""id"": ""62120722-7790-42ed-81bf-99d905bf1fd2"",
                     ""path"": ""<Gamepad>/leftStick/left"",
@@ -178,6 +156,34 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Reverse"",
+            ""id"": ""3bb24b43-6477-46c4-917e-8fb55449b89a"",
+            ""actions"": [
+                {
+                    ""name"": ""Reverse"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4833bbb-aea8-4902-8238-65b1270908d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cd4a17a7-883d-46d6-9d3a-e0d3a49fc24c"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reverse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -194,6 +200,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // ControllerHorizontal
         m_ControllerHorizontal = asset.FindActionMap("ControllerHorizontal", throwIfNotFound: true);
         m_ControllerHorizontal_Newaction = m_ControllerHorizontal.FindAction("New action", throwIfNotFound: true);
+        // Reverse
+        m_Reverse = asset.FindActionMap("Reverse", throwIfNotFound: true);
+        m_Reverse_Reverse = m_Reverse.FindAction("Reverse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -435,6 +444,52 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public ControllerHorizontalActions @ControllerHorizontal => new ControllerHorizontalActions(this);
+
+    // Reverse
+    private readonly InputActionMap m_Reverse;
+    private List<IReverseActions> m_ReverseActionsCallbackInterfaces = new List<IReverseActions>();
+    private readonly InputAction m_Reverse_Reverse;
+    public struct ReverseActions
+    {
+        private @InputActions m_Wrapper;
+        public ReverseActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Reverse => m_Wrapper.m_Reverse_Reverse;
+        public InputActionMap Get() { return m_Wrapper.m_Reverse; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ReverseActions set) { return set.Get(); }
+        public void AddCallbacks(IReverseActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ReverseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ReverseActionsCallbackInterfaces.Add(instance);
+            @Reverse.started += instance.OnReverse;
+            @Reverse.performed += instance.OnReverse;
+            @Reverse.canceled += instance.OnReverse;
+        }
+
+        private void UnregisterCallbacks(IReverseActions instance)
+        {
+            @Reverse.started -= instance.OnReverse;
+            @Reverse.performed -= instance.OnReverse;
+            @Reverse.canceled -= instance.OnReverse;
+        }
+
+        public void RemoveCallbacks(IReverseActions instance)
+        {
+            if (m_Wrapper.m_ReverseActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IReverseActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ReverseActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ReverseActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ReverseActions @Reverse => new ReverseActions(this);
     public interface IControllerBrakeActions
     {
         void OnNewaction(InputAction.CallbackContext context);
@@ -450,5 +505,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IControllerHorizontalActions
     {
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IReverseActions
+    {
+        void OnReverse(InputAction.CallbackContext context);
     }
 }

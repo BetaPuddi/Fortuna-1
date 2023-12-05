@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6b0f7b59fdda04142aec1a53151a7197
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - characterThumbnail: {fileID: 21300000, guid: 041923d5e3b46c2479e302f8e510003b, type: 3}
+  - characterModelAI: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
+  - characterModelPlayer: {fileID: 2323915803716207799, guid: 000f450308b5ea24381e067b227fbf1e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
