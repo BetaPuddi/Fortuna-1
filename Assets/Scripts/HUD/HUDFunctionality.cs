@@ -7,9 +7,11 @@ namespace HUD
 {
     public class HUDFunctionality : MonoBehaviour
     {
-        public TextMeshProUGUI positionText, lapText;
+        public TextMeshProUGUI /*positionText,*/ lapText;
         public Sprite[] powerupIcons;
         public Image currentPowerupIcon = null;
+        public Sprite[] numberImages;
+        public Image currentPlacementImage = null;
         public CartLap player;
         public GameObject playerObject;
         public PowerupContainer playerPowerupContainer;
@@ -35,16 +37,26 @@ namespace HUD
             switch (player.Position)
             {
                 case 1:
-                    positionText.text = player.Position.ToString() + "st";
+                    //positionText.text = player.Position.ToString() + "st";
+                    currentPlacementImage.sprite = numberImages[1];
                     break;
                 case 2:
-                    positionText.text = player.Position.ToString() + "nd";
+                    //positionText.text = player.Position.ToString() + "nd";
+                    currentPlacementImage.sprite = numberImages[2];
                     break;
                 case 3:
-                    positionText.text = player.Position.ToString() + "rd";
+                    //positionText.text = player.Position.ToString() + "rd";
+                    currentPlacementImage.sprite = numberImages[3];
+                    break;
+                case 4:
+                    currentPlacementImage.sprite = numberImages[4];
+                    break;
+                case 5:
+                    currentPlacementImage.sprite = numberImages[5];
                     break;
                 default:
-                    positionText.text = player.Position.ToString() + "th";
+                    //positionText.text = player.Position.ToString() + "th";
+                    currentPlacementImage.sprite = numberImages[6];
                     break;
             }
         }

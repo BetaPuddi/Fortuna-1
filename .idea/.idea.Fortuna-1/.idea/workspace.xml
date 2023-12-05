@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6f4b0c83-b7d7-4fb7-a76c-bb89966c6508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BasicCarAI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BasicCarAI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BasicCarPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BasicCarPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/BallProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/BallProjectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/BallProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/BallProjectile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level01.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level01.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HUD/HUDFunctionality.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HUD/HUDFunctionality.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +36,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Projectile-Fix",
+    "git-widget-placeholder": "Placement-Graphics-Implementation",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -134,6 +132,7 @@
       <workItem from="1701566627570" duration="629000" />
       <workItem from="1701614910715" duration="4413000" />
       <workItem from="1701778527647" duration="724000" />
+      <workItem from="1701779623680" duration="1332000" />
     </task>
     <servers />
   </component>
