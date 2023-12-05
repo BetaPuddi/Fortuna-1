@@ -8,7 +8,7 @@ namespace PowerupSystem
     public class BallProjectile : MonoBehaviour
     {
         [SerializeField] private float projectileSpeed;
-        [SerializeField] private int projectileForce;
+        [SerializeField] private int projectileForceOnTarget;
         public Transform vehicleTransform;
 
         public void AddForce()
@@ -19,12 +19,12 @@ namespace PowerupSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") || other.CompareTag("AICar"))
             {
                 var directions = new[] {new Vector3(-1, 0, 0), new Vector3(1, 0, 0)};
                 var direction = directions[Random.Range(0, directions.Length)];
                 other.GetComponentInParent<Rigidbody>()
-                    .AddRelativeForce(transform.rotation * direction * projectileForce, ForceMode.Impulse);
+                    .AddRelativeForce(transform.rotation * direction * projectileForceOnTarget, ForceMode.Impulse);
                 Debug.Log(other.name);
                 Destroy(gameObject);
             }
