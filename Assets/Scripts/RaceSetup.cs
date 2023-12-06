@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class RaceSetup : MonoBehaviour
 {
+    [SerializeField] GameObject raceStartCountdown;
     public bool carsSetUp = false;
     [SerializeField] GameObject mainCamera;
     GameObject positionTracker;
@@ -38,6 +39,7 @@ public class RaceSetup : MonoBehaviour
         GameObject car;
         car = Instantiate(PersistentData.persistentData.getCharacter().characterModelPlayer, characterStartPositions[5], new Quaternion());
         car.GetComponent<CarController>().character = PersistentData.persistentData.getCharacter();
+        car.GetComponent<CarController>().enabled = false;
         car.tag = "Player";
         positionTracker.GetComponent<PositionTracker>().cars.Add(car);
         GameObject camera = Instantiate(mainCamera, car.transform, false);
@@ -51,9 +53,47 @@ public class RaceSetup : MonoBehaviour
             car = Instantiate(possibleCharacters[characterNumber].characterModelAI, characterStartPositions[x], new Quaternion());
             car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
             car.GetComponent<AICarDrive>().SetWaypoints(routes[possibleCharacters[characterNumber].prefferedAITrackRoute].route);
+            car.GetComponent<AICarDrive>().enabled = false;
             car.tag = "AICar";
             positionTracker.GetComponent<PositionTracker>().cars.Add(car);
         }
+
+        Countdown();
+
+        foreach (GameObject racer in positionTracker.GetComponent<PositionTracker>().cars)
+        {
+            if (racer.GetComponent<AICarDrive>() != null)
+            {
+                racer.GetComponent<AICarDrive>().enabled = true;
+            }
+            else
+            {
+                racer.GetComponent<CarController>().enabled = true;
+            }
+        }
         carsSetUp = true;
+    }
+
+    void Countdown()
+    {
+        StartCoroutine(CountdownCoroutine());
+
+    }
+
+    IEnumerator CountdownCoroutine()
+    {
+        //Display 5
+        yield return new WaitForSeconds(1);
+        //Display 4
+        yield return new WaitForSeconds(1);
+        //Display 3
+        yield return new WaitForSeconds(1);
+        //Display 2
+        yield return new WaitForSeconds(1);
+        //Display 1
+        yield return new WaitForSeconds(1);
+        //Display 0
+        yield return new WaitForSeconds(1);
+        //Allow cars to move
     }
 }
