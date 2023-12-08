@@ -60,17 +60,7 @@ public class RaceSetup : MonoBehaviour
 
         Countdown();
 
-        foreach (GameObject racer in positionTracker.GetComponent<PositionTracker>().cars)
-        {
-            if (racer.GetComponent<AICarDrive>() != null)
-            {
-                racer.GetComponent<AICarDrive>().enabled = true;
-            }
-            else
-            {
-                racer.GetComponent<CarController>().enabled = true;
-            }
-        }
+        
         carsSetUp = true;
     }
 
@@ -96,8 +86,21 @@ public class RaceSetup : MonoBehaviour
         //Display GO!
         raceStartCountdown.transform.Find("1").gameObject.SetActive(false);
         raceStartCountdown.transform.Find("GO!").gameObject.SetActive(true);
+        //Allow cars to move
+
+        foreach (GameObject racer in positionTracker.GetComponent<PositionTracker>().cars)
+        {
+            if (racer.GetComponent<AICarDrive>() != null)
+            {
+                racer.GetComponent<AICarDrive>().enabled = true;
+            }
+            else
+            {
+                racer.GetComponent<CarController>().enabled = true;
+            }
+        }
+        //Make GO! disappear
         yield return new WaitForSeconds(1);
         raceStartCountdown.transform.Find("GO!").gameObject.SetActive(false);
-        //Allow cars to move
     }
 }
