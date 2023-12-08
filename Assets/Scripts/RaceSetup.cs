@@ -82,18 +82,22 @@ public class RaceSetup : MonoBehaviour
 
     IEnumerator CountdownCoroutine()
     {
-        //Display 5
-        yield return new WaitForSeconds(1);
-        //Display 4
-        yield return new WaitForSeconds(1);
         //Display 3
+        raceStartCountdown.transform.Find("3").gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         //Display 2
+        raceStartCountdown.transform.Find("3").gameObject.SetActive(false);
+        raceStartCountdown.transform.Find("2").gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         //Display 1
+        raceStartCountdown.transform.Find("2").gameObject.SetActive(false);
+        raceStartCountdown.transform.Find("1").gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
-        //Display 0
+        //Display GO!
+        raceStartCountdown.transform.Find("1").gameObject.SetActive(false);
+        raceStartCountdown.transform.Find("GO!").gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
+        raceStartCountdown.transform.Find("GO!").gameObject.SetActive(false);
         //Allow cars to move
     }
 }
