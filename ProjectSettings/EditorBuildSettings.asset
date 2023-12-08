@@ -17,7 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/TestScenes/Keenan/KeenanScene2.unity
     guid: c3df3bffbaf73714aa179dac5d2cca47
-  - enabled: 1
+  - enabled: 0
     path: Assets/TestScenes/Keenan/KeenanSceneStartCountdown.unity
     guid: 7114d0f3b75a0a74a9d4e516f00d343f
+  - enabled: 1
+    path: Assets/TestScenes/Keenan/KeenanSceneAIFix.unity
+    guid: 2a9e31800d77b854ca1cb45696bad8d7
   m_configObjects: {}
