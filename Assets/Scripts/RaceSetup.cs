@@ -42,8 +42,8 @@ public class RaceSetup : MonoBehaviour
         car.GetComponent<CarController>().enabled = false;
         car.tag = "Player";
         positionTracker.GetComponent<PositionTracker>().cars.Add(car);
-        GameObject camera = Instantiate(mainCamera, car.transform, false);
-        camera.transform.localPosition = new Vector3(0, 3, -7);
+        //GameObject camera = Instantiate(mainCamera, car.transform, false);
+        //camera.transform.localPosition = new Vector3(0, 3, -7);
         for (int x = 0, characterNumber = 0; x < characterStartPositions.Length-1; x++, characterNumber++)
         {
             if (possibleCharacters[characterNumber].characterName == PersistentData.persistentData.getCharacter().characterName) 
