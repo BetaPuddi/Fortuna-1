@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TestScenes/Keenan/KeenanSceneAIFix.unity.meta
 guid: 2a9e31800d77b854ca1cb45696bad8d7
+========
+guid: b1dde8e7567ca0743b016a7e77f059af
+>>>>>>>> 6dfa0599af82f643188e59493856a63bc0a8f00e:Assets/Models/Reimported Models/Vehicle.zip.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

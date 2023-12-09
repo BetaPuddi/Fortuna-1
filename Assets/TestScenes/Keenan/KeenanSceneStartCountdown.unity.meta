@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TestScenes/Keenan/KeenanSceneStartCountdown.unity.meta
 guid: 7114d0f3b75a0a74a9d4e516f00d343f
+========
+guid: 2a9e31800d77b854ca1cb45696bad8d7
+>>>>>>>> 6dfa0599af82f643188e59493856a63bc0a8f00e:Assets/TestScenes/Keenan/KeenanSceneAIFix.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
