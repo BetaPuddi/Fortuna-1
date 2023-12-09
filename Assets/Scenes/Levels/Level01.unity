@@ -2313,6 +2313,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+<<<<<<< HEAD
 --- !u!1001 &232548934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2427,6 +2428,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756c780ffd0a17645b040d35a0bfedee, type: 3}
+=======
+>>>>>>> 6dfa0599af82f643188e59493856a63bc0a8f00e
 --- !u!1001 &245871440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2546,7 +2549,28 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+<<<<<<< HEAD
   m_Children: []
+=======
+  m_Children:
+  - {fileID: 377228107}
+  - {fileID: 577472183}
+  - {fileID: 1152223822}
+  - {fileID: 1533673076}
+  - {fileID: 34938989}
+  - {fileID: 1007987251}
+  - {fileID: 1826081433}
+  - {fileID: 429653160}
+  - {fileID: 1554797183}
+  - {fileID: 1073020774}
+  - {fileID: 1420193048}
+  - {fileID: 155060385}
+  - {fileID: 1321555848}
+  - {fileID: 1400314312}
+  - {fileID: 2039525374}
+  - {fileID: 1848975465}
+  - {fileID: 556585478}
+>>>>>>> 6dfa0599af82f643188e59493856a63bc0a8f00e
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &264367296
@@ -3660,6 +3684,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 366903584731630031, guid: 99d4133129cd4f847be088a7dde1a431, type: 3}
   m_PrefabInstance: {fileID: 448583366}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &462396937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3734,6 +3759,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4185b114ae706f44bb7835022a80e993, type: 3}
   m_PrefabInstance: {fileID: 462396937}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> 6dfa0599af82f643188e59493856a63bc0a8f00e
 --- !u!1 &481718905
 GameObject:
   m_ObjectHideFlags: 0
@@ -13351,6 +13378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0a269bb9b1a7d4d858320934a5ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raceStartCountdown: {fileID: 0}
   carsSetUp: 0
   mainCamera: {fileID: 5963230150188140552, guid: b5374e239c3481f4a883951e761f7394, type: 3}
   routes:
