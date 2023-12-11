@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MoonCharacter
   m_EditorClassIdentifier: 
   characterName: Moon
-  characterThumbnail: {fileID: 21300000, guid: 635a5a0d0452115449b20127beca94c2, type: 3}
+  characterThumbnail: {fileID: 21300000, guid: 31236198f1e7cb14fb012fbf2754cc86, type: 3}
   mass: 1500
   motorForce: 1000
   breakForce: 3000

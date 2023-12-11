@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SunCharacter
   m_EditorClassIdentifier: 
   characterName: Sun
-  characterThumbnail: {fileID: 21300000, guid: 6df4e80480e2d2b47919ca86c16beebe, type: 3}
+  characterThumbnail: {fileID: 21300000, guid: d2bfa2e6f81596342bbe436b64d5841f, type: 3}
   mass: 1500
   motorForce: 1000
   breakForce: 3000
