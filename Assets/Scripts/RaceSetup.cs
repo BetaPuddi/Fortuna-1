@@ -49,6 +49,7 @@ public class RaceSetup : MonoBehaviour
             if (possibleCharacters[characterNumber].characterName == PersistentData.persistentData.getCharacter().characterName)
             {
                 characterNumber++;
+                if (characterNumber == possibleCharacters.Length) characterNumber = 0;
             }
             car = Instantiate(possibleCharacters[characterNumber].characterModelAI, characterStartPositions[x], new Quaternion());
             car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
