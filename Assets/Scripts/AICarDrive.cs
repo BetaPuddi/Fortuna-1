@@ -42,18 +42,7 @@ public class AICarDrive : MonoBehaviour
         {
             yield return null;
         }
-        //Get the colliders
-        Transform wheelColliders = transform.Find("Wheels").Find("Colliders");
-        frontLeftWheelCollider = wheelColliders.Find("FrontLeftWheel").GetComponent<WheelCollider>();
-        frontRightWheelCollider = wheelColliders.Find("FrontRightWheel").GetComponent<WheelCollider>();
-        rearLeftWheelCollider = wheelColliders.Find("RearLeftWheel").GetComponent<WheelCollider>();
-        rearRightWheelCollider = wheelColliders.Find("RearRightWheel").GetComponent<WheelCollider>();
-        //Get the transforms
-        Transform wheelTransforms = transform.Find("Wheels").Find("Meshes");
-        frontLeftWheelTransform = wheelTransforms.Find("FrontLeftWheel");
-        frontRightWheelTransform = wheelTransforms.Find("FrontRightWheel");
-        rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
-        rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
+        
 
         motorForce = character.motorForce;
         breakForce = character.breakForce;
