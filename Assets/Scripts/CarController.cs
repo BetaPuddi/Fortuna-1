@@ -139,7 +139,7 @@ public class CarController : MonoBehaviour
         HandleInput();
         HandleMotor();
         HandleSteering();
-        UpdateWheels();
+        //UpdateWheels();
     }
     //handling the player input
     private void HandleInput()

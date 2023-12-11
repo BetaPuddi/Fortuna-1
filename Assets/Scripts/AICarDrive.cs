@@ -56,7 +56,7 @@ public class AICarDrive : MonoBehaviour
         HandleNavigation();
         HandleMotor();
         HandleSteering();
-        UpdateWheels();
+        //UpdateWheels();
     }
 
     private void HandleNavigation()
