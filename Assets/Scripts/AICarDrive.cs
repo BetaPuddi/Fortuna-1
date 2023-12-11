@@ -107,7 +107,7 @@ public class AICarDrive : MonoBehaviour
         if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 8f), layerMask))
         {
             currentAcceleratorLevel = -1;
-            steerAngle = 0;
+            if (transform.InverseTransformVector(GetComponent<Rigidbody>().velocity).z <= 0) steerAngle = 0;
             //Debug.Log(hit.collider.gameObject);
             Debug.DrawRay(offset, transform.forward * ((raycastLength / 8f)), Color.white, 1);
         }
