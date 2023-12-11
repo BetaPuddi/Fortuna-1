@@ -30,7 +30,6 @@ public class StartGame : MonoBehaviour
     public void StartTheGame()
     {
         Debug.Log("Game Starting");
-        SceneManager.LoadScene("KeenanSceneAIFix");
-        //SceneManager.LoadScene("Level01");
+        SceneManager.LoadScene(1);
     }
 }
