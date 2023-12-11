@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 7344710739168991219}
   - component: {fileID: 1195476755531272839}
   m_Layer: 0
-  m_Name: BasicCarPlayer
+  m_Name: SunCarPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

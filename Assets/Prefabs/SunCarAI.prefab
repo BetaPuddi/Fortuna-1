@@ -5956,7 +5956,7 @@ GameObject:
   - component: {fileID: -6438409175128318307}
   - component: {fileID: -7668435035081803768}
   m_Layer: 0
-  m_Name: BasicCarAI
+  m_Name: SunCarAI
   m_TagString: AICar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
