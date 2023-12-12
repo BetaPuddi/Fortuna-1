@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace HUD
+namespace UI
 {
     public class HUDFunctionality : MonoBehaviour
     {
