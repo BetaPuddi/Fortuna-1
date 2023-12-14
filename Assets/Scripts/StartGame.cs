@@ -38,6 +38,6 @@ public class StartGame : MonoBehaviour
     public void StartTheGame()
     {
         Debug.Log("Game Starting");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(PersistentData.persistentData.getTrack().sceneNumber);
     }
 }
