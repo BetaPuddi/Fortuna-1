@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b0f7b59fdda04142aec1a53151a7197, type: 3}
-  m_Name: Placeholder Character
+  m_Name: MoonCharacter
   m_EditorClassIdentifier: 
-  characterName: Placeholder
-  characterThumbnail: {fileID: 21300000, guid: 635a5a0d0452115449b20127beca94c2, type: 3}
+  characterName: Moon
+  characterThumbnail: {fileID: 21300000, guid: 31236198f1e7cb14fb012fbf2754cc86, type: 3}
   mass: 1500
-  motorForce: 1000
+  motorForce: 300
   breakForce: 3000
-  maxSteerAngle: 30
-  characterModelAI: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-  characterModelPlayer: {fileID: 2323915803716207799, guid: 000f450308b5ea24381e067b227fbf1e, type: 3}
+  maxSteerAngle: 60
+  characterModelAI: {fileID: 2893236237908154248, guid: 89b99347f73f5dd499763b1fb7efa6f0, type: 3}
+  characterModelPlayer: {fileID: 2323915803716207799, guid: f128276c23066f74f9c9e85f4f496520, type: 3}
   prefferedAITrackRoute: 0
