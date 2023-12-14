@@ -106,9 +106,9 @@ public class AICarDrive : MonoBehaviour
 
         raycastLength = 20;
         //Modifies the accelerator level by the distance from raycast origin.
-        if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(5, raycastLength + forwardSpeed), layerMask))
+        if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
         {
-            bool shouldReverse = (1 > hit.distance);
+            bool shouldReverse = ((raycastLength + forwardSpeed) * .125f > hit.distance);
             if (shouldReverse)
             {
                 currentAcceleratorLevel = -1;
@@ -119,10 +119,12 @@ public class AICarDrive : MonoBehaviour
             }
             else
             {
-                currentAcceleratorLevel = Mathf.Clamp01(hit.distance / (Mathf.Min(5, raycastLength + forwardSpeed)));
+                currentAcceleratorLevel = Mathf.Clamp01(hit.distance-((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed));
             }
             
+            //Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.gray, .1f);
             //Debug.Log(hit.collider.gameObject);
+            
         }
         else
         {
