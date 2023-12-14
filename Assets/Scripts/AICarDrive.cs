@@ -106,26 +106,15 @@ public class AICarDrive : MonoBehaviour
         //Reverse if raycast detects an obstruction ahead
         if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 8f), layerMask))
         {
-            currentAcceleratorLevel = -1;
+            
+            currentAcceleratorLevel = -.45f;
             if (transform.InverseTransformVector(GetComponent<Rigidbody>().velocity).z <= 0) steerAngle = 0;
             //Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * ((raycastLength / 8f)), Color.white, 1);
+            //Debug.DrawRay(offset, transform.forward * ((raycastLength / 8f)), Color.white, 1);
         }
-        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f), layerMask)) //Reduce speed if raycast detects an obstruction ahead
+        else if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(30, raycastLength + (forwardSpeed)), layerMask))//Modifies the accelerator level by the distance from raycast origin.
         {
-            currentAcceleratorLevel = .1f;
-            //Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 1);
-        }
-        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 2f), layerMask))
-        {
-            currentAcceleratorLevel = .5f;
-            //Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * ((raycastLength / 2f)), Color.red, 10);
-        }
-        else if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(30, raycastLength + (forwardSpeed)), layerMask))
-        {
-            currentAcceleratorLevel = .65f;
+            currentAcceleratorLevel = (hit.distance / (raycastLength + forwardSpeed));
             //Debug.Log(hit.collider.gameObject);
             //Debug.DrawRay(offset, transform.forward * Mathf.Min(30, raycastLength + (forwardSpeed)), Color.yellow, 10);
         }
