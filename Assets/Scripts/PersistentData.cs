@@ -24,6 +24,7 @@ public class PersistentData
     float musicVolume;
     float sensitivity;
     CharacterInfo characterSelectObject;
+    TrackInfo trackSelectObject;
     
 
     [System.Serializable]
@@ -73,6 +74,11 @@ public class PersistentData
         characterSelectObject = characterIn;
     }
 
+    public void setTrack(TrackInfo trackIn)
+    {
+        trackSelectObject = trackIn;
+    }
+
     //Returns the volume
     public float getMasterVolume()
     {
@@ -101,7 +107,10 @@ public class PersistentData
         return characterSelectObject;
     }
 
-
+    public TrackInfo getTrack()
+    {
+        return trackSelectObject;
+    }
 
     //Saves the current values of volume and sensitivity to player preferences
     public void savePlayerPrefs()

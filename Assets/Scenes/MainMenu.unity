@@ -6389,12 +6389,8 @@ MonoBehaviour:
   thumbnail: {fileID: 2145389069}
   levelName: {fileID: 1496517624}
   trackList:
-  - name: Circle
-    levelThumbnail: {fileID: 0}
-  - name: Oval
-    levelThumbnail: {fileID: 0}
-  - name: Track3
-    levelThumbnail: {fileID: 0}
+  - {fileID: 11400000, guid: e5a3dca695d6fc4488856d148d432138, type: 2}
+  - {fileID: 11400000, guid: 30a7c5621ae4ab8478cd3b3377a3ce8d, type: 2}
 --- !u!114 &1590719016
 MonoBehaviour:
   m_ObjectHideFlags: 0
