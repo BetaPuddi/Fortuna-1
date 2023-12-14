@@ -106,13 +106,13 @@ public class AICarDrive : MonoBehaviour
 
         raycastLength = 20;
         //Modifies the accelerator level by the distance from raycast origin.
-        if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(30, raycastLength + forwardSpeed), layerMask))
+        if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(1, raycastLength + forwardSpeed), layerMask))
         {
             bool shouldReverse = (.125f * (raycastLength + forwardSpeed) > hit.distance);
-            currentAcceleratorLevel = shouldReverse ? -1 : Mathf.Clamp01(hit.distance / (Mathf.Min(30, raycastLength + forwardSpeed)));
+            currentAcceleratorLevel = shouldReverse ? -1 : Mathf.Clamp01(hit.distance / (Mathf.Min(1, raycastLength + forwardSpeed)));
             if (shouldReverse && !forwards)
             {
-                steerAngle = 0;
+                steerAngle = -steerAngle;
             }
             //Debug.Log(hit.collider.gameObject);
         }
@@ -122,7 +122,7 @@ public class AICarDrive : MonoBehaviour
         }
 
         //Calculate whether to break and cut off the motor if going too fast (too fast is either moving at > 30 speed, or moving faster than expected for the currentAcceleratorLevel).
-        bool shouldSlowDown = (!forwards && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 17.5f);
+        bool shouldSlowDown = (forwards && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 17.5f);
         //if (shouldSlowDown)
         //{
         //    Debug.Log(this.name + " is breaking and is moving at " + forwardSpeed);
@@ -137,7 +137,7 @@ public class AICarDrive : MonoBehaviour
     private void HandleMotor()
     {
         float motorTorque = motorForce * currentAcceleratorLevel;
-
+        
         frontLeftWheelCollider.motorTorque = motorTorque;
         frontRightWheelCollider.motorTorque = motorTorque;
 
