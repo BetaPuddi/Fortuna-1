@@ -62,7 +62,7 @@ public class AICarDrive : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint,48)].transform;
+        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint, waypoints.Length-1)].transform;
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
@@ -106,14 +106,22 @@ public class AICarDrive : MonoBehaviour
 
         raycastLength = 20;
         //Modifies the accelerator level by the distance from raycast origin.
-        if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(1, raycastLength + forwardSpeed), layerMask))
+        if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(5, raycastLength + forwardSpeed), layerMask))
         {
-            bool shouldReverse = (.125f * (raycastLength + forwardSpeed) > hit.distance);
-            currentAcceleratorLevel = shouldReverse ? -1 : Mathf.Clamp01(hit.distance / (Mathf.Min(1, raycastLength + forwardSpeed)));
-            if (shouldReverse && !forwards)
+            bool shouldReverse = (1 > hit.distance);
+            if (shouldReverse)
             {
-                steerAngle = -steerAngle;
+                currentAcceleratorLevel = -1;
+                if (!forwards)
+                {
+                    steerAngle = -steerAngle;
+                }
             }
+            else
+            {
+                currentAcceleratorLevel = Mathf.Clamp01(hit.distance / (Mathf.Min(5, raycastLength + forwardSpeed)));
+            }
+            
             //Debug.Log(hit.collider.gameObject);
         }
         else

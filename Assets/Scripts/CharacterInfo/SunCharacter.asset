@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Sun
   characterThumbnail: {fileID: 21300000, guid: d2bfa2e6f81596342bbe436b64d5841f, type: 3}
   mass: 1500
-  motorForce: 1000
+  motorForce: 300
   breakForce: 3000
   maxSteerAngle: 60
   characterModelAI: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}

@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Moon
   characterThumbnail: {fileID: 21300000, guid: 31236198f1e7cb14fb012fbf2754cc86, type: 3}
   mass: 1500
-  motorForce: 1000
+  motorForce: 300
   breakForce: 3000
   maxSteerAngle: 60
   characterModelAI: {fileID: 2893236237908154248, guid: 89b99347f73f5dd499763b1fb7efa6f0, type: 3}
