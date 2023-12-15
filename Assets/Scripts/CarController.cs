@@ -32,6 +32,7 @@ public class CarController : MonoBehaviour
     private InputAction reverseAction;
 
     float sensitivity;
+    float rumble;
 
     bool startFinished = false;
 
@@ -122,6 +123,7 @@ public class CarController : MonoBehaviour
         reverseAction.Enable();   
         PersistentData.persistentData.loadPlayerPrefs();
         sensitivity = PersistentData.persistentData.getSensitivity();
+        rumble = PersistentData.persistentData.getVibration();
     }
     //when button disabled...
     private void OnDisable()
