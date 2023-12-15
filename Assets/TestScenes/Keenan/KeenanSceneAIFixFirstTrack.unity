@@ -7820,7 +7820,7 @@ GameObject:
   - component: {fileID: 969349518}
   m_Layer: 2
   m_Name: LapStart
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7837,7 +7837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c75e8c86bd447d49af2c5bf895d7a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckpointNumber: 37
+  CheckpointNumber: 36
 --- !u!65 &969349519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7918,7 +7918,7 @@ Transform:
   m_GameObject: {fileID: 969349517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.4191859, z: 0}
+  m_LocalPosition: {x: 0, y: 2.42, z: 0}
   m_LocalScale: {x: 12.684, y: 5.7212, z: 3.8829}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12466,6 +12466,7 @@ MonoBehaviour:
     - {fileID: 539971230}
     - {fileID: 862493606}
     - {fileID: 522711883}
+    - {fileID: 969349517}
   possibleCharacters:
   - {fileID: 11400000, guid: 71f6d023064ce414693040874ce2c0f5, type: 2}
   - {fileID: 11400000, guid: f0908e6631dbde44882b58fda794a91d, type: 2}
