@@ -62,7 +62,7 @@ public class AICarDrive : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint, waypoints.Length-1)].transform;
+        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint + 1, waypoints.Length)].transform;
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
@@ -109,7 +109,7 @@ public class AICarDrive : MonoBehaviour
         if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
         {
             bool shouldReverse = ((raycastLength + forwardSpeed) * .125f > hit.distance);
-            shouldSlowDown = shouldSlowDown || 0 >= (Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .25f) / (raycastLength + forwardSpeed)));
+            
             if (shouldReverse)
             {
                 currentAcceleratorLevel = -1;
@@ -124,6 +124,7 @@ public class AICarDrive : MonoBehaviour
             }
             else
             {
+                shouldSlowDown = shouldSlowDown || 0 >= (Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .25f) / (raycastLength + forwardSpeed)));
                 currentAcceleratorLevel = Mathf.Clamp01(hit.distance-((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed));
             }
             

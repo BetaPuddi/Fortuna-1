@@ -7,7 +7,7 @@ public class LapHandle : MonoBehaviour
     public int CheckpointNumber;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<CartLap>())
+        if(other.GetComponent<CartLap>() != null)
         {
             CartLap cart = other.GetComponent<CartLap>();   
             if(cart.Checkpoint == CheckpointNumber)
