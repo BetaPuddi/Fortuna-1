@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,18 +43,7 @@ public class AICarDrive : MonoBehaviour
         {
             yield return null;
         }
-        //Get the colliders
-        Transform wheelColliders = transform.Find("Wheels").Find("Colliders");
-        frontLeftWheelCollider = wheelColliders.Find("FrontLeftWheel").GetComponent<WheelCollider>();
-        frontRightWheelCollider = wheelColliders.Find("FrontRightWheel").GetComponent<WheelCollider>();
-        rearLeftWheelCollider = wheelColliders.Find("RearLeftWheel").GetComponent<WheelCollider>();
-        rearRightWheelCollider = wheelColliders.Find("RearRightWheel").GetComponent<WheelCollider>();
-        //Get the transforms
-        Transform wheelTransforms = transform.Find("Wheels").Find("Meshes");
-        frontLeftWheelTransform = wheelTransforms.Find("FrontLeftWheel");
-        frontRightWheelTransform = wheelTransforms.Find("FrontRightWheel");
-        rearLeftWheelTransform = wheelTransforms.Find("RearLeftWheel");
-        rearRightWheelTransform = wheelTransforms.Find("RearRightWheel");
+        
 
         motorForce = character.motorForce;
         breakForce = character.breakForce;
@@ -67,12 +57,12 @@ public class AICarDrive : MonoBehaviour
         HandleNavigation();
         HandleMotor();
         HandleSteering();
-        UpdateWheels();
+        //UpdateWheels();
     }
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint,48)].transform;
+        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint, waypoints.Length-1)].transform;
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
@@ -112,33 +102,29 @@ public class AICarDrive : MonoBehaviour
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
 
         float forwardSpeed = GetComponent<Rigidbody>().velocity.magnitude;
+        bool forwards = -1 != Mathf.Sign(transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity).z);
 
         raycastLength = 20;
-        //Reverse if raycast detects an obstruction ahead
-        if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 8f), layerMask))
+        //Modifies the accelerator level by the distance from raycast origin.
+        if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
         {
-            currentAcceleratorLevel = -1;
-            steerAngle = 0;
+            bool shouldReverse = ((raycastLength + forwardSpeed) * .125f > hit.distance);
+            if (shouldReverse)
+            {
+                currentAcceleratorLevel = -1;
+                if (!forwards)
+                {
+                    steerAngle = -steerAngle;
+                }
+            }
+            else
+            {
+                currentAcceleratorLevel = Mathf.Clamp01(hit.distance-((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed));
+            }
+            
+            //Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.gray, .1f);
             //Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * ((raycastLength / 8f)), Color.white, 1);
-        }
-        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 4f), layerMask)) //Reduce speed if raycast detects an obstruction ahead
-        {
-            currentAcceleratorLevel = .1f;
-            //Debug.Log(hit.collider.gameObject);
-            Debug.DrawRay(offset, transform.forward * ((raycastLength /4f)), Color.black, 1);
-        }
-        else if (Physics.Raycast(offset, transform.forward, out hit, (raycastLength / 2f), layerMask))
-        {
-            currentAcceleratorLevel = .5f;
-            //Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * ((raycastLength / 2f)), Color.red, 10);
-        }
-        else if (Physics.Raycast(offset, transform.forward, out hit, Mathf.Min(30, raycastLength + (forwardSpeed)), layerMask))
-        {
-            currentAcceleratorLevel = .65f;
-            //Debug.Log(hit.collider.gameObject);
-            //Debug.DrawRay(offset, transform.forward * Mathf.Min(30, raycastLength + (forwardSpeed)), Color.yellow, 10);
+            
         }
         else
         {
@@ -146,7 +132,7 @@ public class AICarDrive : MonoBehaviour
         }
 
         //Calculate whether to break and cut off the motor if going too fast (too fast is either moving at > 30 speed, or moving faster than expected for the currentAcceleratorLevel).
-        bool shouldSlowDown = forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 17.5f);
+        bool shouldSlowDown = (forwards && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 17.5f);
         //if (shouldSlowDown)
         //{
         //    Debug.Log(this.name + " is breaking and is moving at " + forwardSpeed);
@@ -161,7 +147,7 @@ public class AICarDrive : MonoBehaviour
     private void HandleMotor()
     {
         float motorTorque = motorForce * currentAcceleratorLevel;
-
+        
         frontLeftWheelCollider.motorTorque = motorTorque;
         frontRightWheelCollider.motorTorque = motorTorque;
 
