@@ -41,10 +41,10 @@ public class CarController : MonoBehaviour
     private IEnumerator Start()
     {
         while (GameObject.FindWithTag("RaceStart") != null && !GameObject.FindWithTag("RaceStart").GetComponent<RaceSetup>().carsSetUp)
-        { 
+        {
             yield return null;
         }
-        
+
 
         motorForce = character.motorForce;
         breakForce = character.breakForce;
@@ -121,7 +121,7 @@ public class CarController : MonoBehaviour
         moveAction.Enable();
         brakeAction.Enable();
         gasAction.Enable();
-        reverseAction.Enable();   
+        reverseAction.Enable();
         PersistentData.persistentData.loadPlayerPrefs();
         sensitivity = PersistentData.persistentData.getSensitivity();
         rumble = PersistentData.persistentData.getVibration();
@@ -132,8 +132,8 @@ public class CarController : MonoBehaviour
         moveAction.Disable();
         brakeAction.Disable();
         gasAction.Disable();
-        reverseAction.Disable(); 
-        
+        reverseAction.Disable();
+
     }
     //calling all mechanics
     private void FixedUpdate()
@@ -156,17 +156,17 @@ public class CarController : MonoBehaviour
 
         float gasInput = isGas ? 1.0f : 0.0f;
 
-        float reverseInput = sensitivity * reverseAction.ReadValue<float>(); 
+        float reverseInput = sensitivity * reverseAction.ReadValue<float>();
         float reverseTorque = 0.0f;
 
-        
+
 
         if (reverseInput > 0)
         {
             reverseTorque = -1.0f * reverseInput * motorForce;
-           
+
         }
-        
+
 
 
         float verticalInput = 0.0f;
@@ -179,9 +179,9 @@ public class CarController : MonoBehaviour
 
         float motorInput = Mathf.Max(gasInput, -verticalInput);
 
-      
 
-        HandleReverse(reverseTorque); 
+
+        HandleReverse(reverseTorque);
     }
 
     private void HandleReverse(float reverseTorque)
@@ -247,6 +247,11 @@ public class CarController : MonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+    }
+
+    public void Rumble(float rumbleTime)
+    {
+        StartCoroutine(ControlerRumbleForTime(rumbleTime));
     }
 
     //Rumbles for the given amount of time.
