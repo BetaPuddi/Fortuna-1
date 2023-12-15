@@ -4938,7 +4938,7 @@ MonoBehaviour:
   volumeSlider: {fileID: 885905834}
   SFXVolumeSlider: {fileID: 468247351}
   musicVolumeSlider: {fileID: 1468949959}
-  vibrationSlider: {fileID: 0}
+  vibrationSlider: {fileID: 53175098}
 --- !u!114 &1404317853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7306,7 +7306,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1875645385}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_TargetAssemblyTypeName: SettingsPanel, Assembly-CSharp
         m_MethodName: SettingsSaveButtonOnClick
         m_Mode: 1
         m_Arguments:
