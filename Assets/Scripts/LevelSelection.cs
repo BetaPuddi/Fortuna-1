@@ -15,35 +15,37 @@ public class LevelSelection : MonoBehaviour
     
 
     [Header("Tracks")]
-    [SerializeField] List<LevelSelectObject> trackList = new List<LevelSelectObject>();
+    [SerializeField] List<TrackInfo> trackList = new List<TrackInfo>();
 
-    [System.Serializable]
-    public class LevelSelectObject
-    {
-        public string name;
-        public Sprite levelThumbnail;
-    }
+    
 
     private void Start()
     {
         UpdateTrackSelectionUI();
     }
 
-    private void TrackSelectionLeftButtonOnClick()
+    public void TrackSelectionLeftButtonOnClick()
     {
-        selectedTrack--;
+        if (0 > --selectedTrack)
+        {
+            selectedTrack = trackList.Count - 1;
+        }
         UpdateTrackSelectionUI();
     }
 
-    private void TrackSelectionRightButtonOnClick()
+    public void TrackSelectionRightButtonOnClick()
     {
-        selectedTrack++;
+        if (trackList.Count - 1 < ++selectedTrack)
+        {
+            selectedTrack = 0;
+        }
         UpdateTrackSelectionUI();
     }
 
     private void UpdateTrackSelectionUI()
     {
-        thumbnail.sprite = trackList[selectedTrack].levelThumbnail;
+        thumbnail.sprite = trackList[selectedTrack].trackThumbnail;
         levelName.text = trackList[selectedTrack].name;
+        PersistentData.persistentData.setTrack(trackList[selectedTrack]);
     }
 }
