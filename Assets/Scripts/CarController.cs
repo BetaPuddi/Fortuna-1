@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XInput;
 
 public class CarController : MonoBehaviour
 {
@@ -247,4 +248,15 @@ public class CarController : MonoBehaviour
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
+
+    //Rumbles for the given amount of time.
+    IEnumerator ControlerRumbleForTime(float rumbleTime)
+    {
+        XInputController xbox = InputSystem.GetDevice<XInputController>();
+        xbox.SetMotorSpeeds(rumble,rumble);
+        yield return new WaitForSeconds(rumbleTime);
+        xbox.ResetHaptics();
+    }
+
+
 }
