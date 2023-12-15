@@ -14,7 +14,7 @@ public class SettingsPanel : MonoBehaviour
     [SerializeField] Slider volumeSlider;
     [SerializeField] Slider SFXVolumeSlider;
     [SerializeField] Slider musicVolumeSlider;
-    [SerializeField] Slider sensitivitySlider;
+    [SerializeField] Slider vibrationSlider;
 
 
     
@@ -34,7 +34,7 @@ public class SettingsPanel : MonoBehaviour
         Debug.Log(volumeSlider.value = PersistentData.persistentData.getMasterVolume());
         Debug.Log(SFXVolumeSlider.value = PersistentData.persistentData.getSFXVolume());
         Debug.Log(musicVolumeSlider.value = PersistentData.persistentData.getMusicVolume());
-        Debug.Log(sensitivitySlider.value = PersistentData.persistentData.getSensitivity());
+        Debug.Log(vibrationSlider.value = PersistentData.persistentData.getSensitivity());
     }
 
     public void SettingsExitButtonOnClick()
@@ -47,7 +47,7 @@ public class SettingsPanel : MonoBehaviour
     public void SettingsSaveButtonOnClick()
     {
         Debug.Log("Saving settings");
-        PersistentData.persistentData.setSensitivity(sensitivitySlider.value);
+        PersistentData.persistentData.setVibration(vibrationSlider.value);
         PersistentData.persistentData.setMasterVolume(volumeSlider.value);
         PersistentData.persistentData.setSFXVolume(SFXVolumeSlider.value);
         PersistentData.persistentData.setMusicVolume(musicVolumeSlider.value);

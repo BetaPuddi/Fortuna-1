@@ -23,6 +23,7 @@ public class PersistentData
     float SFXVolume;
     float musicVolume;
     float sensitivity;
+    float vibrationIntensity;
     CharacterInfo characterSelectObject;
     TrackInfo trackSelectObject;
     
@@ -68,6 +69,11 @@ public class PersistentData
         sensitivity = Mathf.Clamp01(sensitivityIn);
     }
 
+    public void setVibration(float vibrationIn)
+    {
+        vibrationIntensity = Mathf.Clamp01(vibrationIn);
+    }
+
     //Sets the character
     public void setCharacter(CharacterInfo characterIn)
     {
@@ -101,6 +107,11 @@ public class PersistentData
         return sensitivity;
     }
 
+    public float getVibration()
+    {
+        return vibrationIntensity;
+    }
+
     //Returns the character chosen in the character select menu
     public CharacterInfo getCharacter()
     {
@@ -116,7 +127,7 @@ public class PersistentData
     public void savePlayerPrefs()
     {
         PlayerPrefs.SetFloat("Volume", masterVolume);
-        PlayerPrefs.SetFloat("Sensitivity", sensitivity);
+        PlayerPrefs.SetFloat("vibration", vibrationIntensity);
         PlayerPrefs.Save();
     }
 
@@ -124,6 +135,7 @@ public class PersistentData
     public void loadPlayerPrefs()
     {
         masterVolume = PlayerPrefs.GetFloat("Volume", 1);
+        vibrationIntensity = PlayerPrefs.GetFloat("vibration", 1);
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", 1);
     }
 }
