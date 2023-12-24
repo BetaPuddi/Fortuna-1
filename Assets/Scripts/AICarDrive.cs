@@ -62,7 +62,7 @@ public class AICarDrive : MonoBehaviour
 
     private void HandleNavigation()
     {
-        Transform currentWaypointTransform = waypoints[(int)Mathf.Repeat(GetComponent<CartLap>().Checkpoint, waypoints.Length-1)].transform;
+        Transform currentWaypointTransform = waypoints[GetComponent<CartLap>().Checkpoint + 1].transform;
         //Handles steering towards the next checkpoint
         Vector3 relativeWaypointTransform = transform.InverseTransformPoint(currentWaypointTransform.position);
         relativeWaypointTransform.y = 0;
@@ -101,24 +101,31 @@ public class AICarDrive : MonoBehaviour
         
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
 
-        float forwardSpeed = GetComponent<Rigidbody>().velocity.magnitude;
-        bool forwards = -1 != Mathf.Sign(transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity).z);
+        float forwardSpeed = GetComponent<Rigidbody>().velocity.magnitude * Mathf.Sign(transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity).z);
 
+        bool shouldSlowDown = (forwardSpeed >= 0 && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f, currentAcceleratorLevel) * 17.5f);
         raycastLength = 20;
         //Modifies the accelerator level by the distance from raycast origin.
         if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
         {
             bool shouldReverse = ((raycastLength + forwardSpeed) * .125f > hit.distance);
+            
             if (shouldReverse)
             {
                 currentAcceleratorLevel = -1;
-                if (!forwards)
+                if (forwardSpeed < 0)
                 {
                     steerAngle = -steerAngle;
+                    shouldSlowDown = false;
+                }
+                else
+                {
+                    shouldSlowDown = true;
                 }
             }
             else
             {
+                shouldSlowDown = shouldSlowDown || 0 >= (Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .25f) / (raycastLength + forwardSpeed)));
                 currentAcceleratorLevel = Mathf.Clamp01(hit.distance-((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed));
             }
             
@@ -132,7 +139,7 @@ public class AICarDrive : MonoBehaviour
         }
 
         //Calculate whether to break and cut off the motor if going too fast (too fast is either moving at > 30 speed, or moving faster than expected for the currentAcceleratorLevel).
-        bool shouldSlowDown = (forwards && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f,currentAcceleratorLevel) * 17.5f);
+        
         //if (shouldSlowDown)
         //{
         //    Debug.Log(this.name + " is breaking and is moving at " + forwardSpeed);
