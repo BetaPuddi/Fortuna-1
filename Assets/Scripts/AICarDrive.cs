@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -50,6 +51,8 @@ public class AICarDrive : MonoBehaviour
         breakForce = character.breakForce;
         maxSteerAngle = character.maxSteerAngle;
         startFinished = true;
+        
+        
     }
 
     private void FixedUpdate()
@@ -137,7 +140,7 @@ public class AICarDrive : MonoBehaviour
             if (shouldReverse || bothAngledAheadRaycastHit)
             {
                 currentAcceleratorLevel = -1;
-                if (forwardSpeed < 0)
+                if (forwardSpeed <= 0)
                 {
                     steerAngle = -steerAngle;
                     shouldSlowDown = false;
@@ -150,7 +153,13 @@ public class AICarDrive : MonoBehaviour
             else
             {
                 shouldSlowDown = shouldSlowDown || 0 >= (Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .25f) / (raycastLength + forwardSpeed)));
-                currentAcceleratorLevel = Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed));
+                currentAcceleratorLevel = SigmoidLogisticFunction(Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed)), .5f, 2.5f, 1);
+
+                float SigmoidLogisticFunction(float x, float mid, float k, float l)
+                {
+                    return l / (1 + Mathf.Exp(-k * (x-mid)));
+                }
+
                 if (bothAngledAheadRaycastHit)
                 {
                     currentAcceleratorLevel /= 2;
