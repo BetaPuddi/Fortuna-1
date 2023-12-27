@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -49,6 +51,8 @@ public class AICarDrive : MonoBehaviour
         breakForce = character.breakForce;
         maxSteerAngle = character.maxSteerAngle;
         startFinished = true;
+        
+        
     }
 
     private void FixedUpdate()
@@ -69,22 +73,11 @@ public class AICarDrive : MonoBehaviour
         steerAngle = Vector3.SignedAngle(Vector3.forward, relativeWaypointTransform, Vector3.up);
         
         //Collision avoidance using raycasts
-        int layerMask = 1 << 0;
+        int layerMask = ~(1 << 2);
         RaycastHit hit;
         int raycastLength = 5;
-        Vector3 offset = transform.position + (transform.forward * 2.3f) + (transform.up * .5f);
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
-        {
-            steerAngle -= 20f;
-            //Debug.Log("45" + hit.collider.gameObject);
-            //Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
-        }
-        if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
-        {
-            steerAngle += 20f;
-            //Debug.Log("-45" + hit.collider.gameObject);
-            //Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
-        }
+        Vector3 offset = transform.position + (transform.forward * 1.1f) + (transform.up * .25f);
+        
         raycastLength = 3;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
@@ -98,22 +91,56 @@ public class AICarDrive : MonoBehaviour
             //Debug.Log("-90" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
-        
+
+        bool bothAngledAheadRaycastHit = true;
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
+        {
+            steerAngle -= 20f;
+            //Debug.Log("45" + hit.collider.gameObject);
+            //Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
+        }
+        else
+        {
+            bothAngledAheadRaycastHit = false;
+        }
+        if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
+        {
+            steerAngle += 20f;
+            //Debug.Log("-45" + hit.collider.gameObject);
+            //Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
+        }
+        else
+        {
+            bothAngledAheadRaycastHit = false;
+        }
+
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
 
         float forwardSpeed = GetComponent<Rigidbody>().velocity.magnitude * Mathf.Sign(transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity).z);
 
         bool shouldSlowDown = (forwardSpeed >= 0 && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f, currentAcceleratorLevel) * 17.5f);
+        bool shouldReverse;
         raycastLength = 20;
         //Modifies the accelerator level by the distance from raycast origin.
-        if (Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask))
-        {
-            bool shouldReverse = ((raycastLength + forwardSpeed) * .125f > hit.distance);
+        bool frontHit = Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask);
+        if (!frontHit)
+        { 
+            currentAcceleratorLevel = 1;
+        }
+        else
+        { 
+            shouldReverse = frontHit&&(((raycastLength) + forwardSpeed) * .125f > hit.distance);
             
-            if (shouldReverse)
+            Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed), Color.gray, .1f);
+            Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed) * .125f, Color.black, .1f);
+            if (hit.collider.gameObject != null) Debug.Log(hit.collider.gameObject);
+
+        
+
+            if (shouldReverse || bothAngledAheadRaycastHit)
             {
                 currentAcceleratorLevel = -1;
-                if (forwardSpeed < 0)
+                if (forwardSpeed <= 0)
                 {
                     steerAngle = -steerAngle;
                     shouldSlowDown = false;
@@ -125,21 +152,25 @@ public class AICarDrive : MonoBehaviour
             }
             else
             {
-                shouldSlowDown = shouldSlowDown || 0 >= (Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .25f) / (raycastLength + forwardSpeed)));
-                currentAcceleratorLevel = Mathf.Clamp01(hit.distance-((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed));
+                currentAcceleratorLevel = SigmoidLogisticFunction(Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed)), .5f, 2.5f, 1);
+                shouldSlowDown = shouldSlowDown || (forwardSpeed >= hit.distance);
+                
+
+                float SigmoidLogisticFunction(float x, float mid, float k, float l)
+                {
+                    return l / (1 + Mathf.Exp(-k * (x-mid)));
+                }
+
+                if (bothAngledAheadRaycastHit)
+                {
+                    currentAcceleratorLevel /= 2;
+
+                }
             }
-            
-            //Debug.DrawRay(offset, transform.forward * (raycastLength + forwardSpeed), Color.gray, .1f);
-            //Debug.Log(hit.collider.gameObject);
-            
-        }
-        else
-        {
-            currentAcceleratorLevel = 1;
         }
 
         //Calculate whether to break and cut off the motor if going too fast (too fast is either moving at > 30 speed, or moving faster than expected for the currentAcceleratorLevel).
-        
+
         //if (shouldSlowDown)
         //{
         //    Debug.Log(this.name + " is breaking and is moving at " + forwardSpeed);
