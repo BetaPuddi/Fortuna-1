@@ -152,8 +152,9 @@ public class AICarDrive : MonoBehaviour
             }
             else
             {
-                shouldSlowDown = shouldSlowDown || 0 >= (Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .25f) / (raycastLength + forwardSpeed)));
                 currentAcceleratorLevel = SigmoidLogisticFunction(Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed)), .5f, 2.5f, 1);
+                shouldSlowDown = shouldSlowDown || (forwardSpeed >= hit.distance);
+                
 
                 float SigmoidLogisticFunction(float x, float mid, float k, float l)
                 {
