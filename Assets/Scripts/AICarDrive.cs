@@ -73,7 +73,7 @@ public class AICarDrive : MonoBehaviour
         int layerMask = ~(1 << 2);
         RaycastHit hit;
         int raycastLength = 5;
-        Vector3 offset = transform.position + (transform.forward * 2.3f) + (transform.up * .5f);
+        Vector3 offset = transform.position + (transform.forward * 1.1f) + (transform.up * .25f);
         
         raycastLength = 3;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
@@ -89,7 +89,7 @@ public class AICarDrive : MonoBehaviour
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
 
-        bool anyAheadRaycastHit = true;
+        bool bothAngledAheadRaycastHit = true;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
             steerAngle -= 20f;
@@ -98,7 +98,7 @@ public class AICarDrive : MonoBehaviour
         }
         else
         {
-            anyAheadRaycastHit = false;
+            bothAngledAheadRaycastHit = false;
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
@@ -108,7 +108,7 @@ public class AICarDrive : MonoBehaviour
         }
         else
         {
-            anyAheadRaycastHit = false;
+            bothAngledAheadRaycastHit = false;
         }
 
         steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
@@ -129,11 +129,12 @@ public class AICarDrive : MonoBehaviour
             shouldReverse = frontHit&&(((raycastLength) + forwardSpeed) * .125f > hit.distance);
             
             Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed), Color.gray, .1f);
+            Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed) * .125f, Color.black, .1f);
             if (hit.collider.gameObject != null) Debug.Log(hit.collider.gameObject);
 
         
 
-            if (shouldReverse || anyAheadRaycastHit)
+            if (shouldReverse || bothAngledAheadRaycastHit)
             {
                 currentAcceleratorLevel = -1;
                 if (forwardSpeed < 0)
@@ -150,7 +151,7 @@ public class AICarDrive : MonoBehaviour
             {
                 shouldSlowDown = shouldSlowDown || 0 >= (Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .25f) / (raycastLength + forwardSpeed)));
                 currentAcceleratorLevel = Mathf.Clamp01(hit.distance - ((raycastLength + forwardSpeed) * .125f) / (raycastLength + forwardSpeed));
-                if (anyAheadRaycastHit)
+                if (bothAngledAheadRaycastHit)
                 {
                     currentAcceleratorLevel /= 2;
 
