@@ -93,6 +93,11 @@ public class PersistentData
         charactersLockProgress = lockIn;
     }
 
+    public void resetCharacterLockProgress()
+    {
+        charactersLockProgress = 1;
+    }
+
     public void setTrack(TrackInfo trackIn)
     {
         trackSelectObject = trackIn;
