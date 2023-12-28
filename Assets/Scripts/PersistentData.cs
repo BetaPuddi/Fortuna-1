@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -81,7 +82,13 @@ public class PersistentData
         characterSelectObject = characterIn;
     }
 
-    public void setCharactersLockProgress(int lockIn)
+    void setCharacterLockProgress(bool lockState, int characterNumber)
+    {
+        charactersLockProgress = (charactersLockProgress & ~(1<<characterNumber-1)) | (Convert.ToInt32(lockState) << characterNumber - 1);
+        setCharacterIntLockProgress(charactersLockProgress);
+    }
+
+    void setCharacterIntLockProgress(int lockIn)
     {
         charactersLockProgress = lockIn;
     }
