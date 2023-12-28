@@ -53,4 +53,11 @@ public class SettingsPanel : MonoBehaviour
         PersistentData.persistentData.setMusicVolume(musicVolumeSlider.value);
         PersistentData.persistentData.savePlayerPrefs();
     }
+
+    public void SettingsResetButtonOnClick()
+    {
+        Debug.Log("Resetting progress");
+        PersistentData.persistentData.resetCharacterLockProgress();
+        PersistentData.persistentData.saveCharacterLockState();
+    }
 }
