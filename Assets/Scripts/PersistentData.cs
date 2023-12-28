@@ -25,6 +25,7 @@ public class PersistentData
     float sensitivity;
     float vibrationIntensity;
     CharacterInfo characterSelectObject;
+    int charactersLockProgress;
     TrackInfo trackSelectObject;
     
 
@@ -80,6 +81,11 @@ public class PersistentData
         characterSelectObject = characterIn;
     }
 
+    public void setCharactersLockProgress(int lockIn)
+    {
+        charactersLockProgress = lockIn;
+    }
+
     public void setTrack(TrackInfo trackIn)
     {
         trackSelectObject = trackIn;
@@ -118,6 +124,11 @@ public class PersistentData
         return characterSelectObject;
     }
 
+    public int getCharactersLockProgress()
+    {
+        return charactersLockProgress;
+    }
+
     public TrackInfo getTrack()
     {
         return trackSelectObject;
@@ -131,11 +142,22 @@ public class PersistentData
         PlayerPrefs.Save();
     }
 
+    public void saveCharacterLockState()
+    {
+        PlayerPrefs.SetInt("CharactersLocked", charactersLockProgress);
+    }
+
     //Loads the values of volume and sensitivity from player preferences
     public void loadPlayerPrefs()
     {
         masterVolume = PlayerPrefs.GetFloat("Volume", 1);
         vibrationIntensity = PlayerPrefs.GetFloat("vibration", 1);
         sensitivity = PlayerPrefs.GetFloat("Sensitivity", 1);
+    }
+
+    public void loadCharacterLockState()
+    {
+        charactersLockProgress = PlayerPrefs.GetInt("CharactersLocked", 1);
+
     }
 }

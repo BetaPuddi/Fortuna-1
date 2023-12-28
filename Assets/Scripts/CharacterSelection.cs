@@ -12,15 +12,18 @@ public class CharacterSelection : MonoBehaviour
     [Header("UI References")]
     [SerializeField] Image thumbnail;
     [SerializeField] TextMeshProUGUI characterName;
+    [SerializeField] Button startButton;
     
 
     [Header("Characters")]
     [SerializeField] List<CharacterInfo> characterList = new List<CharacterInfo>();
-
+    int lockProgress;
     
 
     private void Start()
     {
+        PersistentData.persistentData.loadCharacterLockState();
+        lockProgress = PersistentData.persistentData.getCharactersLockProgress();
         UpdateCharacterSelectionUI();
     }
 
@@ -47,5 +50,6 @@ public class CharacterSelection : MonoBehaviour
         thumbnail.sprite = characterList[selectedCharacter].characterThumbnail;
         characterName.text = characterList[selectedCharacter].characterName;
         PersistentData.persistentData.setCharacter(characterList[selectedCharacter]);
+        startButton.interactable = (lockProgress & (1 << selectedCharacter)) != 0;//Determine if the character is unlocked or not
     }
 }
