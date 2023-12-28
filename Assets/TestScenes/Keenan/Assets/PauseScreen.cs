@@ -31,15 +31,17 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = paused ? 0:1;
     }
 
-    public void MainMenuButton()
+    public void OnMainMenuButton()
     {
+        Debug.Log("Exiting to menu");
         paused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
     
-    public void RestartButton()
+    public void OnRestartButton()
     {
+        Debug.Log("Restarting level");
         paused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reloads the scene

@@ -9635,7 +9635,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &1231694589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12832,7 +12832,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &1644613384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16545,14 +16545,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseRaceScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 8316253362729892724, guid: e375cb067ebf4d34584c11e008bc7b30, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9139895278833548926, guid: e375cb067ebf4d34584c11e008bc7b30, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16567,8 +16559,8 @@ SceneRoots:
   - {fileID: 866849841}
   - {fileID: 969349522}
   - {fileID: 253785742}
-  - {fileID: 1644613386}
   - {fileID: 1825524230212965341}
+  - {fileID: 1644613386}
   - {fileID: 1231694591}
   - {fileID: 505861348}
   - {fileID: 202782319}
