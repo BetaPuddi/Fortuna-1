@@ -16537,6 +16537,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4477636510660785106, guid: e375cb067ebf4d34584c11e008bc7b30, type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 202782318}
     - target: {fileID: 5525860470766739820, guid: e375cb067ebf4d34584c11e008bc7b30, type: 3}
       propertyPath: m_Name
       value: PauseRaceScreen
