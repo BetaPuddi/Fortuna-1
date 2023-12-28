@@ -82,7 +82,7 @@ public class PersistentData
         characterSelectObject = characterIn;
     }
 
-    void setCharacterLockProgress(bool lockState, int characterNumber)
+    public void setCharacterLockProgress(bool lockState, int characterNumber)
     {
         charactersLockProgress = (charactersLockProgress & ~(1<<characterNumber-1)) | (Convert.ToInt32(lockState) << characterNumber - 1);
         setCharacterIntLockProgress(charactersLockProgress);
