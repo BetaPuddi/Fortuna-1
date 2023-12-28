@@ -16,12 +16,14 @@ public class PauseScreen : MonoBehaviour
     void Start()
     {
         paused = false;
+        Time.timeScale = 1.0f;
         player = GameObject.FindWithTag("Player");
     }
 
     private void Update()
     {
         pauseScreen.SetActive(paused);
+        Time.timeScale = paused ? 0:1;
     }
 
     public void MainMenuButton()
