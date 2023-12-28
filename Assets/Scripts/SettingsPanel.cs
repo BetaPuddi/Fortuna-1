@@ -58,5 +58,6 @@ public class SettingsPanel : MonoBehaviour
     {
         Debug.Log("Resetting progress");
         PersistentData.persistentData.resetCharacterLockProgress();
+        PersistentData.persistentData.saveCharacterLockState();
     }
 }
