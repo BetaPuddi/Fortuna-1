@@ -8,15 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 3e877ac83b0665941938d155613c2092
-  - enabled: 0
-    path: Assets/Scenes/Levels/FirstTrack.unity
-    guid: 6d31d223005b6a94fa472a4cc19113a1
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 5c62dcf51aa022d4ba0cebbeafb586d2
   - enabled: 1
-    path: Assets/TestScenes/Keenan/KeenanSceneAIFixFirstTrack.unity
-    guid: f1434e206d6d31745a124a2e7289b89d
+    path: Assets/Scenes/Levels/FirstTrack.unity
+    guid: 6d31d223005b6a94fa472a4cc19113a1
   - enabled: 1
     path: Assets/TestScenes/Keenan/KeenanSceneLevel02.unity
     guid: c2616abfd35405240a923689226aa933
