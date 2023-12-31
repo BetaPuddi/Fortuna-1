@@ -17,7 +17,7 @@ MonoBehaviour:
   mass: 1500
   motorForce: 300
   breakForce: 3000
-  maxSteerAngle: 60
+  maxSteerAngle: 30
   characterModelAI: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
   characterModelPlayer: {fileID: 2323915803716207799, guid: 000f450308b5ea24381e067b227fbf1e, type: 3}
   prefferedAITrackRoute: 0

@@ -131,8 +131,8 @@ public class AICarDrive : MonoBehaviour
         { 
             shouldReverse = frontHit&&(((raycastLength) + forwardSpeed) * .125f > hit.distance);
             
-            Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed), Color.gray, .1f);
-            Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed) * .125f, Color.black, .1f);
+            Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed), Color.red, .1f);
+            Debug.DrawRay(offset, transform.forward* (raycastLength + forwardSpeed) * .125f, Color.white, .1f);
             if (hit.collider.gameObject != null) Debug.Log(hit.collider.gameObject);
 
         
