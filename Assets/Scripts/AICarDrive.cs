@@ -75,19 +75,19 @@ public class AICarDrive : MonoBehaviour
         //Collision avoidance using raycasts
         int layerMask = ~(1 << 2);
         RaycastHit hit;
-        int raycastLength = 5;
+        float raycastLength = 2.5f;
         Vector3 offset = transform.position + (transform.forward * 1.1f) + (transform.up * .25f);
         
-        raycastLength = 3;
+        raycastLength = 1.5f;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle -= 5f;
+            steerAngle -= 2.5f;
             //Debug.Log("90" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle += 5f;
+            steerAngle += 2.5f;
             //Debug.Log("-90" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-90, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
@@ -95,7 +95,7 @@ public class AICarDrive : MonoBehaviour
         bool bothAngledAheadRaycastHit = true;
         if (Physics.Raycast(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle -= 20f;
+            steerAngle -= 10f;
             //Debug.Log("45" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
@@ -105,7 +105,7 @@ public class AICarDrive : MonoBehaviour
         }
         if (Physics.Raycast(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, raycastLength, layerMask))
         {
-            steerAngle += 20f;
+            steerAngle += 10f;
             //Debug.Log("-45" + hit.collider.gameObject);
             //Debug.DrawRay(offset, Quaternion.AngleAxis(-45, transform.up) * transform.forward * raycastLength, Color.red, 10);
         }
@@ -118,9 +118,9 @@ public class AICarDrive : MonoBehaviour
 
         float forwardSpeed = GetComponent<Rigidbody>().velocity.magnitude * Mathf.Sign(transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity).z);
 
-        bool shouldSlowDown = (forwardSpeed >= 0 && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 30 || (forwardSpeed > Mathf.Max(.5f, currentAcceleratorLevel) * 17.5f);
+        bool shouldSlowDown = (forwardSpeed >= 0 && Mathf.Sign(currentAcceleratorLevel) < 0) || forwardSpeed > 60 || (forwardSpeed > Mathf.Max(.5f, currentAcceleratorLevel) * 35f);
         bool shouldReverse;
-        raycastLength = 20;
+        raycastLength = 10;
         //Modifies the accelerator level by the distance from raycast origin.
         bool frontHit = Physics.Raycast(offset, transform.forward, out hit, raycastLength + forwardSpeed, layerMask);
         if (!frontHit)
