@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43878645, g: 0.48695266, b: 0.56721985, a: 1}
+  m_IndirectSpecularColor: {r: 0.43878707, g: 0.48695326, b: 0.5672209, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14652,7 +14652,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge collision model
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4272609527867324567, guid: 6f66a45131759294ca7f09c4e80683bb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4272609527867324567, guid: 6f66a45131759294ca7f09c4e80683bb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -15519,7 +15524,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramps onto bridge collision model
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7849556921517193272, guid: 7d7a31344bd709a47b514f8cb140db2e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7849556921517193272, guid: 7d7a31344bd709a47b514f8cb140db2e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -18117,11 +18127,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.847
       objectReference: {fileID: 0}
+    - target: {fileID: -1784654484150879807, guid: 7363716762bb1794d93f326687effa9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7363716762bb1794d93f326687effa9d, type: 3}
       propertyPath: m_Name
       value: Mountain tunnel collision model
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1784654484150879807, guid: 7363716762bb1794d93f326687effa9d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -22809,11 +22824,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 74080062224824005, guid: 77d7f9bc482df234f9bca94b4eedca22, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 77d7f9bc482df234f9bca94b4eedca22, type: 3}
       propertyPath: m_Name
       value: Track collision model
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 74080062224824005, guid: 77d7f9bc482df234f9bca94b4eedca22, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
