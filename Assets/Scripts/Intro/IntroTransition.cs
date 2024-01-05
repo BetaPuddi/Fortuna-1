@@ -8,11 +8,6 @@ namespace Intro
     {
         public float uonScreenDuration = 4f, pegiSplashScreenDuration = 8f, introScreenDuration = 8f, currentDuration = 0f, sinceLastTime = 0f;
         public GameObject uonSplashScreen, pegiSplashScreen, introScreen, loadingScreen;
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
 
         // Update is called once per frame
         void Update()
@@ -41,7 +36,7 @@ namespace Intro
             {
                 sinceLastTime = Time.time;
                 currentDuration++;
-                if (currentDuration >= introScreenDuration)
+                /*if (currentDuration >= introScreenDuration)
                 {
                     introScreen.SetActive(false);
                     loadingScreen.SetActive(true);
@@ -53,8 +48,22 @@ namespace Intro
                     {
                         SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainMenu"));
                     }
+                }*/
+            }
+            else if (currentDuration >= introScreenDuration)
+            {
+                introScreen.SetActive(false);
+                loadingScreen.SetActive(true);
+                if (!SceneManager.GetSceneByName("MainMenu").isLoaded)
+                {
+                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                }
+                else
+                {
+                    SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainMenu"));
                 }
             }
+
 
 
                 /*if (currentDuration < uonScreenDuration)
@@ -78,6 +87,18 @@ namespace Intro
                 {
                     introScreen.SetActive(false);
                 }*/
+        }
+
+        public void Skip()
+        {
+            if (uonSplashScreen.activeInHierarchy || pegiSplashScreen.activeInHierarchy)
+            {
+                currentDuration += 4;
+            }
+            else if (introScreen.activeInHierarchy)
+            {
+                currentDuration += 8;
+            }
         }
     }
 }
