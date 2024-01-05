@@ -37,7 +37,7 @@ public class RaceSetup : MonoBehaviour
     void SpawnRacers()
     {
         GameObject car;
-        car = Instantiate(PersistentData.persistentData.getCharacter().characterModelPlayer, characterStartPositions[5], new Quaternion());
+        car = Instantiate(PersistentData.persistentData.getCharacter().characterModelPlayer, transform.position+characterStartPositions[5], new Quaternion());
         car.GetComponent<CarController>().character = PersistentData.persistentData.getCharacter();
         car.GetComponent<CarController>().enabled = false;
         car.tag = "Player";
@@ -51,7 +51,7 @@ public class RaceSetup : MonoBehaviour
                 characterNumber++;
                 if (characterNumber == possibleCharacters.Length) characterNumber = 0;
             }
-            car = Instantiate(possibleCharacters[characterNumber].characterModelAI, characterStartPositions[x], new Quaternion());
+            car = Instantiate(possibleCharacters[characterNumber].characterModelAI, transform.position + characterStartPositions[x], new Quaternion());
             car.GetComponent<AICarDrive>().character = possibleCharacters[characterNumber];
             car.GetComponent<AICarDrive>().SetWaypoints(routes[possibleCharacters[characterNumber].prefferedAITrackRoute].route);
             car.GetComponent<AICarDrive>().enabled = false;
