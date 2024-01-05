@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/FirstTrack.unity
     guid: 6d31d223005b6a94fa472a4cc19113a1
   - enabled: 1
-    path: Assets/TestScenes/Keenan/KeenanSceneLevel02.unity
-    guid: c2616abfd35405240a923689226aa933
+    path: Assets/Scenes/Levels/SecondTrack.unity
+    guid: 7a9e1069c61065248bca09e75b8ff189
   m_configObjects: {}
