@@ -928,6 +928,7 @@ GameObject:
   - component: {fileID: 1522572041591765954}
   - component: {fileID: 7344710739168991219}
   - component: {fileID: 1195476755531272839}
+  - component: {fileID: 1647133104565577683}
   m_Layer: 0
   m_Name: MoonCarPlayer
   m_TagString: Player
@@ -1110,6 +1111,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleRigidbody: {fileID: 9216642563239165345}
   engineAudioSource: {fileID: 2627286717170924239}
+--- !u!136 &1647133104565577683
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323915803716207799}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4228281
+  m_Height: 1.1988392
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2534988681665528308
 GameObject:
   m_ObjectHideFlags: 0
@@ -6688,7 +6712,7 @@ Transform:
   m_GameObject: {fileID: 6923238915082460357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.185, z: -0.986}
+  m_LocalPosition: {x: 0, y: 0.129, z: -0.986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7295,15 +7319,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.840464
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2488482
+      value: 0.91999996
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.619999
+      value: -3.130001
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7311,7 +7335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.046177562
+      value: 0.046177536
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalRotation.y

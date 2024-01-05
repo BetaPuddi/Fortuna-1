@@ -11,6 +11,9 @@ namespace PowerupSystem
         public string[] powerupsToChooseFrom;
         public int respawnTime = 10;
         private MeshRenderer _meshRenderer;
+
+        [SerializeField] private MeshRenderer meshRenderer1;
+
         private Collider _collider1;
         [FormerlySerializedAs("_pickupSound")] [SerializeField]
         private AudioSource pickupSound;
@@ -26,6 +29,7 @@ namespace PowerupSystem
             if (other.CompareTag("Player") || other.CompareTag("AICar"))
             {
                 _meshRenderer.enabled = false;
+                meshRenderer1.enabled = false;
                 _collider1.enabled = false;
                 AddPowerupToCharacter(ChooseRandomPowerup(), other);
                 StartCoroutine(RespawnPowerupBox());
@@ -48,6 +52,7 @@ namespace PowerupSystem
         {
             yield return new WaitForSeconds(respawnTime);
             _meshRenderer.enabled = true;
+            meshRenderer1.enabled = true;
             _collider1.enabled = true;
         }
     }
