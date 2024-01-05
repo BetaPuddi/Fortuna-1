@@ -281,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 649513767922348265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.229, z: 0.648}
+  m_LocalPosition: {x: 0, y: -0.552, z: 0.682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6825,7 +6825,7 @@ Transform:
   m_GameObject: {fileID: 6923238915082460357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.093, z: -0.618}
+  m_LocalPosition: {x: 0, y: 0.185, z: -0.986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7267,19 +7267,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.91999996
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.5
+      value: -3.130001
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99994034
+      value: 0.99893326
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0109224245
+      value: 0.046177536
       objectReference: {fileID: 0}
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalRotation.y
@@ -7300,6 +7300,10 @@ PrefabInstance:
     - target: {fileID: 134074763298233032, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247713373142471227, guid: b5374e239c3481f4a883951e761f7394, type: 3}
+      propertyPath: field of view
+      value: 60.000004
       objectReference: {fileID: 0}
     - target: {fileID: 5963230150188140552, guid: b5374e239c3481f4a883951e761f7394, type: 3}
       propertyPath: m_Name
