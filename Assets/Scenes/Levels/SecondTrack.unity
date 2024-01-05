@@ -10267,9 +10267,9 @@ MonoBehaviour:
   possibleCharacters:
   - {fileID: 11400000, guid: 71f6d023064ce414693040874ce2c0f5, type: 2}
   - {fileID: 11400000, guid: f0908e6631dbde44882b58fda794a91d, type: 2}
+  - {fileID: 11400000, guid: 5b844939c453f0f4f82608211ea6f7f9, type: 2}
   - {fileID: 11400000, guid: f0908e6631dbde44882b58fda794a91d, type: 2}
-  - {fileID: 11400000, guid: f0908e6631dbde44882b58fda794a91d, type: 2}
-  - {fileID: 11400000, guid: f0908e6631dbde44882b58fda794a91d, type: 2}
+  - {fileID: 11400000, guid: 5b844939c453f0f4f82608211ea6f7f9, type: 2}
   - {fileID: 11400000, guid: f0908e6631dbde44882b58fda794a91d, type: 2}
 --- !u!4 &1047565882
 Transform:
