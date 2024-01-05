@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0f7b59fdda04142aec1a53151a7197, type: 3}
   m_Name: WorldCharacter
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: World
   characterThumbnail: {fileID: 21300000, guid: 041923d5e3b46c2479e302f8e510003b, type: 3}
-  mass: 0
-  motorForce: 0
-  breakForce: 0
-  maxSteerAngle: 0
-  characterModelAI: {fileID: 2893236237908154248, guid: a5509f5c42862734fa53e4ac8d77cfaf, type: 3}
-  characterModelPlayer: {fileID: 2323915803716207799, guid: 000f450308b5ea24381e067b227fbf1e, type: 3}
+  mass: 1500
+  motorForce: 300
+  breakForce: 300
+  maxSteerAngle: 30
+  characterModelAI: {fileID: 2893236237908154248, guid: 8ed0e7eb696723a4c9a94b94f7b0e414, type: 3}
+  characterModelPlayer: {fileID: 2323915803716207799, guid: da7ec7f4ab267c44a9d2602cf9f32703, type: 3}
   prefferedAITrackRoute: 0
