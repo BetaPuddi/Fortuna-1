@@ -17,6 +17,7 @@ namespace PowerupSystem
         private TrailRenderer speedBoostTrail;
 
         private InputActions _controls;
+        private Rigidbody _rigidbody;
 
 
         [SerializeField]
@@ -27,6 +28,7 @@ namespace PowerupSystem
         private void Awake()
         {
             _controls = new InputActions();
+            _rigidbody = GetComponentInParent<Rigidbody>();
         }
 
         // Update is called once per frame
@@ -41,6 +43,7 @@ namespace PowerupSystem
                         speedBoostAudioUse.Play();
                         RemovePowerup();
                         StopCoroutine(SpeedBoostCoroutine(0,0));
+                        speedBoostTrail.enabled = true;
                         break;
                     case "Ball Projectile":
                         FireBallProjectile();
@@ -97,7 +100,7 @@ namespace PowerupSystem
 
         private IEnumerator SpeedBoostCoroutine(int boostAmount, float boostDuration)
         {
-            speedBoostTrail.enabled = true;
+            _rigidbody.AddForce(transform.forward * 10000, ForceMode.Impulse);
             if (GetComponentInParent<CarController>() != null)
             {
                 GetComponentInParent<CarController>().Rumble(boostDuration);
@@ -168,6 +171,7 @@ namespace PowerupSystem
                     speedBoostAudioUse.Play();
                     RemovePowerup();
                     StopCoroutine(SpeedBoostCoroutine(0, 0));
+                    speedBoostTrail.enabled = true;
                     break;
                 case "Ball Projectile":
                     FireBallProjectile();
