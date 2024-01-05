@@ -5677,7 +5677,7 @@ MonoBehaviour:
   rearLeftWheelTransform: {fileID: 3558128341630024338}
   frontRightWheelTransform: {fileID: 7357677740176936389}
   frontLeftWheelTransform: {fileID: 11014592502462143}
-  character: {fileID: 0}
+  character: {fileID: 11400000, guid: 71f6d023064ce414693040874ce2c0f5, type: 2}
 --- !u!114 &7168924914042080446
 MonoBehaviour:
   m_ObjectHideFlags: 0
