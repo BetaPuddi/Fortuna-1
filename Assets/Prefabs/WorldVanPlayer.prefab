@@ -281,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 649513767922348265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.229, z: 0.682}
+  m_LocalPosition: {x: 0, y: -0.255, z: 0.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -928,6 +928,7 @@ GameObject:
   - component: {fileID: 1522572041591765954}
   - component: {fileID: 7344710739168991219}
   - component: {fileID: 1195476755531272839}
+  - component: {fileID: 2051785441344607958}
   m_Layer: 0
   m_Name: WorldVanPlayer
   m_TagString: Player
@@ -1110,6 +1111,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleRigidbody: {fileID: 9216642563239165345}
   engineAudioSource: {fileID: 2627286717170924239}
+--- !u!136 &2051785441344607958
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323915803716207799}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3940943
+  m_Height: 1.166549
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.038374066, z: 0.045479774}
 --- !u!1 &2534988681665528308
 GameObject:
   m_ObjectHideFlags: 0
@@ -6688,7 +6712,7 @@ Transform:
   m_GameObject: {fileID: 6923238915082460357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.263, z: -0.723}
+  m_LocalPosition: {x: 0, y: 0.172, z: -0.815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
