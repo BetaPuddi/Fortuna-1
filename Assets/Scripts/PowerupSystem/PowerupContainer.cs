@@ -39,10 +39,10 @@ namespace PowerupSystem
                 switch (currentPowerup)
                 {
                     case "Speed Boost":
-                        SpeedBoost(speedBoostAmount, speedBoostDuration);
+                        SpeedBoost(speedBoostAmount, speedBoostDuration, 10000);
                         speedBoostAudioUse.Play();
                         RemovePowerup();
-                        StopCoroutine(SpeedBoostCoroutine(0,0));
+                        StopCoroutine(SpeedBoostCoroutine(0,0, 0));
                         speedBoostTrail.enabled = true;
                         break;
                     case "Ball Projectile":
@@ -93,14 +93,14 @@ namespace PowerupSystem
             currentPowerup = null;
         }
 
-        public void SpeedBoost(int boostAmount, float boostDuration)
+        public void SpeedBoost(int boostAmount, float boostDuration, int forceAmount)
         {
-            StartCoroutine(SpeedBoostCoroutine(boostAmount, boostDuration));
+            StartCoroutine(SpeedBoostCoroutine(boostAmount, boostDuration, forceAmount));
         }
 
-        private IEnumerator SpeedBoostCoroutine(int boostAmount, float boostDuration)
+        private IEnumerator SpeedBoostCoroutine(int boostAmount, float boostDuration, int forceAmount)
         {
-            _rigidbody.AddForce(transform.forward * 10000, ForceMode.Impulse);
+            _rigidbody.AddForce(transform.forward * forceAmount, ForceMode.Impulse);
             if (GetComponentInParent<CarController>() != null)
             {
                 GetComponentInParent<CarController>().Rumble(boostDuration);
@@ -167,10 +167,10 @@ namespace PowerupSystem
             switch (currentPowerup)
             {
                 case "Speed Boost":
-                    SpeedBoost(speedBoostAmount, speedBoostDuration);
+                    SpeedBoost(speedBoostAmount, speedBoostDuration, 10000);
                     speedBoostAudioUse.Play();
                     RemovePowerup();
-                    StopCoroutine(SpeedBoostCoroutine(0, 0));
+                    StopCoroutine(SpeedBoostCoroutine(0, 0, 0));
                     speedBoostTrail.enabled = true;
                     break;
                 case "Ball Projectile":

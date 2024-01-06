@@ -6,6 +6,7 @@ namespace PowerupSystem
     public class CrystalTrap : MonoBehaviour
     {
         public int slowDownAmount = 400;
+        public int forceOnTarget = -3000;
         public float slowDownDuration = 2;
         [SerializeField] private ParticleSystem crystalParticles;
 
@@ -20,7 +21,7 @@ namespace PowerupSystem
         {
             if (other.CompareTag("Player") || other.CompareTag("AICar"))
             {
-                other.GetComponent<PowerupContainer>().SpeedBoost(slowDownAmount, slowDownDuration);
+                other.GetComponent<PowerupContainer>().SpeedBoost(slowDownAmount, slowDownDuration, forceOnTarget);
                 crystalParticles.Play();
                 Destroy(gameObject);
             }

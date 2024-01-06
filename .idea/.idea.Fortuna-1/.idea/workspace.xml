@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6f4b0c83-b7d7-4fb7-a76c-bb89966c6508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MoonCarAI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MoonCarAI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MoonCarPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MoonCarPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SunBikeAI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SunBikeAI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SunBikePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SunBikePlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WorldVanAI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WorldVanAI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WorldVanPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WorldVanPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/FirstTrack.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/FirstTrack.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/Bone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/Bone.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Powerup-Boxes",
+    "git-widget-placeholder": "Crystal-Fix",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -147,6 +142,7 @@
       <workItem from="1704412268025" duration="2604000" />
       <workItem from="1704450134651" duration="5488000" />
       <workItem from="1704485393813" duration="1522000" />
+      <workItem from="1704545781710" duration="1346000" />
     </task>
     <servers />
   </component>
