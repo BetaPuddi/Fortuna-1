@@ -7703,8 +7703,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5cd72a33133800f48ba838dae9f5aa67, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14241,13 +14241,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapText: {fileID: 1951090077}
   powerupIcons:
-  - {fileID: 21300000, guid: 7be325ef0e431854fadb14453fd5750a, type: 3}
-  - {fileID: 21300000, guid: 790dbb1dd80d9ae44ab9a6f87191a97c, type: 3}
-  - {fileID: 21300000, guid: b8188cde1553ae24e876013257524ca4, type: 3}
-  - {fileID: 21300000, guid: 36c93eda2eca48b4e97714a8d0ee2456, type: 3}
-  - {fileID: 21300000, guid: ab7e112e72a2c8e4396568d303e40bb2, type: 3}
-  - {fileID: 21300000, guid: 2cebf67f33f10d948b970e76c43c849c, type: 3}
-  - {fileID: 21300000, guid: a40415bc70049b547b54778e62967abb, type: 3}
+  - {fileID: 21300000, guid: 4a25e0624a0f054478b2d6bef9ddf47f, type: 3}
+  - {fileID: 21300000, guid: ec43a51f58105c04d8461647e60d6631, type: 3}
+  - {fileID: 21300000, guid: b7e92e8f52b8c4441ac47d026f8ab4b0, type: 3}
+  - {fileID: 21300000, guid: fc06017025b820a4aa46a88bfd9add6e, type: 3}
+  - {fileID: 21300000, guid: 0af5da0cd8af44f4bbb1858581ac46cf, type: 3}
+  - {fileID: 21300000, guid: ec530193352aec74d83e312f905ed612, type: 3}
+  - {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   currentPowerupIcon: {fileID: 707762916}
   numberImages:
   - {fileID: 21300000, guid: 87c4fcc0d2c708f42840c72420763f27, type: 3}
