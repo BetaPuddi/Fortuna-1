@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6f4b0c83-b7d7-4fb7-a76c-bb89966c6508" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fortuna-1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/CrystalTrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerupSystem/PowerupContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/Bone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TestScenes/Reece/TestPrefabs/Bone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/SecondTrack.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/SecondTrack.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterInfo/WorldCharacter.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterInfo/WorldCharacter.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Intro/IntroTransition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Intro/IntroTransition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TrackInfo/Level01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TrackInfo/Level01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TrackInfo/Level02.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TrackInfo/Level02.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Crystal-Fix",
+    "git-widget-placeholder": "AddingIntro-&&-SOdata",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -143,6 +147,7 @@
       <workItem from="1704450134651" duration="5488000" />
       <workItem from="1704485393813" duration="1522000" />
       <workItem from="1704545781710" duration="1346000" />
+      <workItem from="1704654827421" duration="901000" />
     </task>
     <servers />
   </component>

@@ -45,7 +45,7 @@ public class LevelSelection : MonoBehaviour
     private void UpdateTrackSelectionUI()
     {
         thumbnail.sprite = trackList[selectedTrack].trackThumbnail;
-        levelName.text = trackList[selectedTrack].name;
+        levelName.text = trackList[selectedTrack].trackName;
         PersistentData.persistentData.setTrack(trackList[selectedTrack]);
     }
 }
