@@ -32,7 +32,7 @@ namespace Intro
                     introScreen.SetActive(true);
                 }
             }
-            else if (Time.time - sinceLastTime >= 1f && currentDuration <= 16)
+            else if (Time.time - sinceLastTime >= 1f && currentDuration <= 44)
             {
                 sinceLastTime = Time.time;
                 currentDuration++;
@@ -97,7 +97,7 @@ namespace Intro
             }
             else if (introScreen.activeInHierarchy)
             {
-                currentDuration += 8;
+                currentDuration += 35;
             }
         }
     }
